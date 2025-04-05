@@ -11,14 +11,9 @@ config_version=5
 [application]
 
 config/name="Gatos"
+run/main_scene="uid://bdl0ceii4jt6q"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[display]
-
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
-window/stretch/scale_mode="integer"
 
 [input]
 
