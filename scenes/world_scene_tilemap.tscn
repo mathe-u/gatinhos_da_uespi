@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://d0exmrwicd3wg"]
+[gd_scene load_steps=5 format=4 uid="uid://d0exmrwicd3wg"]
 
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_6torg"]
-[ext_resource type="Texture2D" uid="uid://chli0hkjxg8bp" path="res://assets/game/Objects/tree.png" id="3_30n0w"]
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="3_xkf8i"]
-[ext_resource type="Texture2D" uid="uid://djeb8nesu1f58" path="res://assets/game/Objects/Tree4.png" id="6_rwkc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mmeh"]
 texture = ExtResource("3_xkf8i")
@@ -34,24 +32,9 @@ texture = ExtResource("3_xkf8i")
 1:3/0 = 0
 0:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ukiq"]
-texture = ExtResource("3_30n0w")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v82to"]
-texture = ExtResource("6_rwkc2")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-1:0/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_8mmeh"]
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_2ukiq")
 sources/0 = SubResource("TileSetAtlasSource_8mmeh")
-sources/4 = SubResource("TileSetAtlasSource_v82to")
 
 [node name="WorldSceneTilemap" type="Node2D"]
 
