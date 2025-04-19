@@ -33,8 +33,10 @@ func set_initial_time() -> void:
 
 func recalculate_time() -> void:
 	var total_minutes: int = floori(time / GAME_MINUTE_DURATION)
+	@warning_ignore("integer_division")
 	var day: int = floori(total_minutes / MINUTES_PER_DAY)
 	var current_day_minutes: int = total_minutes % MINUTES_PER_DAY
+	@warning_ignore("integer_division")
 	var hour: int = floori(current_day_minutes / MINUTES_PER_HOUR)
 	var minute: int = int(current_day_minutes % MINUTES_PER_HOUR)
 	

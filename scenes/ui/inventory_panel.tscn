@@ -25,10 +25,11 @@ region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdvod"]
 atlas = ExtResource("4_lcq1t")
+region = Rect2(-0.0658455, 0.39465, 32.0658, 31.6054)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tgr1"]
 atlas = ExtResource("5_b11k6")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(64, 0, 32, 32)
 
 [node name="InventoryPanel" type="PanelContainer"]
 offset_right = 88.0
@@ -60,6 +61,7 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_ta3uk")
 
 [node name="LogLabel" type="Label" parent="MarginContainer/VBoxContainer/Logs"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -78,6 +80,7 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_17uwj")
 
 [node name="StoneLabel" type="Label" parent="MarginContainer/VBoxContainer/Stones"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -96,6 +99,7 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_lcq1t")
 
 [node name="CornLabel" type="Label" parent="MarginContainer/VBoxContainer/Corn"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -114,6 +118,7 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_b11k6")
 
 [node name="TomatoLabel" type="Label" parent="MarginContainer/VBoxContainer/Tomato"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -132,6 +137,7 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_tdvod")
 
 [node name="EggLabel" type="Label" parent="MarginContainer/VBoxContainer/Egg"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -150,6 +156,7 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_4tgr1")
 
 [node name="MilkLabel" type="Label" parent="MarginContainer/VBoxContainer/Milk"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
