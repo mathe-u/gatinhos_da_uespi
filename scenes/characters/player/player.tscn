@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=55 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -400,10 +400,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kghjy"]
 radius = 10.0499
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3xnwo"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:current_tool")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_6avc5")
+current_tool = 1
 
 [node name="HitComponent" parent="." instance=ExtResource("2_3xnwo")]
 
@@ -451,3 +460,6 @@ script = ExtResource("9_42irl")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_3xnwo")

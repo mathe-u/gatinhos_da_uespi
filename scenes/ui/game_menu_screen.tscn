@@ -48,6 +48,12 @@ layout_mode = 2
 theme_type_variation = &"GameMenuButton"
 text = "START"
 
+[node name="MultiplayerButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "MULTIPLAYER"
+
 [node name="SaveGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
@@ -61,5 +67,6 @@ theme_type_variation = &"GameMenuButton"
 text = "EXIT"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SaveGameButton" to="." method="_on_save_game_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

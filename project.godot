@@ -27,6 +27,7 @@ DayNightCycleManager="*res://scripts/globals/day_night_cycle_manager.gd"
 SaveGameManager="*res://scripts/globals/save_game_manager.gd"
 GameManager="*res://scripts/globals/game_manager.gd"
 SceneManager="*res://scripts/globals/scene_manager.gd"
+ServerManager="*res://scripts/globals/server_manager.gd"
 
 [display]
 

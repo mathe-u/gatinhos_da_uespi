@@ -269,6 +269,7 @@ GameMenuButton/styles/focus = SubResource("StyleBoxTexture_ivv52")
 GameMenuButton/styles/hover = SubResource("StyleBoxTexture_mfc43")
 GameMenuButton/styles/normal = SubResource("StyleBoxTexture_ba0tq")
 GameMenuButton/styles/pressed = SubResource("StyleBoxTexture_enpq1")
+GlobalLabel/base_type = &"labe"
 InventoryItemPanel/base_type = &"PanelContainer"
 InventoryItemPanel/styles/panel = SubResource("StyleBoxTexture_68i34")
 InventoryLabel/base_type = &"Label"
