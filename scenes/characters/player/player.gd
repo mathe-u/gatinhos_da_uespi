@@ -3,14 +3,26 @@ extends CharacterBody2D
 
 @onready var hit_component: HitComponent = $HitComponent
 @export var current_tool: DataTypes.Tools = DataTypes.Tools.None
+@onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+
+
+@export var synced_position: Vector2 
 
 var player_direction: Vector2
 
 func _ready() -> void:
 	ToolManager.tool_selected.connect(on_tool_selected)
-	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+	
+	if multiplayer.multiplayer_peer:
+		var authority_id: int = name.to_int()
+		multiplayer_synchronizer.set_multiplayer_authority(authority_id)
+	
 
 func on_tool_selected(tool: DataTypes.Tools) -> void:
 	current_tool = tool
 	hit_component.current_tool = tool
 	print("Tool: ", tool)
+
+func set_player_name(player_name: String) -> void:
+	get_node("PlayerNameLabel").text = player_name
+	#player_name_label.text = "ada"

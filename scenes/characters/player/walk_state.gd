@@ -2,6 +2,7 @@ extends NodeState
 
 @export var player: Player
 @export var animated_sprite_2d: AnimatedSprite2D
+@export var direction: Vector2
 @export var speed: int = 100
 
 func _on_process(_delta : float) -> void:
@@ -9,7 +10,7 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta: float) -> void:
-	var direction: Vector2 = GameInputEvents.movement_inut()
+	direction = GameInputEvents.movement_inut()
 	
 	if direction == Vector2.UP:
 		animated_sprite_2d.play("walk_back")

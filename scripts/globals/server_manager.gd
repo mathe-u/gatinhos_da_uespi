@@ -1,26 +1,27 @@
 extends Node
 
 const DEFAULT_SERVER_IP: String = "127.0.0.1"
-const PORT: int = 24666
+const PORT: int = 6007
 const MAX_CONNECTIONS: int = 20
-
-#var server_ip: String
+const SERVER_ID: int = 1
 
 var peer: ENetMultiplayerPeer
+#var players: Dictionary = {}
+
+signal connection_established
+signal connection_failed
+signal player_list_updated
 
 func _ready() -> void:
-	
-	##if multiplayer.is_server():
-		##once_per_client()
-	#
 	multiplayer.peer_connected.connect(on_player_connected)
 	multiplayer.peer_disconnected.connect(on_player_disconnected)
 	multiplayer.connected_to_server.connect(on_connection_ok)
 	multiplayer.connection_failed.connect(on_connection_failed)
-	#multiplayer.server_disconnected.connect(_on_server_disconnected)
-	pass
+	multiplayer.server_disconnected.connect(on_server_disconnected)
 
-func join_server(server_ip: String) -> void:
+
+func join_server(server_ip: String, new_player_name: String) -> void:
+	GameManager.player_name = new_player_name
 	if server_ip.is_empty():
 		server_ip = DEFAULT_SERVER_IP
 
@@ -28,107 +29,113 @@ func join_server(server_ip: String) -> void:
 	var error: Error = peer.create_client(server_ip, PORT)
 
 	if error:
-			print(error)
-			return
+		print(error)
+		on_connection_failed()
+		connection_failed.emit()
+		return
 
-	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	multiplayer.multiplayer_peer = peer
+	connection_established.emit()
+	print("join on (" + server_ip + ")")
+
+
+func create_server(new_player_name: String) -> void:
+	GameManager.player_name = new_player_name
+	peer = ENetMultiplayerPeer.new()
+	var error = peer.create_server(PORT, MAX_CONNECTIONS)
+	
+	if error:
+		print("cannot create host: ", error)
+		return 
+	
 	multiplayer.set_multiplayer_peer(peer)
-	print("join on (" + server_ip + ")...")
+	SaveGameManager.allow_save_game = true
+	print("server game created")
 
-func create_server() -> void:
-	pass
+
+@rpc("any_peer")
+func register_player(new_player_name: String) -> void:
+	var id: int = multiplayer.get_remote_sender_id()
+	GameManager.players[id] = new_player_name
+	player_list_updated.emit()
+
+
+#@rpc("any_peer")
+#func remove_player(id: int) -> void:
+	#GameManager.players.erase(id)
+	#player_list_updated.emit()
+	#print("remove player ", id)
+
+
+@rpc("call_local")
+func load_game_scene() -> void:
+	var current_scene = get_tree().root.get_node("Lobby")
+	
+	#var error: Error = get_tree().change_scene_to_file("res://scenes/test/test_scene_multiplayer.tscn")
+	
+	var world: Node = load("res://scenes/test/test_scene_multiplayer.tscn").instantiate()
+	if world != null:
+		get_tree().root.add_child(world)
+	
+	if current_scene:
+		current_scene.queue_free()
+	
+	get_tree().current_scene = world
+	
+
+	
+
+@rpc("authority", "reliable")
+func load_game_scene_for_client() -> void:
+	if !multiplayer.is_server():
+		SceneManager.switch_multiplayer_scene("res://scenes/test/test_scene_multiplayer.tscn")
+		print("ServerManager (Client ", multiplayer.get_unique_id(), "): Recebeu comando para carregar a cena do jogo.")
+	else:
+		printerr("ServerManager: load_game_scene_for_client não deveria ser chamado no servidor.")
+
+
+#func get_player_list() -> Array:
+	#return players.values()
+
+
+func disconnect_peer():
+	if multiplayer.multiplayer_peer:
+		#var id: int = multiplayer.get_unique_id()
+		#print("----que peer chamou? ", id)
+		#remove_player.rpc_id(id)
+		#if multiplayer.is_server():
+			#print("quem chamou foi o server")
+		#else:
+			#print("quem chamou foi o cliente")
+		
+		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer = null
+		print("ServerManager: Peer disconnected.")
+
 
 func on_player_connected(id: int) -> void:
-	print("player connected:", id)
+	register_player.rpc_id(id, GameManager.player_name)
+	print("ServerManager (Server): Player connected with ID: ", id)
+
 
 func on_player_disconnected(id: int) -> void:
 	GameManager.players.erase(id)
-	##player_disconnected.emit(id)
-	print("player disconnected:", id)
-#
+	player_list_updated.emit()
+	print("ServerManager (Server): Player disconnected with ID: ", id)
+
+
 func on_connection_ok() -> void:
-	print("connected to server")
-	#send_player_information.rpc_id(SERVER_ID, player_name_line_edit.text, multiplayer.get_unique_id())
-#
+	print("ServerManager (Client ", multiplayer.get_unique_id(), "): Connection to server successful!")
+	connection_established.emit()
+
+
 func on_connection_failed() -> void:
-	print("could not connect to server")
-	#multiplayer.multiplayer_peer = null
-#
-#@rpc("any_peer")
-#func send_player_information(player_name: String, id: int) -> void:
-	#if !GameManager.players.has(id):
-		#GameManager.players[id] = {
-			#"name": player_name,
-			#"id": id,
-			#"score": 0,
-		#}
-	#print("player name: ",GameManager.players[id]["name"])
-	#if multiplayer.is_server():
-		##print("is server:", multiplayer.get_unique_id())
-		#for player in GameManager.players:
-			#send_player_information.rpc(
-				#GameManager.players[player].name,
-				#player,
-			#)
-#
-#@rpc("any_peer", "call_local")
-#func start_game() -> void:
-	#var game_scene = load("res://scenes/test/test_scene_multiplayer.tscn").instantiate()
-	#get_tree().root.add_child(game_scene)
-	##self.hide()
-#
-#
-#func _on_host_button_down() -> void:
-	#peer = ENetMultiplayerPeer.new()
-	#var error = peer.create_server(port, 4)
-	#
-	#if error != OK:
-		#print("cannot host:", error)
-		#return
-	#
-	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	#multiplayer.set_multiplayer_peer(peer)
-	#print("waiting for players...")
-	#send_player_information(player_name_line_edit.text, multiplayer.get_unique_id())
-#
-#
-#func _on_join_button_down() -> void:
-	#if host_address_line_edit.text.is_empty():
-		#print("entrando...")
-		#peer = ENetMultiplayerPeer.new()
-		
-	#else:
-		#print("endereco")
-#
-#
-#func _on_start_button_down() -> void:
-	#start_game.rpc()
-	#
-#
-#func remove_multiplayer_peer():
-	#multiplayer.multiplayer_peer = null
-	#GameManager.players.clear()
-#
-#func _on_server_disconnected():
-	#multiplayer.multiplayer_peer = null
-	#GameManager.players.clear()
-	##server_disconnected.emit()
-#
-#
-#@rpc()
-#func once_per_client()-> void:
-	#print("I will be printed to the console once per each connected client.")
-#
-#func _on_some_input(): # Connected to some input.
-	#transfer_some_input.rpc_id(1)
-#
-#@rpc("any_peer", "call_local", "reliable")
-#func transfer_some_input() -> void:
-	## The server knows who sent the input.
-	#var sender_id: int = multiplayer.get_remote_sender_id()
-	#print("sender id: ", sender_id)
-	## Process the input and affect game logic.
-#
-#
-#func _on_back_pressed() -> void:
-	#get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")
+	print("ServerManager (Client): Connection failed.")
+	multiplayer.multiplayer_peer = null
+	connection_failed.emit()
+
+
+func on_server_disconnected():
+	print("ServerManager (Client): Server disconected")
+	disconnect_peer()
+	get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")

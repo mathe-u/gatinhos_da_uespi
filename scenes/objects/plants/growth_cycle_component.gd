@@ -2,7 +2,7 @@ class_name GrowthCycleComponent
 extends Node
 
 @export var current_growth_state: DataTypes.GrowthStates = DataTypes.GrowthStates.Germination
-@export_range(5, 365) var days_until_harvest: int = 7
+@export_range(5, 365) var days_until_harvest: int = 3
 
 signal crop_maturity
 signal crop_harvesting
@@ -23,28 +23,28 @@ func on_time_tick_day(day: int) -> void:
 		growth_states(starting_day, day)
 		harvest_state(starting_day, day)
 
-func growth_states(starting_day: int, current_day: int) -> void:
+func growth_states(start: int, current: int) -> void:
 	if current_growth_state == DataTypes.GrowthStates.Maturity:
 		return
 	
 	var num_states: int = 5
-	var growth_days_passed: int = (current_day - starting_day) % num_states
+	var growth_days_passed: int = (current - start) % num_states
 	var state_index = growth_days_passed % num_states + 1
 	
-	current_growth_state = state_index
+	current_growth_state = DataTypes.GrowthStates[str(state_index)]
 	
-	var name = DataTypes.GrowthStates.keys()[current_growth_state]
-	print("Current growth state:", name, " state index:", state_index)
+	var state_name = DataTypes.GrowthStates.keys()[current_growth_state]
+	print("Current growth state:", state_name, " state index:", state_index)
 	
 	if current_growth_state == DataTypes.GrowthStates.Maturity:
 		crop_maturity.emit()
 
 
-func harvest_state(starting_day: int, current_day: int) -> void:
+func harvest_state(start: int, current: int) -> void:
 	if current_growth_state == DataTypes.GrowthStates.Harvesting:
 		return
 	
-	var days_passed = (current_day - starting_day) % days_until_harvest
+	var days_passed = (current - start) % days_until_harvest
 	
 	if days_passed == days_until_harvest - 1:
 		current_growth_state = DataTypes.GrowthStates.Harvesting
