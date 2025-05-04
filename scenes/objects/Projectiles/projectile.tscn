@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://djs3ljrj76fum"]
+
+[ext_resource type="Texture2D" uid="uid://dlwyey1lmhgmg" path="res://assets/game/Objects/bullet.png" id="1_7p0xd"]
+[ext_resource type="Script" uid="uid://dx4ho0wjtsxko" path="res://scenes/objects/Projectiles/projectile.gd" id="1_xiqfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiqfe"]
+size = Vector2(32, 2)
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_xiqfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xiqfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7p0xd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -72,7 +72,8 @@ func _on_start_pressed() -> void:
 		var player: Node = player_scene.instantiate()
 		player.synced_position = spawn_position
 		player.name = str(player_id)
-		player.set_player_name(GameManager.player_name if player_id == multiplayer.get_unique_id() else GameManager.players[player_id])
+		player.set_player_name(GameManager.player_name if player_id == multiplayer.get_unique_id() else GameManager.players[player_id]["name"])
+		
 		main_scene.get_node("GameRoot/Players").add_child(player)
 		print(player_id)
 
@@ -101,13 +102,12 @@ func _on_connection_failed():
 
 
 func refresh_lobby() -> void:
-	print("sinal para atualizar a lista recebido")
-	#var players = ServerManager.get_player_list()
+	#print("sinal para atualizar a lista recebido")
 	var players = GameManager.players.values()
 	players.sort()
 	item_list.clear()
 	item_list.add_item(GameManager.player_name + " (You)")
 	for player in players:
-		item_list.add_item(player)
+		item_list.add_item(player["name"])
 	
 	start_button.disabled = not multiplayer.is_server()

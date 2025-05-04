@@ -1,7 +1,7 @@
 extends Node
 
 var game_menu_screen = preload("res://scenes/ui/game_menu_screen.tscn")
-var players: Dictionary = {}
+var players: Dictionary[int, Dictionary] = {}
 var player_name: String = ""
 
 func _unhandled_input(event: InputEvent) -> void:

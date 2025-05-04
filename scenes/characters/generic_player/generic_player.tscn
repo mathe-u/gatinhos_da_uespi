@@ -1,9 +1,11 @@
-[gd_scene load_steps=48 format=3 uid="uid://c37w3eymy5txo"]
+[gd_scene load_steps=50 format=3 uid="uid://c37w3eymy5txo"]
 
 [ext_resource type="Script" uid="uid://dnyvk0dk44h28" path="res://scenes/characters/generic_player/generic_player.gd" id="1_hula0"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="3_jfxpb"]
 [ext_resource type="Texture2D" uid="uid://b41nw75f52s77" path="res://assets/game/Characters/basic_charakter_spritesheet.png" id="4_4jl3w"]
 [ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="5_73iqp"]
+[ext_resource type="Texture2D" uid="uid://bltlqbpon5kb0" path="res://assets/game/Objects/shotgun.png" id="5_r08a1"]
+[ext_resource type="AudioStream" uid="uid://dcos5l4lcme2n" path="res://assets/audio/sfx/shotgun_blast_sounds_4.wav" id="6_75ykn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xnwo"]
 atlas = ExtResource("3_jfxpb")
@@ -395,11 +397,18 @@ radius = 10.0499
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("Gun:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Gun/Sprite2D:flip_v")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_hula0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -423,3 +432,18 @@ horizontal_alignment = 3
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_t42ll")
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+position = Vector2(89, 1)
+texture = ExtResource("5_r08a1")
+
+[node name="Marker2D" type="Marker2D" parent="Gun/Sprite2D"]
+position = Vector2(32, -7)
+
+[node name="Shotgun_blast" type="AudioStreamPlayer2D" parent="Gun"]
+stream = ExtResource("6_75ykn")
+volume_db = 7.0
+bus = &"SFX"

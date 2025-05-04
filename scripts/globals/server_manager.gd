@@ -6,7 +6,6 @@ const MAX_CONNECTIONS: int = 20
 const SERVER_ID: int = 1
 
 var peer: ENetMultiplayerPeer
-#var players: Dictionary = {}
 
 signal connection_established
 signal connection_failed
@@ -56,7 +55,7 @@ func create_server(new_player_name: String) -> void:
 @rpc("any_peer")
 func register_player(new_player_name: String) -> void:
 	var id: int = multiplayer.get_remote_sender_id()
-	GameManager.players[id] = new_player_name
+	GameManager.players[id] = {"name": new_player_name, "color": 0}
 	player_list_updated.emit()
 
 
@@ -81,21 +80,6 @@ func load_game_scene() -> void:
 		current_scene.queue_free()
 	
 	get_tree().current_scene = world
-	
-
-	
-
-@rpc("authority", "reliable")
-func load_game_scene_for_client() -> void:
-	if !multiplayer.is_server():
-		SceneManager.switch_multiplayer_scene("res://scenes/test/test_scene_multiplayer.tscn")
-		print("ServerManager (Client ", multiplayer.get_unique_id(), "): Recebeu comando para carregar a cena do jogo.")
-	else:
-		printerr("ServerManager: load_game_scene_for_client não deveria ser chamado no servidor.")
-
-
-#func get_player_list() -> Array:
-	#return players.values()
 
 
 func disconnect_peer():
