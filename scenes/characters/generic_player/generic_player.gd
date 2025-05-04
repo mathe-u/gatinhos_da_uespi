@@ -10,14 +10,11 @@ const MOTION_SPEED = 90.0
 var player_direction: Vector2
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(int(str(name)))
+	if str(name).is_valid_int():
+		set_multiplayer_authority(str(name).to_int())
 
 func _ready() -> void:
 	position = synced_position
-	
-	#if multiplayer.is_server():
-		#if str(name).is_valid_int():
-			#get_node("Inputs/InputsSync").set_multiplayer_authority(str(name).to_int())
 	
 	#ToolManager.tool_selected.connect(on_tool_selected)
 
