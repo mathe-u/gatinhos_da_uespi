@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=4 uid="uid://bx72uuvuctahk"]
+[gd_scene load_steps=3 format=4 uid="uid://bx72uuvuctahk"]
 
+[ext_resource type="Script" uid="uid://b3mpbgncsfup8" path="res://scenes/test/exit_button.gd" id="2_imc5u"]
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="3_jibsr"]
 
 [node name="MainScene" type="Node"]
@@ -26,6 +27,25 @@ tile_set = ExtResource("3_jibsr")
 
 [node name="Players" type="Node2D" parent="GameRoot"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_imc5u")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(100, 46)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "X"
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://draaj714nuvfl")
+_spawnable_scenes = PackedStringArray("uid://c37w3eymy5txo")
 spawn_path = NodePath("../GameRoot/Players")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Button" to="CanvasLayer" method="_on_button_pressed"]

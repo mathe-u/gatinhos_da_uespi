@@ -49,8 +49,33 @@ func _on_join_pressed() -> void:
 
 func _on_start_pressed() -> void:
 	start_button.disabled = true
-	GameManager.start_game()
-	print("MultiplayerMenuScreen: Botão 'Start' pressionado.")
+	
+	assert(multiplayer.is_server())
+	ServerManager.load_game_scene.rpc()
+	
+	# isso nao vai funcionar pq o jogo que eu peguei pra me inspirar 
+	# funciona em uma so tela, 
+	# e o que eu quero e que cada jogador tenha sua propria tela
+	var main_scene: Node = get_tree().root.get_node("MainScene")
+	var player_scene: PackedScene = load("res://scenes/characters/generic_player/generic_player.tscn")
+	
+	var spawn_points: Dictionary = {}
+	spawn_points[1] = 0
+	var spawn_point_index: int = 1
+	for player in GameManager.players:
+		spawn_points[player] = spawn_point_index
+		spawn_point_index += 1
+	
+	for player_id: int in spawn_points:
+		var spawn_point: Node = main_scene.get_node("GameRoot/SpawnPoint/" + str(spawn_points[player_id]))
+		var spawn_position: Vector2 = spawn_point.position
+		var player: Node = player_scene.instantiate()
+		player.synced_position = spawn_position
+		player.name = str(player_id)
+		player.set_player_name(GameManager.player_name if player_id == multiplayer.get_unique_id() else GameManager.players[player_id])
+		main_scene.get_node("GameRoot/Players").add_child(player)
+		print(player_id)
+
 
 
 func _on_back_pressed() -> void:
