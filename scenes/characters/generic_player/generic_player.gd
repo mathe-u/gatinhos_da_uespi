@@ -3,16 +3,19 @@ extends CharacterBody2D
 const MOTION_SPEED: float = 90.0
 const MAX_HEALTH: int = 100
 const BULLET: PackedScene = preload("res://scenes/objects/Projectiles/projectile.tscn")
+const SHOOT_COOLDOWN: float = 1.8
+const SHOTGUN_PELLETS: int = 6
+const SHOTGUN_SPREAD_DEGREES: float = 25.0
 
 @export var synced_position: Vector2 = Vector2()
 @export var stunned = false
 @onready var shotgun_blast: AudioStreamPlayer2D = $Gun/Shotgun_blast
 
-
-
-
 var player_direction: Vector2
 var health = 100
+var shoot_cooldown_time: float = 0.2
+var _spread_radians = deg_to_rad(SHOTGUN_SPREAD_DEGREES)
+
 
 func _enter_tree() -> void:
 	if str(name).is_valid_int():
@@ -20,22 +23,22 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	position = synced_position
-	
-	#ToolManager.tool_selected.connect(on_tool_selected)
-
-
 
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
+		if shoot_cooldown_time > 0.0:
+			shoot_cooldown_time -= _delta
 		$Gun.look_at(get_global_mouse_position())
 		
 		if get_global_mouse_position().x < global_position.x:
 			$Gun/Sprite2D.flip_v = true
+			$Gun/Sprite2D/Marker2D.position = Vector2(34.0, 7.0)
 		else:
 			$Gun/Sprite2D.flip_v = false
+			$Gun/Sprite2D/Marker2D.position = Vector2(34.0, -7.0)
 		
-		if Input.is_action_just_pressed("hit"):
-			shotgun_blast.play(0.13)
+		if Input.is_action_pressed("hit") and shoot_cooldown_time <= 0.0:
+			shoot_cooldown_time = SHOOT_COOLDOWN
 			shoot.rpc(multiplayer.get_unique_id())
 		
 		var m = Vector2()
@@ -61,10 +64,25 @@ func set_player_name(player_name: String) -> void:
 
 @rpc("call_local")
 func shoot(shooter_id) -> void:
-	var bullet = BULLET.instantiate()
-	bullet.set_multiplayer_authority(shooter_id)
-	get_parent().add_child(bullet)
-	bullet.transform = $Gun/Sprite2D/Marker2D.global_transform
+	var spawn_transform: Transform2D = $Gun/Sprite2D/Marker2D.global_transform
+	var base_rotation: float = spawn_transform.get_rotation()
+	var spawn_position: Vector2 = spawn_transform.origin
+	
+	
+	#if !is_multiplayer_authority():
+	shotgun_blast.play(0.13)
+	
+	for i in range(SHOTGUN_PELLETS):
+		var bullet = BULLET.instantiate()
+		bullet.set_multiplayer_authority(shooter_id)
+		
+		var spread_offset: float = randf_range(-_spread_radians / 2.0, _spread_radians / 2.0)
+		var final_rotation: float = base_rotation + spread_offset
+		
+		bullet.global_position = spawn_position
+		bullet.rotation = final_rotation
+		get_parent().add_child(bullet)
+		#bullet.transform = $Gun/Sprite2D/Marker2D.global_transform
 
 
 @rpc("any_peer")

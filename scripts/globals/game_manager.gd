@@ -9,13 +9,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		show_game_menu_screen()
 
 func start_game() -> void:
+	SceneManager.load_main_scene_container()
 	
-	#ServerManager.register_host_player("PlayerHost_1", multiplayer.get_unique_id())
-	#ServerManager.send_player_information("player1", multiplayer.get_unique_id())
-
-	#SceneManager.load_main_scene_container()
-	#await SceneManager.load_level("Level1")
-	pass
+	var node: Node = get_tree().root.get_node("GameMenuScreen")
+	if node != null:
+		node.queue_free()
+		
+	await SceneManager.load_level("Level1")
 
 func multiplayer_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/multiplayer_menu_screen.tscn")

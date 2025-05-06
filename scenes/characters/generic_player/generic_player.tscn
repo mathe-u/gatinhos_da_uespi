@@ -437,11 +437,11 @@ replication_config = SubResource("SceneReplicationConfig_t42ll")
 position = Vector2(0, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="Gun"]
-position = Vector2(89, 1)
+position = Vector2(87, 0)
 texture = ExtResource("5_r08a1")
 
 [node name="Marker2D" type="Marker2D" parent="Gun/Sprite2D"]
-position = Vector2(32, -7)
+position = Vector2(34, -7)
 
 [node name="Shotgun_blast" type="AudioStreamPlayer2D" parent="Gun"]
 stream = ExtResource("6_75ykn")
