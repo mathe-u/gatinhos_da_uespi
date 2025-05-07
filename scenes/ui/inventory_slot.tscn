@@ -51,19 +51,40 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_hytmx")
 [node name="DetailsPanel" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 2
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 80.0
-offset_bottom = 68.0
+offset_left = -2.0
+offset_top = -113.0
+offset_right = 74.0
+offset_bottom = -31.0
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="ItemName" type="Label" parent="DetailsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DetailsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ItemName" type="Label" parent="DetailsPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_uda2d")
 theme_override_font_sizes/font_size = 36
 text = "ovo"
+
+[node name="ItemType" type="Label" parent="DetailsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_uda2d")
+theme_override_font_sizes/font_size = 18
+text = "type"
+
+[node name="ItemEffect" type="Label" parent="DetailsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_uda2d")
+theme_override_font_sizes/font_size = 18
+text = "effect"
 
 [node name="ActionsPanel" type="PanelContainer" parent="."]
 visible = false
@@ -92,3 +113,4 @@ text = "Drop"
 [connection signal="mouse_entered" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="ActionsPanel/VBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]

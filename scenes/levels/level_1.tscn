@@ -3,12 +3,12 @@
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://cyv80s81vceqy" path="res://scenes/components/field_cursor_component.tscn" id="2_sk5k4"]
 [ext_resource type="Script" uid="uid://bu5yn6noaockq" path="res://scenes/components/field_cursor_component.gd" id="3_oc4kc"]
-[ext_resource type="PackedScene" uid="uid://c7nqg0h86lf78" path="res://scenes/objects/egg.tscn" id="3_s8va5"]
 [ext_resource type="PackedScene" uid="uid://bn5p1bqvj6sts" path="res://scenes/components/crops_cursor_component.tscn" id="4_s8va5"]
 [ext_resource type="Script" uid="uid://oysnpauyhgs6" path="res://scenes/components/crops_cursor_component.gd" id="5_dga24"]
 [ext_resource type="PackedScene" uid="uid://cu2woqjup3n2n" path="res://scenes/objects/chest/chest.tscn" id="6_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://56tj4fv0l653" path="res://audio/music/on_the_farm_music.tscn" id="7_oc4kc"]
-[ext_resource type="PackedScene" uid="uid://dtsgu0456csbj" path="res://scenes/objects/milk.tscn" id="9_dga24"]
+[ext_resource type="PackedScene" uid="uid://bobsrxwsk774" path="res://scenes/objects/itens/milk.tscn" id="9_dga24"]
+[ext_resource type="PackedScene" uid="uid://bkixvw7i2g0hj" path="res://scenes/objects/itens/egg.tscn" id="9_qxy0u"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -58,11 +58,17 @@ tilled_soil_tilemap_layer = NodePath("../GameTileMap/TilledSoil")
 [node name="Chest" parent="." instance=ExtResource("6_qxy0u")]
 position = Vector2(910, 953)
 
-[node name="Egg" parent="." instance=ExtResource("3_s8va5")]
-position = Vector2(1136, 955)
+[node name="Egg" parent="." instance=ExtResource("9_qxy0u")]
+position = Vector2(781, 646)
 
-[node name="Egg2" parent="." instance=ExtResource("3_s8va5")]
-position = Vector2(1191, 955)
+[node name="Egg2" parent="." instance=ExtResource("9_qxy0u")]
+position = Vector2(842, 747)
 
 [node name="Milk" parent="." instance=ExtResource("9_dga24")]
-position = Vector2(932, 686)
+position = Vector2(707, 671)
+
+[node name="Milk2" parent="." instance=ExtResource("9_dga24")]
+position = Vector2(657, 671)
+
+[node name="Milk3" parent="." instance=ExtResource("9_dga24")]
+position = Vector2(707, 724)
