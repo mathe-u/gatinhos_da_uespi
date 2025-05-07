@@ -110,7 +110,9 @@ theme_override_fonts/font = ExtResource("3_uda2d")
 theme_override_font_sizes/font_size = 18
 text = "Drop"
 
+[connection signal="gui_input" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_gui_input"]
 [connection signal="mouse_entered" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="ActionsPanel/VBoxContainer/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="pressed" from="ActionsPanel/VBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]

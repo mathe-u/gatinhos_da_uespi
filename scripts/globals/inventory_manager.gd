@@ -39,8 +39,9 @@ func remove_item(item_id) -> void:
 			break
 
 
-func increase_space() -> void:
-	pass
+func increase_space(extra_slots: int) -> void:
+	inventory2.resize(inventory2.size() + extra_slots)
+	inventory_updated.emit()
 
 
 func _calculate_drop_position(player_global_position: Vector2) -> Vector2:
@@ -63,11 +64,21 @@ func drop_item(item_data: Dictionary) -> void:
 	
 	var calculated_drop_position: Vector2 = _calculate_drop_position(player_position)
 	item_instance.global_position = calculated_drop_position
-	#drop_position = _calculate_drop_position(drop_position)
-	#item_instance.global_position = drop_position
 	var main_scene: Node = get_tree().root.get_node("MainScene/GameRoot/LevelRoot/Level1")
 	if main_scene:
 		main_scene.add_child(item_instance)
+
+
+func swap_inventory_itens(index1, index2) -> bool:
+	if index1 < 0 or index1 > inventory2.size() or index2 < 0 or index2 > inventory2.size():
+		return false
+	
+	var temp = inventory2[index1]
+	inventory2[index1] = inventory2[index2]
+	inventory2[index2] = temp
+	
+	inventory_updated.emit()
+	return true
 
 
 func add_collectable(collectable_name: String) -> void:
