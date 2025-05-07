@@ -26,3 +26,7 @@ func _on_fast_speed_button_pressed() -> void:
 
 func _on_cheetah_speed_button_pressed() -> void:
 	DayNightCycleManager.game_speed = cheetah_speed
+
+
+func _on_inventory_button_pressed() -> void:
+	GameManager.open_close_inventory()

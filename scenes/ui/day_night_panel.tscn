@@ -207,3 +207,4 @@ icon = ExtResource("5_07w8f")
 [connection signal="pressed" from="Control/NormalSpeedButton" to="." method="_on_normal_speed_button_pressed"]
 [connection signal="pressed" from="Control/FastSpeedButton" to="." method="_on_fast_speed_button_pressed"]
 [connection signal="pressed" from="Control/CheetahSpeedButton" to="." method="_on_cheetah_speed_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/InventoryButton" to="." method="_on_inventory_button_pressed"]

@@ -12,6 +12,9 @@ texture = ExtResource("1_h452w")
 
 [node name="CollectableComponent" parent="." instance=ExtResource("2_twloa")]
 collectable_name = "egg"
+collectable_type = "consumable"
+collectable_texture = ExtResource("1_h452w")
+collectable_effect = "+10 hp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
 shape = SubResource("CircleShape2D_h452w")

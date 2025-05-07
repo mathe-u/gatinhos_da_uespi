@@ -8,6 +8,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_menu"):
 		show_game_menu_screen()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		open_close_inventory()
+
+func open_close_inventory() -> void:
+	var current_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
+	if current_scene:
+		current_scene.visible = !current_scene.visible
+
 func start_game() -> void:
 	SceneManager.load_main_scene_container()
 	

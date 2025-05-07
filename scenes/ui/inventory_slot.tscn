@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://drarsr2tv5jfu"]
+
+[ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_r4ab7"]
+[ext_resource type="Texture2D" uid="uid://dita3phui0eds" path="res://assets/game/Objects/egg_item.png" id="2_bngwc"]
+[ext_resource type="Script" uid="uid://b4jdrfi5bxvnv" path="res://scenes/ui/inventory_slot.gd" id="2_uda2d"]
+[ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_uda2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hytmx"]
+
+[node name="InventorySlot" type="Control"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme = ExtResource("1_r4ab7")
+script = ExtResource("2_uda2d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_bngwc")
+
+[node name="ItemQuantity" type="Label" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_uda2d")
+theme_override_font_sizes/font_size = 18
+text = "999"
+
+[node name="ItemButton" type="Button" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hytmx")
+
+[node name="DetailsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 68.0
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="ItemName" type="Label" parent="DetailsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_uda2d")
+theme_override_font_sizes/font_size = 36
+text = "ovo"
+
+[node name="ActionsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_top = -90.0
+offset_right = 71.0
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActionsPanel"]
+layout_mode = 2
+
+[node name="UseButton" type="Button" parent="ActionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+theme_override_fonts/font = ExtResource("3_uda2d")
+theme_override_font_sizes/font_size = 18
+text = "Use"
+
+[node name="DropButton" type="Button" parent="ActionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+theme_override_fonts/font = ExtResource("3_uda2d")
+theme_override_font_sizes/font_size = 18
+text = "Drop"
+
+[connection signal="mouse_entered" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/ItemButton" to="." method="_on_item_button_pressed"]
