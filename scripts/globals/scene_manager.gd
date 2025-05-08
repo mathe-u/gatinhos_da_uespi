@@ -40,3 +40,8 @@ func load_level(level: String) -> void:
 		
 		await get_tree().process_frame
 		level_root.add_child(level_scene)
+
+
+func get_player_node() -> Player:
+	var player_node: Node2D = get_tree().root.get_node_or_null("MainScene/GameRoot/Player")
+	return player_node

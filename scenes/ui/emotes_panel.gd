@@ -12,7 +12,7 @@ var idle_emotes: Array = [
 
 func _ready() -> void:
 	animated_sprite_2d.play("emote_1_idle")
-	InventoryManager.inventory_changed.connect(on_inventory_change)
+	InventoryManager.inventory_updated.connect(on_inventory_change)
 
 func play_emote(animation: String) -> void:
 	animated_sprite_2d.play(animation)

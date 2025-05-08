@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var item_name: String
+@export var quantity: int = 1
 @export var item_type: String
 @export var item_id: String
 @export var item_effect: String
@@ -11,7 +12,7 @@ var item: Dictionary = {}
 func _ready() -> void:
 	item = {
 		"name": item_name,
-		"quantity": 1,
+		"quantity": quantity,
 		"type": item_type,
 		"effect": item_effect,
 		"id": item_id,

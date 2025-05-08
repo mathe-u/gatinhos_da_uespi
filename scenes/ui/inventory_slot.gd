@@ -63,12 +63,10 @@ func _on_use_button_pressed() -> void:
 
 func _on_item_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		#if item:
-			#actions_panel.visible = !actions_panel.visible
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
-				panel_container.modulate = Color(1, 1, 0)
+				#panel_container.modulate = Color(1, 1, 0)
 				drag_start.emit(self)
 			else:
-				panel_container.modulate = Color(1, 1, 1)
+				#panel_container.modulate = Color(1, 1, 1)
 				drag_end.emit()

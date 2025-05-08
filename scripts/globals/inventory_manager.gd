@@ -2,11 +2,9 @@ extends Node
 
 @onready var inventory_slot_scene: PackedScene = preload("res://scenes/ui/inventory_slot.tscn")
 
-var inventory: Dictionary = Dictionary()
 var inventory2: Array = []
 var slots: int = 20
 
-signal inventory_changed
 signal inventory_updated
 
 const MIN_DROP_AWAY_RADIUS: float = 35.0
@@ -16,14 +14,23 @@ func _ready() -> void:
 	inventory2.resize(slots)
 
 
-func add_item(item: Dictionary) -> bool:
-	for i in range(inventory2.size()):
-		if inventory2[i] != null and inventory2[i]["id"] == item["id"]:
-			inventory2[i]["quantity"] += item["quantity"]
-			inventory_updated.emit()
-			return true
-		elif inventory2[i] == null:
-			inventory2[i] = item
+func add_item(item_to_add: Dictionary) -> bool:
+	for i: int in range(inventory2.size()):
+		if inventory2[i] != null and inventory2[i]["id"] == item_to_add["id"]:
+			if inventory2[i]["quantity"] < 999:
+				inventory2[i]["quantity"] += item_to_add["quantity"]
+				inventory_updated.emit()
+				return true
+			elif inventory2[i]["quantity"] >= 999:
+				for j: int in range(inventory2.size()):
+					if inventory2[i] == null:
+						inventory2[i] = item_to_add.duplicate()
+						inventory_updated.emit()
+						return true
+	
+	for i: int in range(inventory2.size()):
+		if inventory2[i] == null:
+			inventory2[i] = item_to_add.duplicate()
 			inventory_updated.emit()
 			return true
 	return false
@@ -52,7 +59,7 @@ func _calculate_drop_position(player_global_position: Vector2) -> Vector2:
 
 
 func drop_item(item_data: Dictionary) -> void:
-	var player_node: Node2D = get_tree().root.get_node_or_null("MainScene/GameRoot/Player")
+	var player_node: Node2D = SceneManager.get_player_node()
 	if not player_node:
 		return
 	
@@ -69,7 +76,7 @@ func drop_item(item_data: Dictionary) -> void:
 		main_scene.add_child(item_instance)
 
 
-func swap_inventory_itens(index1, index2) -> bool:
+func swap_inventory_itens(index1: int, index2: int) -> bool:
 	if index1 < 0 or index1 > inventory2.size() or index2 < 0 or index2 > inventory2.size():
 		return false
 	
@@ -79,24 +86,3 @@ func swap_inventory_itens(index1, index2) -> bool:
 	
 	inventory_updated.emit()
 	return true
-
-
-func add_collectable(collectable_name: String) -> void:
-	inventory.get_or_add(collectable_name)
-	
-	if (inventory[collectable_name] == null):
-		inventory[collectable_name] = 1
-	else:
-		inventory[collectable_name] += 1
-	
-	inventory_changed.emit()
-
-
-func remove_collectable(collectable_name: String) -> void:
-	if (inventory[collectable_name] == null):
-		inventory[collectable_name] = 0
-	else:
-		if inventory[collectable_name] > 0:
-			inventory[collectable_name] -= 1
-	
-	inventory_changed.emit()

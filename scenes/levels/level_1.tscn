@@ -66,6 +66,7 @@ position = Vector2(842, 747)
 
 [node name="Milk" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(707, 671)
+quantity = 999
 
 [node name="Milk2" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(657, 671)
