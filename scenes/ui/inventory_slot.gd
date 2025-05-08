@@ -54,8 +54,9 @@ func _on_use_button_pressed() -> void:
 	actions_panel.visible = false
 	
 	if item and item["effect"]:
-		if Player:
-			#Player.apply_item_effect(item)
+		var player_node: Player = SceneManager.get_player_node()
+		if player_node:
+			player_node.apply_item_effect(item)
 			InventoryManager.remove_item(item["id"])
 		else:
 			print("player could not be found")
