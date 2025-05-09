@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkgb1jyb5twte"]
+
+[ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_reao1"]
+[ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="2_wqws8"]
+
+[node name="WorkStationItemList" type="Button"]
+size_flags_vertical = 4
+theme_type_variation = &"ToolButton"
+theme_override_fonts/font = ExtResource("1_reao1")
+theme_override_font_sizes/font_size = 27
+text = "item_100"
+icon = ExtResource("2_wqws8")

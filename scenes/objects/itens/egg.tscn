@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkixvw7i2g0hj"]
 
 [ext_resource type="Texture2D" uid="uid://dita3phui0eds" path="res://assets/game/Objects/egg_item.png" id="1_7nntl"]
-[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scenes/components/item_component.gd" id="2_etcln"]
+[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_etcln"]
 [ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="2_pkcme"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]

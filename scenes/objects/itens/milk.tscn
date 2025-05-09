@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bobsrxwsk774"]
 
 [ext_resource type="Texture2D" uid="uid://dbvu7g3ufs4bk" path="res://assets/game/Objects/simple_milk_and_grass_item.png" id="1_g4taw"]
-[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scenes/components/item_component.gd" id="2_8tra4"]
+[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_8tra4"]
 [ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="3_xi3r4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4taw"]

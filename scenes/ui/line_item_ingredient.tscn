@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu8yykhtfmbh0"]
+
+[ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="1_m4yrq"]
+
+[node name="LineItemIngredient" type="HBoxContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("1_m4yrq")
+
+[node name="ItemIngredientName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "irom bar"
+horizontal_alignment = 1
+
+[node name="ItemIngredientQuantity" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "3/5"
+horizontal_alignment = 1

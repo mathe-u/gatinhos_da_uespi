@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=12 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://cyv80s81vceqy" path="res://scenes/components/field_cursor_component.tscn" id="2_sk5k4"]
@@ -8,7 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cu2woqjup3n2n" path="res://scenes/objects/chest/chest.tscn" id="6_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://56tj4fv0l653" path="res://audio/music/on_the_farm_music.tscn" id="7_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://bobsrxwsk774" path="res://scenes/objects/itens/milk.tscn" id="9_dga24"]
+[ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="9_excbq"]
 [ext_resource type="PackedScene" uid="uid://bkixvw7i2g0hj" path="res://scenes/objects/itens/egg.tscn" id="9_qxy0u"]
+
+[sub_resource type="Resource" id="Resource_iav0o"]
+script = ExtResource("9_excbq")
+item_path = ""
+units = 0
+metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -60,16 +67,32 @@ position = Vector2(910, 953)
 
 [node name="Egg" parent="." instance=ExtResource("9_qxy0u")]
 position = Vector2(781, 646)
+item_id = 0
+item_type = 0
+item_effect = 0
 
 [node name="Egg2" parent="." instance=ExtResource("9_qxy0u")]
 position = Vector2(842, 747)
+item_id = 0
+item_type = 0
+ingredients = Array[ExtResource("9_excbq")]([SubResource("Resource_iav0o")])
+item_effect = 0
 
 [node name="Milk" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(707, 671)
+item_id = 0
 quantity = 999
+item_type = 0
+item_effect = 0
 
 [node name="Milk2" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(657, 671)
+item_id = 0
+item_type = 0
+item_effect = 0
 
 [node name="Milk3" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(707, 724)
+item_id = 0
+item_type = 0
+item_effect = 0

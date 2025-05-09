@@ -17,3 +17,19 @@ enum GrowthStates {
 	Maturity,
 	Harvesting
 }
+
+enum ItemType {
+	Consumable,
+	MaterialItem,
+}
+
+enum Effect {
+	None,
+	IcreaseHealth,
+	Healing,
+	HealthRegen,
+	IncreaseInventorySlots,
+	Venon,
+	SpeedUp,
+	SpeedDown,
+}
