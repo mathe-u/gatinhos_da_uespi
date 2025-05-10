@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://d13niv54c05e7"]
+
+[ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_peryr"]
+[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="1_vj5un"]
+[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="2_vtolf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtolf"]
+atlas = ExtResource("1_peryr")
+region = Rect2(160, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_vj5un")
+id = &"100"
+display_name = "log"
+icon = SubResource("AtlasTexture_vtolf")
+type = 1
+effect = 0
+stackable = true
+max_stack_size = 999
+item_scene = ExtResource("2_vtolf")
+crafting_ingredients = Array[Dictionary]([])
+items_produced = 0
+time_to_craft = 0.0
+metadata/_custom_type_script = "uid://2jwace1btwws"

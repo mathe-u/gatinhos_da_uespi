@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bge6el5j4o3lk"]
+
+[ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_j8t02"]
+[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_oijrr"]
+[ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="3_7jiln"]
+[ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="3_y1m3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t3su"]
+atlas = ExtResource("1_j8t02")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="Resource" id="Resource_y1m3j"]
+script = ExtResource("3_y1m3j")
+item_path = "res://scenes/objects/itens/log.tscn"
+units = 1
+product = 10
+metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
+radius = 7.07107
+
+[node name="Coal" type="Sprite2D"]
+y_sort_enabled = true
+texture = SubResource("AtlasTexture_3t3su")
+script = ExtResource("2_oijrr")
+item_id = 104
+item_name = "coal"
+item_type = 1
+ingredients = Array[ExtResource("3_y1m3j")]([SubResource("Resource_y1m3j")])
+
+[node name="CollectableComponent" parent="." instance=ExtResource("3_7jiln")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_h452w")

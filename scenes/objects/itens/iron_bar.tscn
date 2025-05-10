@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx5fddj2hg5et"]
+
+[ext_resource type="Texture2D" uid="uid://cacpvtt3eijff" path="res://assets/game/Objects/icon_iron_bar2.png" id="1_dikty"]
+[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_xajxo"]
+[ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="3_k6le4"]
+[ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="4_54530"]
+
+[sub_resource type="Resource" id="Resource_y1m3j"]
+script = ExtResource("3_k6le4")
+item_path = "res://scenes/objects/itens/iron_ore.tscn"
+units = 5
+product = 1
+metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
+
+[sub_resource type="Resource" id="Resource_dikty"]
+script = ExtResource("3_k6le4")
+item_path = "res://scenes/objects/itens/coal.tscn"
+units = 10
+product = 0
+metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
+radius = 7.07107
+
+[node name="IronBar" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_dikty")
+script = ExtResource("2_xajxo")
+item_id = 106
+item_name = "iron bar"
+item_type = 1
+ingredients = Array[ExtResource("3_k6le4")]([SubResource("Resource_y1m3j"), SubResource("Resource_dikty")])
+
+[node name="CollectableComponent" parent="." instance=ExtResource("4_54530")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_h452w")

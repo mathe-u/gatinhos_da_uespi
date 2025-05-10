@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfnps0deeb2rn"]
+
+[ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="1_vl4ls"]
+[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_r13ib"]
+[ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="3_05ni7"]
+[ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="4_pdi4i"]
+
+[sub_resource type="Resource" id="Resource_y1m3j"]
+script = ExtResource("3_05ni7")
+item_path = "res://scenes/objects/itens/iron_bar.tscn"
+units = 1
+product = 1
+metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
+radius = 7.07107
+
+[node name="Cog" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_vl4ls")
+script = ExtResource("2_r13ib")
+item_id = 107
+item_name = "cog"
+item_type = 1
+ingredients = Array[ExtResource("3_05ni7")]([SubResource("Resource_y1m3j")])
+
+[node name="CollectableComponent" parent="." instance=ExtResource("4_pdi4i")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_h452w")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://c34waykgeeg0d"]
+
+[ext_resource type="Texture2D" uid="uid://dykxhpw0q0n5y" path="res://assets/game/Objects/iron_ore.png" id="1_5xr8f"]
+[ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_hr32u"]
+[ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="3_1858b"]
+[ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="4_gmbc0"]
+
+[sub_resource type="Resource" id="Resource_y1m3j"]
+script = ExtResource("3_1858b")
+item_path = "res://scenes/objects/itens/log.tscn"
+units = 1
+product = 10
+metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
+radius = 7.07107
+
+[node name="IronOre" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_5xr8f")
+script = ExtResource("2_hr32u")
+item_id = 105
+item_name = "iron ore"
+item_type = 1
+ingredients = Array[ExtResource("3_1858b")]([SubResource("Resource_y1m3j")])
+
+[node name="CollectableComponent" parent="." instance=ExtResource("4_gmbc0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_h452w")

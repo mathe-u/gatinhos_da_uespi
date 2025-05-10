@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="3_u2k6n"]
 [ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="3_uyn2c"]
 
-[sub_resource type="Resource" id="Resource_u2k6n"]
+[sub_resource type="Resource" id="Resource_uyn2c"]
 script = ExtResource("3_uyn2c")
-item_path = "res://scenes/objects/itens/Log.tscn"
+item_path = "res://scenes/objects/itens/log.tscn"
 units = 1
+product = 3
 metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
@@ -18,9 +19,10 @@ radius = 7.07107
 y_sort_enabled = true
 texture = ExtResource("1_disfs")
 script = ExtResource("2_uyn2c")
-item_id = 102
+item_id = 103
 item_name = "wood"
-ingredients = Array[ExtResource("3_uyn2c")]([SubResource("Resource_u2k6n")])
+item_type = 1
+ingredients = Array[ExtResource("3_uyn2c")]([SubResource("Resource_uyn2c")])
 
 [node name="CollectableComponent" parent="." instance=ExtResource("3_u2k6n")]
 

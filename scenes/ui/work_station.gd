@@ -1,12 +1,17 @@
 extends PanelContainer
 
-@export var list_i: Array[ItemComponent]
-
 @onready var list_collection: VBoxContainer = $MarginContainer/VBoxContainer/HBoxBodyContainer/RecipesPanel/ScrollContainer/ListCollection
 @onready var result_item_recipe: Label = $MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ResultItemRecipe
 @onready var main_icon_item_selected: TextureRect = $MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer/MarginContainer/MainIconItemSelected
-
 @onready var ingredients_list: VBoxContainer = $MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/IngredientsList
+
+
+var list_i: Array[Dictionary] = [
+	preload("res://scenes/objects/itens/wood.tscn").instantiate().get_item_data(),
+	#preload("res://scenes/objects/itens/coal.tscn").instantiate().get_item_data(),
+	#preload("res://scenes/objects/itens/iron_bar.tscn").instantiate().get_item_data(),
+	#preload("res://scenes/objects/itens/cog.tscn").instantiate().get_item_data(),
+]
 
 
 var item_collection: Array = [
@@ -68,19 +73,29 @@ const recipe_item_result_scene: PackedScene = preload("res://scenes/ui/work_stat
 const recipe_item_ingredient_scene: PackedScene = preload("res://scenes/ui/line_item_ingredient.tscn")
 
 func _ready() -> void:
-	for item: Dictionary in item_collection:
+	for item: Dictionary in list_i:
 		var item_to_create: Button = recipe_item_result_scene.instantiate()
-		item_to_create.text = item["name"]
-		var icon_texture: Texture2D = item["icon"]
-		item_to_create.icon = icon_texture
-		item_to_create.pressed.connect(_on_item_list_button_pressed.bind(item))
-		list_collection.add_child(item_to_create)
+		#item_to_create.icon = item["texture"]
+		#item_to_create.text = item["name"]
+		#item_to_create.pressed.connect(_on_item_list_button_pressed.bind(item))
+		#list_collection.add_child(item_to_create)
+		print("list_i ", item)
 	
-	var defualt_item: Dictionary = item_collection[0]
 	
-	result_item_recipe.text = defualt_item["name"]
-	main_icon_item_selected.texture = defualt_item["icon"]
-	add_ingredients_to_list(defualt_item)
+	for item: Dictionary in item_collection:
+		#var item_to_create: Button = recipe_item_result_scene.instantiate()
+		#item_to_create.text = item["name"]
+		#var icon_texture: Texture2D = item["icon"]
+		#item_to_create.icon = icon_texture
+		#item_to_create.pressed.connect(_on_item_list_button_pressed.bind(item))
+		#list_collection.add_child(item_to_create)
+		pass
+	
+	var defualt_item: Dictionary = list_i[0]
+	
+	#result_item_recipe.text = defualt_item["name"]
+	#main_icon_item_selected.texture = defualt_item["icon"]
+	#add_ingredients_to_list(defualt_item)
 
 
 func _on_close_work_station_pressed() -> void:

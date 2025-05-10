@@ -2,15 +2,15 @@ class_name ItemComponent
 extends Sprite2D
 
 @export var item_id: int
-@export var item_name: String
+@export var item_name: String = name
 @export var quantity: int = 1
 @export var item_type: DataTypes.ItemType
 @export var ingredients: Array[Ingredient]
 @export var item_effect: DataTypes.Effect
 
-var item: Dictionary = {}
+var item: Dictionary
 
-func _ready() -> void:
+func _init() -> void:
 	item = {
 		"id": item_id,
 		"name": item_name,
@@ -21,7 +21,7 @@ func _ready() -> void:
 		"texture": texture,
 		"scene_path": scene_file_path,
 	}
-
+	
 
 func set_item_data(data: Dictionary) -> void:
 	item_name = data["name"]
