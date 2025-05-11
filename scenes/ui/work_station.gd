@@ -7,7 +7,7 @@ extends PanelContainer
 
 
 var list_i: Array[Dictionary] = [
-	preload("res://scenes/objects/itens/wood.tscn").instantiate().get_item_data(),
+	#preload("res://scenes/objects/itens/wood.tscn").instantiate().get_item_data(),
 	#preload("res://scenes/objects/itens/coal.tscn").instantiate().get_item_data(),
 	#preload("res://scenes/objects/itens/iron_bar.tscn").instantiate().get_item_data(),
 	#preload("res://scenes/objects/itens/cog.tscn").instantiate().get_item_data(),
@@ -81,7 +81,7 @@ func _ready() -> void:
 		#list_collection.add_child(item_to_create)
 		print("list_i ", item)
 	
-	
+	ItemsDataBase.new().load_all_items()
 	for item: Dictionary in item_collection:
 		#var item_to_create: Button = recipe_item_result_scene.instantiate()
 		#item_to_create.text = item["name"]
@@ -91,7 +91,7 @@ func _ready() -> void:
 		#list_collection.add_child(item_to_create)
 		pass
 	
-	var defualt_item: Dictionary = list_i[0]
+	#var defualt_item: Dictionary = list_i[0]
 	
 	#result_item_recipe.text = defualt_item["name"]
 	#main_icon_item_selected.texture = defualt_item["icon"]

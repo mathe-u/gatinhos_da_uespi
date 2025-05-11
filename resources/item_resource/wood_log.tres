@@ -11,7 +11,7 @@ region = Rect2(160, 64, 32, 32)
 [resource]
 script = ExtResource("1_vj5un")
 id = &"100"
-display_name = "log"
+display_name = "wood log"
 icon = SubResource("AtlasTexture_vtolf")
 type = 1
 effect = 0
