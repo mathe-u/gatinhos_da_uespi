@@ -13,9 +13,8 @@
 
 [sub_resource type="Resource" id="Resource_iav0o"]
 script = ExtResource("9_excbq")
-item_path = ""
-units = 0
-product = 0
+id = &""
+quantity = 0
 metadata/_custom_type_script = "uid://bjx8mxnp5yuog"
 
 [node name="Level1" type="Node2D"]

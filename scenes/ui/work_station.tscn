@@ -132,14 +132,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer"]
 layout_mode = 2
 
-[node name="MainIconItemSelected" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainIconItemSelected" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-texture = ExtResource("2_qtk5s")
+
+[node name="ResultItemQuantityLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/ItemIcomPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
 
 [node name="IngredientsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer"]
 layout_mode = 2
@@ -161,11 +168,12 @@ size_flags_horizontal = 6
 theme_type_variation = &"ToolButton"
 text = "-"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer"]
+[node name="QuantityToProduceLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("3_kl40w")
+theme_override_font_sizes/font_size = 18
 text = "1"
-alignment = 1
 
 [node name="MoreItemButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(43, 20)
@@ -180,8 +188,13 @@ layout_mode = 2
 [node name="CreateButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 10
 theme_type_variation = &"ToolButton"
+theme_override_fonts/font = ExtResource("3_kl40w")
+theme_override_font_sizes/font_size = 27
 text = "Create"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CloseWorkStation" to="." method="_on_close_work_station_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer/LessItemButton" to="." method="_on_less_item_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer/MoreItemButton" to="." method="_on_more_item_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]

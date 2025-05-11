@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://dehjh6gf0gaex"]
+
+[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="1_gwdt0"]
+[ext_resource type="Resource" uid="uid://br381apc8cwuo" path="res://resources/item_resource/ingredients_resource/iron_bar.tres" id="1_lrs1i"]
+[ext_resource type="Resource" uid="uid://dr2r5dbr87t0o" path="res://resources/item_resource/ingredients_resource/coal_pile.tres" id="2_coe82"]
+[ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="3_ympym"]
+[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="4_8moxt"]
+
+[resource]
+script = ExtResource("1_gwdt0")
+id = &"105"
+display_name = "cog"
+icon = ExtResource("3_ympym")
+type = 1
+effect = 0
+stackable = true
+max_stack_size = 999
+item_scene = ExtResource("4_8moxt")
+is_craftable = true
+crafting_ingredients = [ExtResource("1_lrs1i"), ExtResource("2_coe82")]
+items_produced = 1
+time_to_craft = 10.0
+metadata/_custom_type_script = "uid://2jwace1btwws"

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://d13niv54c05e7"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://d13niv54c05e7"]
 
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_peryr"]
 [ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="1_vj5un"]
+[ext_resource type="Resource" uid="uid://cxdrc6hn4t2v5" path="res://resources/item_resource/ingredients_resource/wood_log.tres" id="1_wqf2g"]
 [ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="2_vtolf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtolf"]
@@ -18,7 +19,8 @@ effect = 0
 stackable = true
 max_stack_size = 999
 item_scene = ExtResource("2_vtolf")
-crafting_ingredients = Array[Dictionary]([])
+is_craftable = null
+crafting_ingredients = [ExtResource("1_wqf2g")]
 items_produced = 0
 time_to_craft = 0.0
 metadata/_custom_type_script = "uid://2jwace1btwws"

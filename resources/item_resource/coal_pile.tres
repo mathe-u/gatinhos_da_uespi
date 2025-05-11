@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://c17bddbl1hopv"]
+
+[ext_resource type="Texture2D" uid="uid://c85lmiqvrfpiq" path="res://assets/game/Objects/coal_pile.png" id="2_bo4q8"]
+[ext_resource type="Resource" uid="uid://cxdrc6hn4t2v5" path="res://resources/item_resource/ingredients_resource/wood_log.tres" id="2_lnt3s"]
+[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="3_lnt3s"]
+[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="4_suphg"]
+
+[resource]
+script = ExtResource("4_suphg")
+id = &"102"
+display_name = "coal"
+icon = ExtResource("2_bo4q8")
+type = 1
+effect = 0
+stackable = true
+max_stack_size = 999
+item_scene = ExtResource("3_lnt3s")
+is_craftable = true
+crafting_ingredients = [ExtResource("2_lnt3s")]
+items_produced = 10
+time_to_craft = 1.0
+metadata/_custom_type_script = "uid://2jwace1btwws"

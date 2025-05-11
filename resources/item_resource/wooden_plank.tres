@@ -1,20 +1,23 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dool1giecwlgl"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://dool1giecwlgl"]
 
-[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="1_hou2u"]
-[ext_resource type="Texture2D" uid="uid://5gkh2gg7vonq" path="res://assets/game/Objects/icon_wood.png" id="1_yq3ii"]
-[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="2_l8lk2"]
+[ext_resource type="Script" uid="uid://bjx8mxnp5yuog" path="res://scripts/ingredients_resource.gd" id="1_vc1rf"]
+[ext_resource type="Resource" uid="uid://cxdrc6hn4t2v5" path="res://resources/item_resource/ingredients_resource/wood_log.tres" id="2_6n68y"]
+[ext_resource type="Texture2D" uid="uid://5gkh2gg7vonq" path="res://assets/game/Objects/icon_wood.png" id="3_ixamw"]
+[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="4_bv5t2"]
+[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="5_7fe8b"]
 
 [resource]
-script = ExtResource("1_hou2u")
+script = ExtResource("5_7fe8b")
 id = &"101"
 display_name = "wooden plank"
-icon = ExtResource("1_yq3ii")
+icon = ExtResource("3_ixamw")
 type = 1
 effect = 0
 stackable = true
 max_stack_size = 999
-item_scene = ExtResource("2_l8lk2")
-crafting_ingredients = Array[Dictionary]([{}])
+item_scene = ExtResource("4_bv5t2")
+is_craftable = true
+crafting_ingredients = Array[ExtResource("1_vc1rf")]([ExtResource("2_6n68y")])
 items_produced = 3
 time_to_craft = 1.0
 metadata/_custom_type_script = "uid://2jwace1btwws"
