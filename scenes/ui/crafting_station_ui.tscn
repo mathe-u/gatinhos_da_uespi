@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="2_qtk5s"]
 [ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_kl40w"]
 
-[node name="WorkStation" type="PanelContainer"]
+[node name="CraftingStationUI" type="PanelContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -17,6 +17,8 @@ offset_right = 252.0
 offset_bottom = 158.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_frepn")
 theme_type_variation = &"InventoryItemPanel"
 script = ExtResource("2_kl40w")
@@ -34,12 +36,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="WorkStationTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 54
-text = "Work Station"
+text = "Crafting "
 horizontal_alignment = 1
 
 [node name="CloseWorkStation" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]

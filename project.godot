@@ -125,6 +125,7 @@ inventory={
 2d_physics/layer_6="Collectable"
 2d_physics/layer_7="NPC"
 2d_physics/layer_8="Food"
+2d_physics/layer_9="ship"
 
 [rendering]
 

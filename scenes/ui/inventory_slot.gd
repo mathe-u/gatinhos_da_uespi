@@ -9,7 +9,7 @@ extends Control
 @onready var actions_panel: PanelContainer = $ActionsPanel
 @onready var panel_container: PanelContainer = $MarginContainer/PanelContainer
 
-var item: Dictionary
+var item: ItemData
 
 signal drag_start(slot)
 signal drag_end()
@@ -35,18 +35,18 @@ func set_empty() -> void:
 
 
 func set_item(new_item: Dictionary) -> void:
-	item = new_item
-	item_icon.texture = new_item["texture"]
-	item_quantity.text = str(item["quantity"])
-	item_name.text = str(item["name"])
-	item_type.text = item["type"]
-	item_effect.text = item["effect"]
+	item = new_item["item"]
+	item_icon.texture = new_item["item"].icon
+	item_quantity.text = str(new_item["units"])
+	item_name.text = item.display_name
+	item_type.text = str(item.type)
+	item_effect.text = str(item.effect)
 
 
 func _on_drop_button_pressed() -> void:
 	if item:
 		InventoryManager.drop_item(item)
-		InventoryManager.remove_item(item["id"])
+		InventoryManager.remove_item(item.id)
 		actions_panel.visible = false
 
 

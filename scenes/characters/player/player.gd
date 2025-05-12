@@ -22,6 +22,6 @@ func set_player_name(player_name: String) -> void:
 	get_node("PlayerNameLabel").text = player_name
 	#player_name_label.text = "ada"
 
-func apply_item_effect(item: Dictionary) -> void:
+func apply_item_effect(item: ItemData) -> void:
 	print("efeito de ", item["effect"], " aplicado")
 	

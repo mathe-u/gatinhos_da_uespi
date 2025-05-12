@@ -11,17 +11,12 @@ region = Rect2(160, 64, 32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
 radius = 7.07107
 
-[node name="ItemScene" type="Node"]
-
-[node name="CollectableComponent" parent="." instance=ExtResource("3_qam3a")]
-
-[node name="Log" type="Sprite2D" parent="CollectableComponent"]
+[node name="ItemScene" type="Sprite2D"]
 y_sort_enabled = true
 texture = SubResource("AtlasTexture_3t3su")
 script = ExtResource("2_ufw2d")
-item_id = 102
-item_name = "log"
-item_type = 1
+
+[node name="CollectableComponent" parent="." instance=ExtResource("3_qam3a")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
 shape = SubResource("CircleShape2D_h452w")

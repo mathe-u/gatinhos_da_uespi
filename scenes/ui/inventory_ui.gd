@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_inventory_updated() -> void:
 	clear_grid_container()
 	
-	for item in InventoryManager.inventory2:
+	for item in InventoryManager.inventory:
 		var slot: Control = InventoryManager.inventory_slot_scene.instantiate()
 		
 		slot.drag_start.connect(_on_drag_start)

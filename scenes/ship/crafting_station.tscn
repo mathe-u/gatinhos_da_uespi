@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cabuyfilw0mxk"]
+
+[ext_resource type="Texture2D" uid="uid://x6cy75ru6p25" path="res://assets/game/Tilesets/ship/crafting_station.png" id="1_4thpu"]
+[ext_resource type="Script" uid="uid://bsm2qdp00jbpv" path="res://scenes/ship/crafting_station.gd" id="1_imhfl"]
+[ext_resource type="PackedScene" uid="uid://bw48285mk0711" path="res://scenes/components/interactable_label_component.tscn" id="2_imhfl"]
+[ext_resource type="PackedScene" uid="uid://batnl3ulwlbrb" path="res://scenes/components/interactable_component.tscn" id="4_imhfl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imhfl"]
+size = Vector2(64, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35xlv"]
+radius = 59.0339
+
+[node name="CraftingStation" type="StaticBody2D"]
+script = ExtResource("1_imhfl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4thpu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_imhfl")
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("2_imhfl")]
+offset_left = -18.0
+offset_top = -91.0
+offset_right = 18.0
+offset_bottom = -55.0
+
+[node name="InteractableComponent" parent="." instance=ExtResource("4_imhfl")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_35xlv")
+debug_color = Color(0.831205, 0.204235, 0.821216, 0.42)
