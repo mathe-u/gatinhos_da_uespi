@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bswmomc5je46h" path="res://scenes/ship/stairs.gd" id="7_7nsyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ipbl"]
-size = Vector2(35, 62)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh1m8"]
 size = Vector2(64, 64)
@@ -43,17 +43,33 @@ script = ExtResource("4_7nsyl")
 default = true
 
 [node name="Decoration" type="TileMapLayer" parent="MainDeck"]
+tile_map_data = PackedByteArray("AAD7/wQAAAABAAEAAAD7/wUAAAABAAEAAAA=")
+tile_set = ExtResource("2_gkhk1")
 
-[node name="InteractableLabelComponent" parent="." instance=ExtResource("4_iyjb8")]
-offset_left = -17.0
-offset_top = 230.0
-offset_right = 19.0
-offset_bottom = 266.0
+[node name="EnterInteractableLabelComponent" parent="." instance=ExtResource("4_iyjb8")]
+offset_left = -35.0
+offset_top = 205.0
+offset_right = 1.0
+offset_bottom = 241.0
 
-[node name="InteractableComponent" parent="." instance=ExtResource("4_c54or")]
-position = Vector2(0, -33)
+[node name="EnterLeather" parent="." instance=ExtResource("4_c54or")]
+position = Vector2(31, -15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterLeather"]
+position = Vector2(-47.5, 287)
+shape = SubResource("RectangleShape2D_0ipbl")
+debug_color = Color(0.335912, 0.487125, 1, 0.42)
+
+[node name="ExitInteractableLabelComponent" parent="." instance=ExtResource("4_iyjb8")]
+offset_left = -34.0
+offset_top = 110.0
+offset_right = 2.0
+offset_bottom = 146.0
+
+[node name="ExitLeather" parent="." instance=ExtResource("4_c54or")]
+position = Vector2(31, -111)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitLeather"]
 position = Vector2(-47.5, 287)
 shape = SubResource("RectangleShape2D_0ipbl")
 debug_color = Color(0.335912, 0.487125, 1, 0.42)
@@ -72,6 +88,12 @@ shape = SubResource("RectangleShape2D_dh1m8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c54or")
+
+[node name="EnterSpawn" type="Marker2D" parent="."]
+position = Vector2(-15, 171)
+
+[node name="ExitSpawn" type="Marker2D" parent="."]
+position = Vector2(-14, 275)
 
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_body_entered"]
 [connection signal="body_exited" from="Stairs" to="Stairs" method="_on_body_exited"]
