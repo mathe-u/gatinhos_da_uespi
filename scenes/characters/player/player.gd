@@ -2,10 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 @onready var hit_component: HitComponent = $HitComponent
+@onready var hurt_component: HurtComponent = $HurtComponent
+
 @export var current_tool: DataTypes.Tools = DataTypes.Tools.None
-
-
-@export var synced_position: Vector2 
 
 var player_direction: Vector2
 
@@ -23,5 +22,5 @@ func set_player_name(player_name: String) -> void:
 	#player_name_label.text = "ada"
 
 func apply_item_effect(item: ItemData) -> void:
-	print("efeito de ", item["effect"], " aplicado")
+	print("efeito de " + str(item.effect) + " aplicado")
 	

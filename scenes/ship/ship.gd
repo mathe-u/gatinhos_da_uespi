@@ -52,4 +52,4 @@ func _unhandled_input(event: InputEvent) -> void:
 				player_node.position = enter_spawn.global_position
 				is_inside = true
 				enter_interactable_label_component.hide()
-	in_range = true
+		in_range = true

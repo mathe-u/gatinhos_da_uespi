@@ -8,14 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://cu2woqjup3n2n" path="res://scenes/objects/chest/chest.tscn" id="6_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://56tj4fv0l653" path="res://audio/music/on_the_farm_music.tscn" id="7_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="9_dga24"]
+[ext_resource type="PackedScene" uid="uid://dbuvtkl5ve58p" path="res://scenes/objects/rocks/iron_rock.tscn" id="10_excbq"]
 [ext_resource type="PackedScene" uid="uid://ctsesdsqrksjk" path="res://scenes/ship/ship.tscn" id="10_qxy0u"]
-[ext_resource type="PackedScene" uid="uid://cabuyfilw0mxk" path="res://scenes/ship/crafting_station.tscn" id="11_excbq"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
 
 [node name="OnTheFarmMusic" parent="." instance=ExtResource("7_oc4kc")]
+position = Vector2(103, 25)
 autoplay = true
+max_distance = 2911.0
 
 [node name="GameTileMap" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -59,9 +61,6 @@ tilled_soil_tilemap_layer = NodePath("../GameTileMap/TilledSoil")
 [node name="Chest" parent="." instance=ExtResource("6_qxy0u")]
 position = Vector2(910, 953)
 
-[node name="CraftingStation" parent="." instance=ExtResource("11_excbq")]
-position = Vector2(900, 700)
-
 [node name="ItemScene" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(603, 732)
 item_id = &"100"
@@ -93,3 +92,6 @@ item_id = &"100"
 
 [node name="Ship" parent="." instance=ExtResource("10_qxy0u")]
 position = Vector2(1967, 810)
+
+[node name="IronRock" parent="." instance=ExtResource("10_excbq")]
+position = Vector2(644, 513)

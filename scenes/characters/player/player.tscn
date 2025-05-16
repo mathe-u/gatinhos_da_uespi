@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=56 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bvaijral04tto" path="res://scenes/characters/player/chopping_state.gd" id="7_mk55u"]
 [ext_resource type="Script" uid="uid://b64to0soqpnut" path="res://scenes/characters/player/tilling_state.gd" id="8_xuses"]
 [ext_resource type="Script" uid="uid://cmkrfysyd5u21" path="res://scenes/characters/player/watering_state.gd" id="9_42irl"]
+[ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="11_djydg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 8.0
@@ -400,6 +401,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kghjy"]
 radius = 10.0499
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsn6e"]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
@@ -410,13 +413,13 @@ current_tool = 1
 [node name="HitComponent" parent="." instance=ExtResource("2_3xnwo")]
 
 [node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
-position = Vector2(0, 14)
+position = Vector2(0, 24)
 shape = SubResource("CircleShape2D_djydg")
 debug_color = Color(0.868238, 0.179031, 0.746719, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omk8d")
-animation = &"idle_front"
+animation = &"chopping_right"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -453,3 +456,10 @@ script = ExtResource("9_42irl")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
+
+[node name="HurtComponent" parent="." instance=ExtResource("11_djydg")]
+position = Vector2(0, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+shape = SubResource("CircleShape2D_bsn6e")
+debug_color = Color(1, 0.0196078, 0, 0.419608)

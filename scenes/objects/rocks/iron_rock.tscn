@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbuvtkl5ve58p"]
+
+[ext_resource type="Texture2D" uid="uid://cglvj2f1ikd66" path="res://assets/game/Objects/iron_rock.png" id="1_iird5"]
+[ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="2_ljrwq"]
+[ext_resource type="Script" uid="uid://ttqbsbn77scw" path="res://scenes/objects/rocks/iron_rock.gd" id="2_pdp31"]
+[ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="3_pdp31"]
+[ext_resource type="PackedScene" uid="uid://hsckm1udb2ko" path="res://scenes/ui/entity_health_bar.tscn" id="5_pdp31"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pc34y"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iird5"]
+radius = 11.0
+
+[node name="IronRock" type="Sprite2D"]
+texture = ExtResource("1_iird5")
+script = ExtResource("2_pdp31")
+hurted_by = 1
+drop_id = &"103"
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_ljrwq")]
+tool = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+shape = SubResource("CircleShape2D_pc34y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_iird5")
+debug_color = Color(0.187105, 0.625638, 0.421476, 0.42)
+
+[node name="EntityHealthBar" parent="." instance=ExtResource("5_pdp31")]
+offset_left = -15.0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -17.0
+value = 64.0
+nine_patch_stretch = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_pdp31")]
+max_health = 8

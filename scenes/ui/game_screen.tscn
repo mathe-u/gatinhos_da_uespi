@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://db0yb7qhmva5p"]
+[gd_scene load_steps=8 format=3 uid="uid://db0yb7qhmva5p"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_e2vrk"]
 [ext_resource type="PackedScene" uid="uid://cf2bkny6il757" path="res://scenes/ui/emotes_panel.tscn" id="2_0kkfd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brapq5e2hw4bd" path="res://scenes/ui/inventory_panel.tscn" id="3_gusqm"]
 [ext_resource type="PackedScene" uid="uid://mnq50a8m85t1" path="res://scenes/ui/day_night_panel.tscn" id="4_gkbp4"]
 [ext_resource type="PackedScene" uid="uid://plcwnsem11bg" path="res://scenes/ui/inventory_ui.tscn" id="6_nwa5a"]
+[ext_resource type="PackedScene" uid="uid://hsckm1udb2ko" path="res://scenes/ui/entity_health_bar.tscn" id="7_ooiym"]
 
 [node name="GameScreen" type="CanvasLayer"]
 
@@ -45,3 +46,12 @@ size_flags_vertical = 0
 [node name="InventoryUI" parent="MarginContainer" instance=ExtResource("6_nwa5a")]
 visible = false
 layout_mode = 2
+
+[node name="HealthBar" parent="." instance=ExtResource("7_ooiym")]
+offset_left = 138.0
+offset_top = 28.0
+offset_right = 202.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+value = 100.0
