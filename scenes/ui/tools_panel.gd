@@ -30,3 +30,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		tool_watering_can.release_focus()
 		tool_corn.release_focus()
 		tool_tomato.release_focus()
+	elif event.is_action_pressed("1_hotbar_slot"):
+		_on_tool_axe_pressed()
+	elif event.is_action_pressed("2_hotbar_slot"):
+		_on_tool_tilling_pressed()
+	elif event.is_action_pressed("3_hotbar_slot"):
+		_on_tool_watering_can_pressed()
+	elif event.is_action_pressed("4_hotbar_slot"):
+		_on_tool_corn_pressed()
+	elif event.is_action_pressed("5_hotbar_slot"):
+		_on_tool_tomato_pressed()

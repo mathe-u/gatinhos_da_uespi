@@ -14,9 +14,8 @@ extends PanelContainer
 var units_product: int = 1
 var items_database = ItemsDataBase.new()
 var current_selected_item: ItemData = null
-#var inventory_quantity: int = 0
-var _item_spawner_component: ItemSpawnerComponent
-var _crafting_station_position: Vector2 = Vector2.ZERO
+
+var _crafting_station: CraftigStation
 
 const recipe_item_result_scene: PackedScene = preload("res://scenes/ui/work_station_item_list.tscn")
 const recipe_item_ingredient_scene: PackedScene = preload("res://scenes/ui/line_item_ingredient.tscn")
@@ -32,11 +31,6 @@ func _ready() -> void:
 		list_collection.add_child(item_to_create)
 	
 	_on_item_list_button_pressed(items[0])
-
-
-func setup_crafting_dependencies(spawner: Node2D, station_position: Vector2) -> void:
-	_item_spawner_component = spawner
-	_crafting_station_position = station_position
 
 
 func _clear_ingredients_list_nodes() -> void:
@@ -99,6 +93,10 @@ func _add_ingredients_to_list_display(item: ItemData) -> void:
 		ingredients_list.add_child(ingredient_line_instance)
 
 
+func setup_crafting_station(crafting_station_scene: CraftigStation) -> void:
+	_crafting_station = crafting_station_scene
+
+
 func get_item_quantity_in_inventory(id: StringName) -> int:
 	return InventoryManager.get_item_quantity(id)
 
@@ -148,13 +146,8 @@ func _on_create_button_pressed() -> void:
 		var quantity_to_remove = ingredient.quantity * units_product
 		InventoryManager.remove_item(ingredient.id, quantity_to_remove)
 		print(quantity_to_remove)
-	
-	
-	var total_items_to_spawn = units_product * current_selected_item.items_produced
-	var scene_to_spawn: PackedScene = current_selected_item.item_scene
-	
-	#var spawn_node: Array[Node2D] = _item_spawner_component.spawn_items(total_items_to_spawn, scene_to_spawn, _crafting_station_position)
-	
+		
+	_crafting_station.init_craft(current_selected_item, units_product)
 	_update_ingredient_quantities_display()
 	_update_create_button_state()
 	queue_free()

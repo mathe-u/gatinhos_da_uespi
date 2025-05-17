@@ -36,4 +36,5 @@ shape = SubResource("CircleShape2D_35xlv")
 debug_color = Color(0.831205, 0.204235, 0.821216, 0.42)
 
 [node name="ItemSpawnerComponent" parent="." instance=ExtResource("5_35xlv")]
-spawn_radius_min = 80.0
+spawn_radius_max = 86.0
+spawn_radius_min = 43.0
