@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp7n1jr5pv1jj"]
+
+[ext_resource type="Script" uid="uid://bxxcua5lfa2at" path="res://item_spawner_component.gd" id="1_oy40g"]
+
+[node name="ItemSpawnerComponent" type="Node2D"]
+script = ExtResource("1_oy40g")
+spawn_radius_max = 160.0

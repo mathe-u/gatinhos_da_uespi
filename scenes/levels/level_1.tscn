@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=12 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://cyv80s81vceqy" path="res://scenes/components/field_cursor_component.tscn" id="2_sk5k4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="9_dga24"]
 [ext_resource type="PackedScene" uid="uid://dbuvtkl5ve58p" path="res://scenes/objects/rocks/iron_rock.tscn" id="10_excbq"]
 [ext_resource type="PackedScene" uid="uid://ctsesdsqrksjk" path="res://scenes/ship/ship.tscn" id="10_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://cabuyfilw0mxk" path="res://scenes/ship/crafting_station.tscn" id="11_excbq"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -95,3 +96,6 @@ position = Vector2(1967, 810)
 
 [node name="IronRock" parent="." instance=ExtResource("10_excbq")]
 position = Vector2(644, 513)
+
+[node name="CraftingStation" parent="." instance=ExtResource("11_excbq")]
+position = Vector2(508, 579)

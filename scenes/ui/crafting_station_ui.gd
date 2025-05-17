@@ -14,6 +14,9 @@ extends PanelContainer
 var units_product: int = 1
 var items_database = ItemsDataBase.new()
 var current_selected_item: ItemData = null
+#var inventory_quantity: int = 0
+var _item_spawner_component: ItemSpawnerComponent
+var _crafting_station_position: Vector2 = Vector2.ZERO
 
 const recipe_item_result_scene: PackedScene = preload("res://scenes/ui/work_station_item_list.tscn")
 const recipe_item_ingredient_scene: PackedScene = preload("res://scenes/ui/line_item_ingredient.tscn")
@@ -31,8 +34,9 @@ func _ready() -> void:
 	_on_item_list_button_pressed(items[0])
 
 
-func _on_close_work_station_pressed() -> void:
-	queue_free()
+func setup_crafting_dependencies(spawner: Node2D, station_position: Vector2) -> void:
+	_item_spawner_component = spawner
+	_crafting_station_position = station_position
 
 
 func _clear_ingredients_list_nodes() -> void:
@@ -45,22 +49,33 @@ func _on_item_list_button_pressed(item: ItemData) -> void:
 	units_product = 1
 	quantity_to_produce_label.text = str(units_product)
 	result_item_quantity_label.text = str(item.items_produced)
+	#inventory_quantity = 0
 	
 	_clear_ingredients_list_nodes()
 	
-	result_item_recipe.text = item.display_name
+	result_item_recipe.text = current_selected_item.display_name
 	main_icon_item_selected.texture = item.icon
-	_add_ingredients_to_list_display(item)
+	_add_ingredients_to_list_display(current_selected_item)
+	_update_result_quntity_display()
+	#_update_create_button_state()
 
 
 func _update_ingredient_quantities_display() -> void:
 	for ingredient_line_node: Node in ingredients_list.get_children():
+		var quantity_text_label: Label = ingredient_line_node.get_node("ItemIngredientQuantity")
 		var base_quantity: int = ingredient_line_node.get_meta("ingredient_base_quantity")
 		var ingredient_id_meta: StringName = ingredient_line_node.get_meta("ingredient_id")
 		
-		var inventory_quantity: int = get_item_quantity_in_inventory(ingredient_id_meta)
-		var quantity_text_label: Label = ingredient_line_node.get_child(2)
-		quantity_text_label.text = str(inventory_quantity) + "/" + ingredients_necessary_to_produce(base_quantity)
+		var current_inventory_quantity: int = get_item_quantity_in_inventory(ingredient_id_meta)
+		var needed_quantity: int = base_quantity * units_product
+		#inventory_quantity = get_item_quantity_in_inventory(ingredient_id_meta)
+		
+		#quantity_text_label.text = str(inventory_quantity) + "/" + ingredients_necessary_to_produce(base_quantity)
+		quantity_text_label.text = "%s/%s" % [current_inventory_quantity, needed_quantity]
+		if current_inventory_quantity < needed_quantity:
+			quantity_text_label.modulate = Color.RED
+		else:
+			quantity_text_label.modulate = Color.GREEN
 
 
 func _update_result_quntity_display() -> void:
@@ -69,13 +84,14 @@ func _update_result_quntity_display() -> void:
 
 func _add_ingredients_to_list_display(item: ItemData) -> void:
 	for ingredient: Ingredient in item.crafting_ingredients:
-		var inventory_quantity: int = get_item_quantity_in_inventory(item.id)
-		var ingredient_line_instance: HBoxContainer = recipe_item_ingredient_scene.instantiate()
-		var ingredient_item_data: ItemData = items_database.get_item_data(ingredient.id)
+		var inventory_has = get_item_quantity_in_inventory(ingredient.id)
 		
-		ingredient_line_instance.get_child(0).texture = ingredient_item_data.icon
-		ingredient_line_instance.get_child(1).text = ingredient_item_data.display_name
-		ingredient_line_instance.get_child(2).text = str(inventory_quantity) + "/" + ingredients_necessary_to_produce(ingredient.quantity)
+		var ingredient_line_instance: HBoxContainer = recipe_item_ingredient_scene.instantiate()
+		var ingredient_item_info: ItemData = items_database.get_item_data(ingredient.id)
+		
+		ingredient_line_instance.get_node("ItemIngredientTexture").texture = ingredient_item_info.icon
+		ingredient_line_instance.get_node("ItemIngredientName").text = ingredient_item_info.display_name
+		ingredient_line_instance.get_node("ItemIngredientQuantity").text = "%s/%s" % [inventory_has, ingredients_necessary_to_produce(ingredient.quantity)]
 		
 		ingredient_line_instance.set_meta("ingredient_base_quantity", ingredient.quantity)
 		ingredient_line_instance.set_meta("ingredient_id", ingredient.id)
@@ -83,21 +99,38 @@ func _add_ingredients_to_list_display(item: ItemData) -> void:
 		ingredients_list.add_child(ingredient_line_instance)
 
 
-func get_item_quantity_in_inventory(_id: StringName) -> int:
-	return 0
+func get_item_quantity_in_inventory(id: StringName) -> int:
+	return InventoryManager.get_item_quantity(id)
 
 
 func ingredients_necessary_to_produce(ingredient_units_base: int) -> String:
 	return str(ingredient_units_base * units_product)
 
 
+func _can_craft_item() -> bool:
+	if units_product <= 0:
+		return false
+
+	for ingredient: Ingredient in current_selected_item.crafting_ingredients:
+		var needed: int = ingredient.quantity * units_product
+		if get_item_quantity_in_inventory(ingredient.id) < needed:
+			return false
+
+	return true
+
+
+func _update_create_button_state() -> void:
+	create_button.disabled = not _can_craft_item()
+
+
 func _on_less_item_button_pressed() -> void:
-	if units_product > 0:
+	if units_product > 1:
 		units_product -= 1
 	
 	quantity_to_produce_label.text = str(units_product)
 	_update_ingredient_quantities_display()
 	_update_result_quntity_display()
+	_update_create_button_state()
 
 
 func _on_more_item_button_pressed() -> void:
@@ -105,6 +138,27 @@ func _on_more_item_button_pressed() -> void:
 	quantity_to_produce_label.text = str(units_product)
 	_update_ingredient_quantities_display()
 	_update_result_quntity_display()
+	_update_create_button_state()
 
 func _on_create_button_pressed() -> void:
+	if not _can_craft_item():
+		return
+	
+	for ingredient: Ingredient in current_selected_item.crafting_ingredients:
+		var quantity_to_remove = ingredient.quantity * units_product
+		InventoryManager.remove_item(ingredient.id, quantity_to_remove)
+		print(quantity_to_remove)
+	
+	
+	var total_items_to_spawn = units_product * current_selected_item.items_produced
+	var scene_to_spawn: PackedScene = current_selected_item.item_scene
+	
+	#var spawn_node: Array[Node2D] = _item_spawner_component.spawn_items(total_items_to_spawn, scene_to_spawn, _crafting_station_position)
+	
+	_update_ingredient_quantities_display()
+	_update_create_button_state()
+	queue_free()
+
+
+func _on_close_work_station_pressed() -> void:
 	queue_free()

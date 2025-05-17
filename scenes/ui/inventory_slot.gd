@@ -46,7 +46,7 @@ func set_item(new_item: Dictionary) -> void:
 func _on_drop_button_pressed() -> void:
 	if item:
 		InventoryManager.drop_item(item)
-		InventoryManager.remove_item(item.id)
+		InventoryManager.remove_item(item.id, 1)
 		actions_panel.visible = false
 
 
@@ -57,7 +57,7 @@ func _on_use_button_pressed() -> void:
 		var player_node: Player = SceneManager.get_player_node()
 		if player_node:
 			player_node.apply_item_effect(item)
-			InventoryManager.remove_item(item["id"])
+			InventoryManager.remove_item(item["id"], 1)
 		else:
 			print("player could not be found")
 

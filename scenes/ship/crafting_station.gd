@@ -4,6 +4,7 @@ var crafting_station_menu_scene: PackedScene = preload("res://scenes/ui/crafting
 
 @onready var interactable_label_component: Control = $InteractableLabelComponent
 @onready var interactable_component: InteractableComponent = $InteractableComponent
+@onready var item_spawner_component: ItemSpawnerComponent = $ItemSpawnerComponent
 
 var in_range: bool = false
 
@@ -27,6 +28,7 @@ func on_interactable_deactivated() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if in_range:
 		if event.is_action_pressed("hit"):
-			interactable_component.hide()
+			interactable_label_component.hide()
 			var crafting_station_ui: PanelContainer = crafting_station_menu_scene.instantiate()
+			crafting_station_ui.setup_crafting_dependencies(item_spawner_component, global_position)
 			get_tree().root.get_node("MainScene/GameScreen/MarginContainer").add_child(crafting_station_ui)

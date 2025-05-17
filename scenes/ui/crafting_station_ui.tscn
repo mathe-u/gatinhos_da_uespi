@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7abs38movxwt"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_frepn"]
-[ext_resource type="Script" uid="uid://dixj67vr67cst" path="res://scenes/ui/work_station.gd" id="2_kl40w"]
+[ext_resource type="Script" uid="uid://dixj67vr67cst" path="res://scenes/ui/crafting_station_ui.gd" id="2_kl40w"]
 [ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="2_qtk5s"]
 [ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_kl40w"]
 

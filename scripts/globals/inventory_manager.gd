@@ -41,7 +41,7 @@ func add_item(item_to_add: ItemData, item_units: int) -> bool:
 	#return true
 
 
-func remove_item(item_id) -> void:
+func remove_item(item_id: StringName, _quantity_to_remove: int) -> void:
 	for i in range(inventory.size()):
 		if inventory[i]["item"] != null and inventory[i]["item"].id == item_id:
 			inventory[i]["units"] -= 1
@@ -49,6 +49,16 @@ func remove_item(item_id) -> void:
 				inventory[i] = {}
 			inventory_updated.emit()
 			break
+
+
+func get_item_quantity(item_id: StringName) -> int:
+	var item_units: int = 0
+	
+	for i: int in range(inventory.size()):
+		if !inventory[i].is_empty():
+			if inventory[i]["item"].id == item_id:
+				item_units = inventory[i]["units"]
+	return item_units
 
 
 func increase_space(extra_slots: int) -> void:
