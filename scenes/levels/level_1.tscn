@@ -66,6 +66,7 @@ position = Vector2(910, 953)
 [node name="ItemScene" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(603, 732)
 item_id = &"100"
+quantity = 10
 
 [node name="ItemScene2" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(603, 645)
@@ -97,6 +98,18 @@ position = Vector2(1967, 810)
 
 [node name="IronRock" parent="." instance=ExtResource("10_excbq")]
 position = Vector2(644, 513)
+
+[node name="IronRock2" parent="." instance=ExtResource("10_excbq")]
+position = Vector2(685, 586)
+
+[node name="IronRock3" parent="." instance=ExtResource("10_excbq")]
+position = Vector2(701, 663)
+
+[node name="IronRock4" parent="." instance=ExtResource("10_excbq")]
+position = Vector2(729, 718)
+
+[node name="IronRock5" parent="." instance=ExtResource("10_excbq")]
+position = Vector2(659, 701)
 
 [node name="CraftingStation" parent="." instance=ExtResource("11_excbq")]
 position = Vector2(508, 579)

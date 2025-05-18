@@ -77,18 +77,14 @@ func _start_next_craft_in_queue() -> void:
 
 
 func _on_craft_timer_timeout() -> void:
-	print("+1")
 	var scene_to_spawn: PackedScene = _current_craft_item_data.item_scene
 	var quantity_to_spawn_this_cycle: int = _current_craft_item_data.items_produced
 	var item_to_spawn: ItemComponent = scene_to_spawn.instantiate()
-	item_to_spawn.item_id = _current_craft_item_data.id
-	item_to_spawn.quantity = quantity_to_spawn_this_cycle
 	
-	#var spawned_nodes: Array = item_spawner_component.spawn_items(quantity_to_spawn_this_cycle, scene_to_spawn, self.global_position)
-	
+	item_to_spawn.set_item_data(_current_craft_item_data.id, quantity_to_spawn_this_cycle)
+	item_spawner_component.spawn_items2(item_to_spawn, global_position)
 	_craft_units_remaining -= 1
 	
-	#if _craft_units_remaining > 0:
 	_start_next_craft_in_queue()
 
 

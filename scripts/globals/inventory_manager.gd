@@ -41,10 +41,10 @@ func add_item(item_to_add: ItemData, item_units: int) -> bool:
 	#return true
 
 
-func remove_item(item_id: StringName, _quantity_to_remove: int) -> void:
+func remove_item(item_id: StringName, _quantity_to_remove: int = 1) -> void:
 	for i in range(inventory.size()):
 		if inventory[i]["item"] != null and inventory[i]["item"].id == item_id:
-			inventory[i]["units"] -= 1
+			inventory[i]["units"] -= _quantity_to_remove
 			if inventory[i]["units"] <= 0:
 				inventory[i] = {}
 			inventory_updated.emit()

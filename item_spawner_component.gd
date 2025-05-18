@@ -137,3 +137,20 @@ func spawn_items(quantity: int, item_to_spawn_override: PackedScene = null, targ
 			printerr("ItemSpawner2D: Não foi possível encontrar um local livre para o item %s após %d tentativas." % [item_definition.resource_path, placement_attempts])
 			
 	return spawned_items
+
+
+func spawn_items2(item_to_spawn: Node2D, target_position: Vector2) -> void:
+	var main_scene: Node2D = get_tree().root.get_node("MainScene/GameRoot/LevelRoot/Level1")
+	var drop_position: Vector2 = _calculate_drop_position(target_position)
+	
+	item_to_spawn.global_position = drop_position
+	
+	if main_scene:
+		main_scene.add_child(item_to_spawn)
+
+
+func _calculate_drop_position(target_position: Vector2) -> Vector2:
+	var random_angle: float = randf_range(0, TAU)
+	var random_distance: float = randf_range(spawn_radius_min, spawn_radius_max)
+	var offset: Vector2 = Vector2(random_distance, 0).rotated(random_angle)
+	return target_position + offset
