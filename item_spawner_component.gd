@@ -124,7 +124,8 @@ func spawn_items(quantity: int, item_to_spawn_override: PackedScene = null, targ
 				break
 
 		if spawn_pos_found:
-			new_item_instance = item_definition.instantiate() as Node2D
+			new_item_instance = item_definition.instantiate()
+			
 			if not is_instance_valid(new_item_instance):
 				printerr("ItemSpawner2D: Falha ao instanciar item ou o item não é Node2D.")
 				continue

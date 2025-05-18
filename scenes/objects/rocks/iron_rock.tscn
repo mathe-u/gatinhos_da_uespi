@@ -16,6 +16,8 @@ radius = 11.0
 texture = ExtResource("1_iird5")
 script = ExtResource("2_pdp31")
 hurted_by = 1
+entity_max_health = 11
+entity_starting_health = 9
 drop_id = &"103"
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_ljrwq")]
@@ -39,4 +41,3 @@ value = 64.0
 nine_patch_stretch = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_pdp31")]
-max_health = 8

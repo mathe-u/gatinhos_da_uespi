@@ -15,7 +15,7 @@ var units_product: int = 1
 var items_database = ItemsDataBase.new()
 var current_selected_item: ItemData = null
 
-var _crafting_station: CraftigStation
+var _crafting_station: CraftingStation
 
 const recipe_item_result_scene: PackedScene = preload("res://scenes/ui/work_station_item_list.tscn")
 const recipe_item_ingredient_scene: PackedScene = preload("res://scenes/ui/line_item_ingredient.tscn")
@@ -93,7 +93,7 @@ func _add_ingredients_to_list_display(item: ItemData) -> void:
 		ingredients_list.add_child(ingredient_line_instance)
 
 
-func setup_crafting_station(crafting_station_scene: CraftigStation) -> void:
+func setup_crafting_station(crafting_station_scene: CraftingStation) -> void:
 	_crafting_station = crafting_station_scene
 
 

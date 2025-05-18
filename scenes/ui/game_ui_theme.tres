@@ -1,8 +1,16 @@
-[gd_resource type="Theme" load_steps=52 format=3 uid="uid://dhsgc6k51h0rn"]
+[gd_resource type="Theme" load_steps=54 format=3 uid="uid://dhsgc6k51h0rn"]
 
 [ext_resource type="Texture2D" uid="uid://b1vfi60g2durw" path="res://assets/ui/basic_ui_sprite.png" id="1_nhbk8"]
 [ext_resource type="FontVariation" uid="uid://dwojxlnaq4bbl" path="res://assets/ui/fonts/zx_palm_variation.tres" id="2_68i34"]
 [ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="2_mtjyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtujg"]
+atlas = ExtResource("1_nhbk8")
+region = Rect2(1220, 270, 56, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivv52"]
+atlas = ExtResource("1_nhbk8")
+region = Rect2(1220, 334, 56, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68i34"]
 atlas = ExtResource("1_nhbk8")
@@ -247,6 +255,9 @@ texture_margin_bottom = 12.0
 region_rect = Rect2(0, 0, 52, 56)
 
 [resource]
+CheckButtonItem/base_type = &"CheckButton"
+CheckButtonItem/icons/checked = SubResource("AtlasTexture_mtujg")
+CheckButtonItem/icons/unchecked = SubResource("AtlasTexture_ivv52")
 DarkWoodPanel/base_type = &"PanelContainer"
 DarkWoodPanel/styles/panel = SubResource("StyleBoxTexture_mtjyl")
 DayNightButton/base_type = &"Button"
