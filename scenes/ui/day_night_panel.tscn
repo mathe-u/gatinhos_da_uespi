@@ -187,7 +187,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="ConfigButton" type="Button" parent="VBoxContainer/MarginContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = ExtResource("4_07w8f")
@@ -207,4 +207,5 @@ icon = ExtResource("5_07w8f")
 [connection signal="pressed" from="Control/NormalSpeedButton" to="." method="_on_normal_speed_button_pressed"]
 [connection signal="pressed" from="Control/FastSpeedButton" to="." method="_on_fast_speed_button_pressed"]
 [connection signal="pressed" from="Control/CheetahSpeedButton" to="." method="_on_cheetah_speed_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/InventoryButton" to="." method="_on_inventory_button_pressed"]

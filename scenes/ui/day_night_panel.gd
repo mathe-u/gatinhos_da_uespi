@@ -30,3 +30,12 @@ func _on_cheetah_speed_button_pressed() -> void:
 
 func _on_inventory_button_pressed() -> void:
 	GameManager.open_close_inventory()
+
+
+func _on_settings_button_pressed() -> void:
+	var settings_panel_scene: PackedScene = load("res://scenes/ui/settings_panel.tscn")
+	var settings_panel_instance: PanelContainer = settings_panel_scene.instantiate()
+	var game_screen: MarginContainer = get_tree().root.get_node("MainScene/GameScreen/MarginContainer")
+	
+	game_screen.add_child(settings_panel_instance)
+	

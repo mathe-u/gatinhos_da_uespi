@@ -256,6 +256,8 @@ region_rect = Rect2(0, 0, 52, 56)
 
 [resource]
 CheckButtonItem/base_type = &"CheckButton"
+CheckButtonItem/font_sizes/font_size = 18
+CheckButtonItem/fonts/font = ExtResource("2_mtjyl")
 CheckButtonItem/icons/checked = SubResource("AtlasTexture_mtujg")
 CheckButtonItem/icons/unchecked = SubResource("AtlasTexture_ivv52")
 DarkWoodPanel/base_type = &"PanelContainer"
