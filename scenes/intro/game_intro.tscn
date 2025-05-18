@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://cr8ou27pbpgnh"]
+
+[ext_resource type="Script" uid="uid://dqkerf5lwjo2t" path="res://scenes/intro/game_intro_presentation.gd" id="1_1vu4q"]
+[ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="2_yye3c"]
+[ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_ka2bs"]
+[ext_resource type="Texture2D" uid="uid://mq2iipvi12nj" path="res://icon.svg" id="4_fhbf0"]
+
+[sub_resource type="Animation" id="Animation_7djrt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameIntroPresentation/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qi6i3"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameIntroPresentation/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fomxq"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameIntroPresentation/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 2.98),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_getfi"]
+_data = {
+&"RESET": SubResource("Animation_7djrt"),
+&"fade_in": SubResource("Animation_qi6i3"),
+&"fade_out": SubResource("Animation_fomxq")
+}
+
+[node name="GameIntroPresentation" type="CanvasLayer"]
+script = ExtResource("1_1vu4q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_getfi")
+}
+
+[node name="IntroContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yye3c")
+
+[node name="Background" type="ColorRect" parent="IntroContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Mentions" type="VBoxContainer" parent="IntroContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MinorLabel" type="Label" parent="IntroContainer/Mentions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ka2bs")
+theme_override_font_sizes/font_size = 18
+text = "power by"
+horizontal_alignment = 1
+
+[node name="MainLabel" type="Label" parent="IntroContainer/Mentions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ka2bs")
+theme_override_font_sizes/font_size = 36
+text = "godot engine"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="IntroContainer/Mentions"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="IntroContainer/Mentions/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_fhbf0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 1294.0
+offset_bottom = 723.0
+color = Color(0, 0, 0, 0)
