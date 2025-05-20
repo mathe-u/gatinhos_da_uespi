@@ -1,6 +1,8 @@
 extends Control
 
 @onready var grid_container: GridContainer = $PanelContainer/GridContainer
+@onready var click_button: AudioStreamPlayer2D = $ClickButton
+
 
 var dragged_slot: Control
 
@@ -33,6 +35,7 @@ func clear_grid_container() -> void:
 
 
 func _on_close_inventory_pressed() -> void:
+	click_button.play(0.60)
 	GameManager.open_close_inventory()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=57 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b64to0soqpnut" path="res://scenes/characters/player/tilling_state.gd" id="8_xuses"]
 [ext_resource type="Script" uid="uid://cmkrfysyd5u21" path="res://scenes/characters/player/watering_state.gd" id="9_42irl"]
 [ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="11_djydg"]
+[ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="12_bsn6e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 8.0
@@ -407,9 +408,11 @@ radius = 10.0499
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 17
+collision_mask = 595
 script = ExtResource("1_6avc5")
 current_tool = 1
+max_health = 20
+starting_health = 20
 
 [node name="HitComponent" parent="." instance=ExtResource("2_3xnwo")]
 
@@ -464,3 +467,5 @@ position = Vector2(0, 6)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
 shape = SubResource("CircleShape2D_bsn6e")
 debug_color = Color(1, 0.0196078, 0, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("12_bsn6e")]

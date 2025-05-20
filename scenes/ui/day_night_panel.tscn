@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://mnq50a8m85t1"]
+[gd_scene load_steps=8 format=3 uid="uid://mnq50a8m85t1"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_1b88r"]
 [ext_resource type="Texture2D" uid="uid://b1vfi60g2durw" path="res://assets/ui/basic_ui_sprite.png" id="2_amc1o"]
 [ext_resource type="Script" uid="uid://bmjc8yumdowbv" path="res://scenes/ui/day_night_panel.gd" id="2_j2p6q"]
 [ext_resource type="Texture2D" uid="uid://cqpvy7kqcxva2" path="res://assets/ui/icon_config.png" id="4_07w8f"]
 [ext_resource type="Texture2D" uid="uid://rhir0i11y3bj" path="res://assets/ui/icon_bag.png" id="5_07w8f"]
+[ext_resource type="PackedScene" uid="uid://bom8wled5o01v" path="res://scenes/components/click_button_audio.tscn" id="6_ay2da"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2p6q"]
 atlas = ExtResource("2_amc1o")
@@ -203,6 +204,8 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = ExtResource("5_07w8f")
+
+[node name="ClickButton" parent="." instance=ExtResource("6_ay2da")]
 
 [connection signal="pressed" from="Control/NormalSpeedButton" to="." method="_on_normal_speed_button_pressed"]
 [connection signal="pressed" from="Control/FastSpeedButton" to="." method="_on_fast_speed_button_pressed"]

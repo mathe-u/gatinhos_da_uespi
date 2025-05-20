@@ -21,6 +21,7 @@ func on_max_damaged_reached() -> void:
 	queue_free()
 
 func add_log_scene() -> void:
-	var log_instace = log_scene.instantiate() as Node2D
-	log_instace.global_position = global_position
-	get_parent().add_child(log_instace)
+	#var log_instace = log_scene.instantiate() as Node2D
+	#log_instace.global_position = global_position
+	#get_parent().add_child(log_instace)
+	pass

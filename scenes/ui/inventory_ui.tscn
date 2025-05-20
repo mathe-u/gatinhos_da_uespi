@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://plcwnsem11bg"]
+[gd_scene load_steps=5 format=3 uid="uid://plcwnsem11bg"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_4ycse"]
 [ext_resource type="Script" uid="uid://djr4qoq3p8heu" path="res://scenes/ui/inventory_ui.gd" id="1_7nagc"]
 [ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_drsq2"]
+[ext_resource type="PackedScene" uid="uid://bom8wled5o01v" path="res://scenes/components/click_button_audio.tscn" id="4_nuief"]
 
 [node name="InventoryUI" type="Control"]
 custom_minimum_size = Vector2(404, 316)
@@ -48,5 +49,7 @@ theme_type_variation = &"ToolButton"
 theme_override_fonts/font = ExtResource("3_drsq2")
 theme_override_font_sizes/font_size = 18
 text = "X"
+
+[node name="ClickButton" parent="." instance=ExtResource("4_nuief")]
 
 [connection signal="pressed" from="CloseInventory" to="." method="_on_close_inventory_pressed"]

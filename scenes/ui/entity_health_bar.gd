@@ -27,7 +27,7 @@ func on_entity_health_changed(current_health: float, max_health: float) -> void:
 
 	#if not health_component.is_alive():
 		#visible = false
-	print(get_parent().name, " HealthBar: ", current_health, "/", max_health)
+	#print(get_parent().name, " HealthBar: ", current_health, "/", max_health)
 
 
 func _show_briefly() -> void:

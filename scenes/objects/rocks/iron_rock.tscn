@@ -27,6 +27,7 @@ tool = 1
 shape = SubResource("CircleShape2D_pc34y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 578
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_iird5")

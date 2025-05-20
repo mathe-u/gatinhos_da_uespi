@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=18 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://cyv80s81vceqy" path="res://scenes/components/field_cursor_component.tscn" id="2_sk5k4"]
@@ -12,6 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://ctsesdsqrksjk" path="res://scenes/ship/ship.tscn" id="10_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://cabuyfilw0mxk" path="res://scenes/ship/crafting_station.tscn" id="11_excbq"]
 [ext_resource type="PackedScene" uid="uid://bqset71wepld7" path="res://scenes/characters/enemies/generic_enemy.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://bd52kwy8hqqd5" path="res://scenes/objects/trees/small_tree.tscn" id="13_mm8aj"]
+[ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="14_wtwp4"]
+[ext_resource type="PackedScene" uid="uid://cogup7s4abebl" path="res://scenes/objects/trees/large_tree.tscn" id="15_wtwp4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwr0g"]
+resource_local_to_scene = true
+shader = ExtResource("14_wtwp4")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bahl2"]
+resource_local_to_scene = true
+shader = ExtResource("14_wtwp4")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -116,3 +131,11 @@ position = Vector2(508, 579)
 
 [node name="Enemy1" parent="." instance=ExtResource("12_iav0o")]
 position = Vector2(625, 593)
+
+[node name="SmallTree" parent="." instance=ExtResource("13_mm8aj")]
+material = SubResource("ShaderMaterial_iwr0g")
+position = Vector2(774, 560)
+
+[node name="LargeTree" parent="." instance=ExtResource("15_wtwp4")]
+material = SubResource("ShaderMaterial_bahl2")
+position = Vector2(578, 450)

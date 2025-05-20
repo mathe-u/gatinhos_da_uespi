@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brapq5e2hw4bd" path="res://scenes/ui/inventory_panel.tscn" id="3_gusqm"]
 [ext_resource type="PackedScene" uid="uid://mnq50a8m85t1" path="res://scenes/ui/day_night_panel.tscn" id="4_gkbp4"]
 [ext_resource type="PackedScene" uid="uid://plcwnsem11bg" path="res://scenes/ui/inventory_ui.tscn" id="6_nwa5a"]
-[ext_resource type="PackedScene" uid="uid://hsckm1udb2ko" path="res://scenes/ui/entity_health_bar.tscn" id="7_ooiym"]
+[ext_resource type="PackedScene" uid="uid://cbyyire75tukl" path="res://scenes/ui/player_health_bar.tscn" id="7_ooiym"]
 
 [node name="GameScreen" type="CanvasLayer"]
 
@@ -47,11 +47,9 @@ size_flags_vertical = 0
 visible = false
 layout_mode = 2
 
-[node name="HealthBar" parent="." instance=ExtResource("7_ooiym")]
-offset_left = 138.0
-offset_top = 28.0
-offset_right = 202.0
-offset_bottom = 60.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-value = 100.0
+[node name="PlayersHealthBar" parent="." instance=ExtResource("7_ooiym")]
+offset_left = 141.0
+offset_top = 26.0
+offset_right = 395.0
+offset_bottom = 91.0
+nine_patch_stretch = true

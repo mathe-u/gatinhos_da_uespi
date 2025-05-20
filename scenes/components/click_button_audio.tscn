@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bom8wled5o01v"]
+
+[ext_resource type="AudioStream" uid="uid://d1qhwn5bkpv8w" path="res://assets/audio/sfx/guns/shotgun_click.wav" id="1_nraec"]
+
+[node name="ClickButton" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_nraec")
