@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=58 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cmkrfysyd5u21" path="res://scenes/characters/player/watering_state.gd" id="9_42irl"]
 [ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="11_djydg"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="12_bsn6e"]
+[ext_resource type="PackedScene" uid="uid://ch6uq53yxlkw2" path="res://scenes/components/energy_component.tscn" id="13_blysn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 8.0
@@ -412,7 +413,7 @@ collision_mask = 595
 script = ExtResource("1_6avc5")
 current_tool = 1
 max_health = 20
-starting_health = 20
+starting_health = 18
 
 [node name="HitComponent" parent="." instance=ExtResource("2_3xnwo")]
 
@@ -469,3 +470,6 @@ shape = SubResource("CircleShape2D_bsn6e")
 debug_color = Color(1, 0.0196078, 0, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("12_bsn6e")]
+
+[node name="EnergyComponent" parent="." instance=ExtResource("13_blysn")]
+tick_rate = 5.0

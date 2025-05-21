@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://db0yb7qhmva5p"]
+[gd_scene load_steps=9 format=3 uid="uid://db0yb7qhmva5p"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_e2vrk"]
 [ext_resource type="PackedScene" uid="uid://cf2bkny6il757" path="res://scenes/ui/emotes_panel.tscn" id="2_0kkfd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mnq50a8m85t1" path="res://scenes/ui/day_night_panel.tscn" id="4_gkbp4"]
 [ext_resource type="PackedScene" uid="uid://plcwnsem11bg" path="res://scenes/ui/inventory_ui.tscn" id="6_nwa5a"]
 [ext_resource type="PackedScene" uid="uid://cbyyire75tukl" path="res://scenes/ui/player_health_bar.tscn" id="7_ooiym"]
+[ext_resource type="PackedScene" uid="uid://cfk5jiad0ndo0" path="res://scenes/ui/player_energy_bar.tscn" id="8_ce4rh"]
 
 [node name="GameScreen" type="CanvasLayer"]
 
@@ -50,6 +51,13 @@ layout_mode = 2
 [node name="PlayersHealthBar" parent="." instance=ExtResource("7_ooiym")]
 offset_left = 141.0
 offset_top = 26.0
-offset_right = 395.0
-offset_bottom = 91.0
+offset_right = 351.0
+offset_bottom = 75.0
+nine_patch_stretch = true
+
+[node name="PlayerEnergyBar" parent="." instance=ExtResource("8_ce4rh")]
+offset_left = 140.0
+offset_top = 77.0
+offset_right = 421.0
+offset_bottom = 93.0
 nine_patch_stretch = true

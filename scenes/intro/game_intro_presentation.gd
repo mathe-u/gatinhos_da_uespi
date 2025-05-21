@@ -80,3 +80,8 @@ func game_power_by_fade_out() -> void:
 
 func start_menu_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("hit"):
+		get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")

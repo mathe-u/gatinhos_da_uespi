@@ -7,6 +7,7 @@ class_name ItemData
 @export var icon: Texture2D
 @export var type: DataTypes.ItemType
 @export var effect: DataTypes.Effect
+@export var effect_amount: int
 @export var stackable: bool = true
 @export var max_stack_size: int = 999
 @export var units: int = 1

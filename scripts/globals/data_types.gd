@@ -32,4 +32,5 @@ enum Effect {
 	Venon,
 	SpeedUp,
 	SpeedDown,
+	RestoreEnergy,
 }
