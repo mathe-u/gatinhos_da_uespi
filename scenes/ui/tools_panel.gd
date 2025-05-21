@@ -10,17 +10,22 @@ extends PanelContainer
 func _on_tool_axe_pressed() -> void:
 	ToolManager.select_tool(DataTypes.Tools.AxeWood)
 
+
 func _on_tool_tilling_pressed() -> void:
 	ToolManager.select_tool(DataTypes.Tools.TillGround)
+
 
 func _on_tool_watering_can_pressed() -> void:
 	ToolManager.select_tool(DataTypes.Tools.WaterCrops)
 
+
 func _on_tool_corn_pressed() -> void:
 	ToolManager.select_tool(DataTypes.Tools.PlantCorn)
 
+
 func _on_tool_tomato_pressed() -> void:
 	ToolManager.select_tool(DataTypes.Tools.PlantTomato)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("release_tool"):
@@ -40,3 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_tool_corn_pressed()
 	elif event.is_action_pressed("5_hotbar_slot"):
 		_on_tool_tomato_pressed()
+
+
+func _on_shortcut_1_pressed() -> void:
+	pass # Replace with function body.

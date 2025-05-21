@@ -472,4 +472,4 @@ debug_color = Color(1, 0.0196078, 0, 0.419608)
 [node name="HealthComponent" parent="." instance=ExtResource("12_bsn6e")]
 
 [node name="EnergyComponent" parent="." instance=ExtResource("13_blysn")]
-tick_rate = 5.0
+energy_drain_rate = 0.1

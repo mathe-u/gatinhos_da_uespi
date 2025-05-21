@@ -25,6 +25,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="EmotesPanel" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_0kkfd")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -49,15 +50,15 @@ visible = false
 layout_mode = 2
 
 [node name="PlayersHealthBar" parent="." instance=ExtResource("7_ooiym")]
-offset_left = 141.0
-offset_top = 26.0
-offset_right = 351.0
-offset_bottom = 75.0
+offset_left = 15.0
+offset_top = 22.0
+offset_right = 225.0
+offset_bottom = 71.0
 nine_patch_stretch = true
 
 [node name="PlayerEnergyBar" parent="." instance=ExtResource("8_ce4rh")]
-offset_left = 140.0
-offset_top = 77.0
-offset_right = 421.0
-offset_bottom = 93.0
+offset_left = 7.0
+offset_top = 78.0
+offset_right = 288.0
+offset_bottom = 94.0
 nine_patch_stretch = true
