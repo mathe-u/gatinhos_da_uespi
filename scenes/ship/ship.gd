@@ -43,7 +43,7 @@ func on_exit_deactivated() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if in_range:
-		if event.is_action_pressed("hit"):
+		if event.is_action_pressed("interact"):
 			if is_inside:
 				player_node.position = exit_spawn.global_position
 				is_inside = false

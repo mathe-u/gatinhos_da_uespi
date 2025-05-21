@@ -83,5 +83,5 @@ func start_menu_scene() -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("hit"):
+	if event.is_action_pressed("dash"):
 		get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")

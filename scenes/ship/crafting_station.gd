@@ -90,7 +90,7 @@ func _on_craft_timer_timeout() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if in_range:
-		if event.is_action_pressed("hit"):
+		if event.is_action_pressed("interact"):
 			if !_is_crafting:
 				interactable_label_component.hide()
 				var crafting_station_ui: PanelContainer = crafting_station_menu_scene.instantiate()
