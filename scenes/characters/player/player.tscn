@@ -401,13 +401,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kghjy"]
-radius = 10.0499
+radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsn6e"]
+radius = 9.05539
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -14)
 collision_layer = 2
 collision_mask = 595
 script = ExtResource("1_6avc5")
@@ -418,17 +420,19 @@ starting_health = 18
 [node name="HitComponent" parent="." instance=ExtResource("2_3xnwo")]
 
 [node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
-position = Vector2(0, 24)
+position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_djydg")
 debug_color = Color(0.868238, 0.179031, 0.746719, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omk8d")
-animation = &"chopping_right"
+animation = &"chopping_back"
 autoplay = "idle_front"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_kghjy")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
@@ -466,6 +470,7 @@ hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisi
 position = Vector2(0, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_bsn6e")
 debug_color = Color(1, 0.0196078, 0, 0.419608)
 

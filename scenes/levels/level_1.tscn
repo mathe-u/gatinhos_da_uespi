@@ -144,6 +144,7 @@ material = SubResource("ShaderMaterial_iwr0g")
 position = Vector2(774, 560)
 
 [node name="LargeTree" parent="." instance=ExtResource("15_wtwp4")]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_bahl2")
 position = Vector2(578, 450)
 
