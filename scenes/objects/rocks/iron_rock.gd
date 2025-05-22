@@ -9,10 +9,14 @@ extends Sprite2D
 @export var entity_max_health: int = 10
 @export var entity_starting_health: int = 10
 @export var drop_id: StringName
+@export var squash_duration = 0.2
+@export var max_squash_amount = 0.4
 
 var item_drop_scene: PackedScene = preload("res://scenes/objects/itens/item_scene.tscn")
 
 func _ready() -> void:
+	material.set_shader_parameter("squash_amount", 0.0)
+	
 	hurt_component.tool = hurted_by
 	hurt_component.hurt.connect(_on_hurt)
 	
@@ -31,6 +35,9 @@ func _update_health_bar() -> void:
 
 
 func _on_hurt(damage: int) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(material, "shader_parameter/squash_amount", max_squash_amount, squash_duration / 2.0).set_ease(Tween.EASE_OUT) # Achatamento rápido
+	tween.tween_property(material, "shader_parameter/squash_amount", 0.0, squash_duration / 2.0).set_ease(Tween.EASE_IN) # Retorno mais suave
 	health_component.take_damage(damage)
 
 

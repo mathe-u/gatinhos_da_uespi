@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://i74lhb84whc6"]
+[gd_scene load_steps=6 format=4 uid="uid://i74lhb84whc6"]
 
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ctmx0"]
 [ext_resource type="PackedScene" uid="uid://cywdxs12spx2l" path="res://scenes/components/day_night_cycle_component.tscn" id="1_n85s2"]
 [ext_resource type="PackedScene" uid="uid://draaj714nuvfl" path="res://scenes/characters/player/player.tscn" id="2_ph1je"]
 [ext_resource type="PackedScene" uid="uid://doiaxl8t113e7" path="res://scenes/objects/plants/corn.tscn" id="3_ph1je"]
 [ext_resource type="PackedScene" uid="uid://dewr3diovdauv" path="res://scenes/objects/plants/tomato.tscn" id="4_5mdqj"]
-[ext_resource type="PackedScene" uid="uid://db0yb7qhmva5p" path="res://scenes/ui/game_screen.tscn" id="5_vkqnv"]
 
 [node name="TestSceneTilemapLayerYSort" type="Node2D"]
 y_sort_enabled = true
@@ -59,5 +58,3 @@ position = Vector2(485, 523)
 
 [node name="Tomato2" parent="Crops" instance=ExtResource("4_5mdqj")]
 position = Vector2(425, 529)
-
-[node name="GameScreen" parent="." instance=ExtResource("5_vkqnv")]
