@@ -22,7 +22,6 @@ radius = 11.0
 [node name="IronRock" type="Sprite2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_rw2ft")
-position = Vector2(0, -16)
 texture = ExtResource("1_iird5")
 script = ExtResource("2_pdp31")
 hurted_by = 1
