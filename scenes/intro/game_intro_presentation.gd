@@ -79,9 +79,10 @@ func game_power_by_fade_out() -> void:
 	get_tree().create_timer(3).timeout.connect(start_menu_scene)
 
 func start_menu_scene() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")
+	SceneManager.set_next_scene("res://scenes/ui/game_menu_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/loading_screen.tscn")
 	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
-		get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")
+		start_menu_scene()

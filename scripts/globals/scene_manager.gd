@@ -8,9 +8,10 @@ var multiplayer_scene_root_path: String = "/root/GameMenuScreen"
 
 var level_scenes: Dictionary = {
 	"Level1": "res://scenes/levels/level_1.tscn",
-	"multiplayer": "",
 }
 
+var _next_scene_path: String
+var _current_scene: Node
 
 func load_main_scene_container() -> void:
 	if get_tree().root.has_node(main_scene_root_path):
@@ -43,5 +44,18 @@ func load_level(level: String) -> void:
 
 
 func get_player_node() -> Player:
-	var player_node: Node2D = get_tree().root.get_node_or_null("MainScene/GameRoot/Player")
+	var player_node: Node2D = get_tree().root.get_tree().get_first_node_in_group("player")
 	return player_node
+
+func set_next_scene(scene_path: String) -> void:
+	_next_scene_path = scene_path
+
+func get_next_scene() -> String:
+	return _next_scene_path
+
+
+func set_current_scene(node: Node) -> void:
+	_current_scene = node
+
+func get_current_scene() -> Node:
+	return _current_scene

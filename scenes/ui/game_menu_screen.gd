@@ -8,6 +8,8 @@ func _ready() -> void:
 
 
 func _on_start_game_button_pressed() -> void:
+	SceneManager.set_next_scene("res://scenes/main_scene.tscn")
+	SceneManager.set_current_scene(self)
 	GameManager.start_game()
 
 

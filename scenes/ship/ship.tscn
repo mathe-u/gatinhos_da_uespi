@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ctsesdsqrksjk"]
+[gd_scene load_steps=12 format=4 uid="uid://ctsesdsqrksjk"]
 
 [ext_resource type="Script" uid="uid://ps3woi5blckd" path="res://scenes/ship/ship.gd" id="1_c54or"]
 [ext_resource type="TileSet" uid="uid://ykeelkcj1s8v" path="res://Tilesets/ship_tileset.tres" id="2_gkhk1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bw48285mk0711" path="res://scenes/components/interactable_label_component.tscn" id="4_iyjb8"]
 [ext_resource type="PackedScene" uid="uid://cabuyfilw0mxk" path="res://scenes/ship/crafting_station.tscn" id="5_0s5ox"]
 [ext_resource type="Script" uid="uid://bswmomc5je46h" path="res://scenes/ship/stairs.gd" id="7_7nsyl"]
+[ext_resource type="Texture2D" uid="uid://12r1w7palv1l" path="res://assets/game/Tilesets/light_gray_gradient.png" id="8_0s5ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ipbl"]
 size = Vector2(32, 32)
@@ -61,6 +62,8 @@ shape = SubResource("RectangleShape2D_0ipbl")
 debug_color = Color(0.335912, 0.487125, 1, 0.42)
 
 [node name="ExitInteractableLabelComponent" parent="." instance=ExtResource("4_iyjb8")]
+light_mask = 4
+visibility_layer = 524288
 offset_left = -34.0
 offset_top = 110.0
 offset_right = 2.0
@@ -94,6 +97,13 @@ position = Vector2(-15, 171)
 
 [node name="ExitSpawn" type="Marker2D" parent="."]
 position = Vector2(-14, 275)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-26, 73)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("8_0s5ox")
+texture_scale = 2.0
 
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_body_entered"]
 [connection signal="body_exited" from="Stairs" to="Stairs" method="_on_body_exited"]

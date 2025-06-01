@@ -22,13 +22,15 @@ func open_close_inventory() -> void:
 
 
 func start_game() -> void:
-	SceneManager.load_main_scene_container()
+	get_tree().change_scene_to_file("res://scenes/ui/loading_screen.tscn")
 	
-	var node: Node = get_tree().root.get_node("GameMenuScreen")
-	if node != null:
-		node.queue_free()
-		
-	await SceneManager.load_level("Level1")
+	#SceneManager.load_main_scene_container()
+	#
+	#var node: Node = get_tree().root.get_node("GameMenuScreen")
+	#if node != null:
+		#node.queue_free()
+		#
+	#await SceneManager.load_level("Level1")
 
 
 func multiplayer_game() -> void:

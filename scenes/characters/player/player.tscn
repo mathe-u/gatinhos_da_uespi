@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=59 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -406,6 +406,9 @@ radius = 7.07107
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsn6e"]
 radius = 9.05539
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_blysn"]
+polygon = PackedVector2Array(0, 2, 7, 5, 9, 12, 6, 18, 0, 20, -6, 19, -9, 12, -7, 5)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
@@ -478,3 +481,6 @@ debug_color = Color(1, 0.0196078, 0, 0.419608)
 
 [node name="EnergyComponent" parent="." instance=ExtResource("13_blysn")]
 energy_drain_rate = 0.1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_blysn")

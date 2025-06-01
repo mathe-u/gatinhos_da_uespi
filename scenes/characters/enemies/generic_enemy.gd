@@ -36,6 +36,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	
 	var direction = navigation_component.get_direction(player)
 	velocity = direction * speed
 	move_and_slide()
