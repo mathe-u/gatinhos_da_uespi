@@ -43,5 +43,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				
 				if collected_items == required_items:
 					print("unlock")
+					get_parent().repair_bridge()
 					queue_free()
 			

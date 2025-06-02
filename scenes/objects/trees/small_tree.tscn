@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd52kwy8hqqd5"]
+[gd_scene load_steps=11 format=3 uid="uid://bd52kwy8hqqd5"]
 
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_a8qts"]
 [ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="1_w057i"]
 [ext_resource type="Script" uid="uid://cl7xpqabu1af7" path="res://scenes/objects/trees/small_tree.gd" id="2_g5iuu"]
 [ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="2_xyb6m"]
 [ext_resource type="PackedScene" uid="uid://164klvafr7px" path="res://scenes/components/damage_component.tscn" id="3_w057i"]
+[ext_resource type="PackedScene" uid="uid://cp7n1jr5pv1jj" path="res://scenes/components/item_spawner_component.tscn" id="6_skbjc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skbjc"]
 resource_local_to_scene = true
@@ -26,6 +27,7 @@ size = Vector2(12, 29)
 material = SubResource("ShaderMaterial_skbjc")
 texture = SubResource("AtlasTexture_xyb6m")
 script = ExtResource("2_g5iuu")
+drop_id = &"100"
 
 [node name="DamageComponent" parent="." instance=ExtResource("3_w057i")]
 position = Vector2(-23.8785, -8.89582)
@@ -44,3 +46,5 @@ tool = 1
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_au4vd")
 debug_color = Color(0.695445, 0.28169, 1, 0.42)
+
+[node name="ItemSpawnerComponent" parent="." instance=ExtResource("6_skbjc")]

@@ -31,6 +31,7 @@ func _ready() -> void:
 	health_component.died.connect(_on_unhealthy)
 	
 	attack_component.in_range.connect(_on_attack_in_range)
+	attack_component.out_range.connect(_on_attack_out_range)
 	
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.one_shot = false

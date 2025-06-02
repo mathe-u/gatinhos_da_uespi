@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=29 format=4 uid="uid://cup3lkygb1ml6"]
 
+[ext_resource type="Script" uid="uid://hu6fy2t442vc" path="res://scenes/levels/level_1.gd" id="1_gmpev"]
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://cyv80s81vceqy" path="res://scenes/components/field_cursor_component.tscn" id="2_sk5k4"]
 [ext_resource type="Script" uid="uid://bu5yn6noaockq" path="res://scenes/components/field_cursor_component.gd" id="3_oc4kc"]
@@ -68,6 +69,7 @@ region = Rect2(160, 70, 32, 20)
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_gmpev")
 
 [node name="OnTheFarmMusic" parent="." instance=ExtResource("7_oc4kc")]
 position = Vector2(103, 25)
@@ -100,7 +102,7 @@ tile_set = ExtResource("1_ksju7")
 
 [node name="Objects" type="TileMapLayer" parent="GameTileMap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AABaACQACQABAAEAAABdACQACQABAAEAABBaACIACQABAAEAAABdACIACQABAAEAABBZACQACQAAAAEAAABZACIACQAAAAEAAABeACIACQAAAAEAABBeACQACQAAAAEAABA=")
+tile_map_data = PackedByteArray("AABaACQACQADAAEAAABdACQACQADAAEAABBaACIACQABAAEAAABdACIACQADAAEAABBZACQACQAAAAEAAABZACIACQAAAAEAAABeACIACQAAAAEAABBeACQACQAAAAEAABBbACIACQADAAEAAAA=")
 tile_set = ExtResource("1_ksju7")
 
 [node name="CropFields" type="Node2D" parent="."]

@@ -65,6 +65,7 @@ func add_drop_scene() -> void:
 	var item = ItemsDataBase.new().get_item_data(drop_id)
 	var item_scene: ItemComponent = item_drop_scene.instantiate()
 	item_scene.global_position = global_position
-	item_scene.item_id = item.id
-	item_scene.quantity = randi_range(1, 3)
+	item_scene.set_item_data(item.id, randi_range(1, 3))
+	#item_scene.item_id = item.id
+	#item_scene.quantity = randi_range(1, 3)
 	get_parent().add_child(item_scene)
