@@ -27,8 +27,6 @@ func _ready() -> void:
 	DayNightCycleManager.time_tick.connect(on_nightfall)
 	
 	player_node = SceneManager.get_player_node()
-	
-	print("player: ", player_node)
 
 
 func on_enter_activated() -> void:
