@@ -6,7 +6,8 @@ extends CharacterBody2D
 @onready var entity_health_bar: TextureProgressBar = $EntityHealthBar
 @onready var navigation_component: Node2D = $NavigationComponent
 @onready var attack_component: AttackComponent = $AttackComponent
-@onready var attack_range: Area2D = $AttackRange
+
+@onready var attack_timer: Timer = $AttackTimer
 
 @export var hurted_by: DataTypes.Tools = DataTypes.Tools.None
 @export var entity_max_health: int = 10
@@ -14,6 +15,7 @@ extends CharacterBody2D
 @export var damage: int = 3
 @export var speed: float = 50.0
 @export var drop_id: StringName
+@export var attack_cooldown: float = 1.8
 
 var player: Player
 
@@ -28,7 +30,11 @@ func _ready() -> void:
 	health_component.health_changed.connect(_update_health_bar)
 	health_component.died.connect(_on_unhealthy)
 	
-	#attack_component.damage_range.connect(_on_attack_range)
+	attack_component.in_range.connect(_on_attack_in_range)
+	
+	attack_timer.wait_time = attack_cooldown
+	attack_timer.one_shot = false
+	attack_timer.timeout.connect(_apply_damage)
 	
 	player = SceneManager.get_player_node()
 	
@@ -36,8 +42,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	
 	var direction = navigation_component.get_direction(player)
+	
 	velocity = direction * speed
 	move_and_slide()
 	
@@ -58,13 +64,23 @@ func _on_unhealthy() -> void:
 func add_drop_scene() -> void:
 	var item = ItemsDataBase.new().get_item_data(drop_id)
 	var item_scene: ItemComponent = item.item_scene.instantiate()
+	
 	item_scene.global_position = global_position
 	item_scene.item_id = item.id
-	item_scene.quantity = randi_range(1, 3)
+	item_scene.quantity = randi_range(1, 4)
 	get_parent().add_child(item_scene)
 
 
-func _on_attack_range_body_entered(body: Node2D) -> void:
+func _on_attack_in_range(body: Node2D) -> void:
 	if body is Player:
-		player.health_component.take_damage(damage)
-		#print("body:. ", body.name)
+		_apply_damage()
+		attack_timer.start()
+
+
+func _on_attack_out_range(body: Node2D) -> void:
+	if body is Player:
+		attack_timer.stop()
+
+
+func _apply_damage() -> void:
+	player.health_component.take_damage(damage)

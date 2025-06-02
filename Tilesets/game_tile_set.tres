@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://4io8xlhho2p4"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://4io8xlhho2p4"]
 
 [ext_resource type="Texture2D" uid="uid://dj3rlmbptkw2m" path="res://assets/game/Tilesets/water.png" id="1_m70i2"]
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_o2x3h"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dm44ia5fl3oog" path="res://assets/game/Tilesets/fences.png" id="9_tmfy7"]
 [ext_resource type="Texture2D" uid="uid://tnfj322pgofm" path="res://assets/game/Tilesets/tilled_dirt.png" id="10_tl0r4"]
 [ext_resource type="Texture2D" uid="uid://dekhnshy4ygqp" path="res://assets/game/Tilesets/tilled_dirt_wide_v2_2x.png" id="12_skfke"]
+[ext_resource type="Texture2D" uid="uid://6rk7talxjh5m" path="res://assets/game/Tilesets/bridge.png" id="14_qblla"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmfy7"]
 texture = ExtResource("1_o2x3h")
@@ -844,6 +845,18 @@ texture_region_size = Vector2i(32, 32)
 2:2/0/terrains_peering_bit/top_left_corner = 0
 2:2/0/terrains_peering_bit/top_side = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jw5ls"]
+texture = ExtResource("14_qblla")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 16, -16, 16, 16, -8, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 16, -16, 16, 16, -8, 16)
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -864,3 +877,4 @@ sources/3 = SubResource("TileSetAtlasSource_skfke")
 sources/6 = SubResource("TileSetAtlasSource_tl0r4")
 sources/7 = SubResource("TileSetAtlasSource_qblla")
 sources/4 = SubResource("TileSetAtlasSource_cv0k1")
+sources/9 = SubResource("TileSetAtlasSource_jw5ls")

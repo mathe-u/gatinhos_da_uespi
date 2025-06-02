@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqset71wepld7"]
+[gd_scene load_steps=11 format=3 uid="uid://bqset71wepld7"]
 
 [ext_resource type="Script" uid="uid://dt6d00ejr7wdt" path="res://scenes/characters/enemies/generic_enemy.gd" id="1_ad4gc"]
 [ext_resource type="Texture2D" uid="uid://3wmc6ar21bdh" path="res://assets/game/Characters/enemy.png" id="2_ad4gc"]
@@ -16,9 +16,6 @@ size = Vector2(20, 43)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_po8c6"]
 radius = 41.3038
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_k2axd"]
-radius = 27.1662
 
 [node name="GenericEnemy" type="CharacterBody2D"]
 collision_layer = 512
@@ -54,9 +51,9 @@ value = 61.0
 nine_patch_stretch = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_l1d30")]
+invincibility_time = 0.0
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_po8c6")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
 shape = SubResource("CircleShape2D_po8c6")
@@ -64,13 +61,4 @@ shape = SubResource("CircleShape2D_po8c6")
 [node name="NavigationComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("7_k2axd")]
 entity = NodePath("..")
 
-[node name="AttackRange" type="Area2D" parent="."]
-collision_mask = 514
-
-[node name="AttackRangeCollision" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_k2axd")
-debug_color = Color(0.644203, 0.510921, 0.314539, 0.42)
-
-[connection signal="damage_range" from="AttackComponent" to="." method="_on_attack_component_damage_range"]
-[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
-[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[node name="AttackTimer" type="Timer" parent="."]

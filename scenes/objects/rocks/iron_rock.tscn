@@ -44,6 +44,8 @@ shape = SubResource("CircleShape2D_iird5")
 debug_color = Color(0.187105, 0.625638, 0.421476, 0.42)
 
 [node name="EntityHealthBar" parent="." instance=ExtResource("5_pdp31")]
+z_index = 1
+y_sort_enabled = true
 offset_left = -15.0
 offset_top = -25.0
 offset_right = 15.0
