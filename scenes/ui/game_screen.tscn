@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://db0yb7qhmva5p"]
+[gd_scene load_steps=10 format=3 uid="uid://db0yb7qhmva5p"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_e2vrk"]
 [ext_resource type="PackedScene" uid="uid://cf2bkny6il757" path="res://scenes/ui/emotes_panel.tscn" id="2_0kkfd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mnq50a8m85t1" path="res://scenes/ui/day_night_panel.tscn" id="4_gkbp4"]
 [ext_resource type="PackedScene" uid="uid://plcwnsem11bg" path="res://scenes/ui/inventory_ui.tscn" id="6_nwa5a"]
 [ext_resource type="PackedScene" uid="uid://cbyyire75tukl" path="res://scenes/ui/player_health_bar.tscn" id="7_ooiym"]
+[ext_resource type="PackedScene" uid="uid://bdeu5v3r52w3a" path="res://scenes/ui/settings_panel.tscn" id="7_r1vnj"]
 [ext_resource type="PackedScene" uid="uid://cfk5jiad0ndo0" path="res://scenes/ui/player_energy_bar.tscn" id="8_ce4rh"]
 
 [node name="GameScreen" type="CanvasLayer"]
@@ -46,6 +47,10 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="InventoryUI" parent="MarginContainer" instance=ExtResource("6_nwa5a")]
+visible = false
+layout_mode = 2
+
+[node name="SettingsPanel" parent="MarginContainer" instance=ExtResource("7_r1vnj")]
 visible = false
 layout_mode = 2
 

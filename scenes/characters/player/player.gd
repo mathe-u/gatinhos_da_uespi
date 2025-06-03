@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var hurt_component: HurtComponent = $HurtComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var energy_component: EnergyComponent = $EnergyComponent
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 @export var current_tool: DataTypes.Tools = DataTypes.Tools.None
 @export var max_health: int
@@ -15,7 +16,7 @@ var health_bar_player_node: TextureProgressBar
 
 func _ready() -> void:
 	ToolManager.tool_selected.connect(on_tool_selected)
-	
+	DayNightCycleManager.time_tick.connect(on_nightfall)
 	#hurt_component.hurt.connect(_on_hurt)
 	
 	health_component.max_health = max_health
@@ -86,3 +87,10 @@ func _on_energy_empty() -> void:
 
 func _on_energy_full() -> void:
 	health_component.heal(energy_component.heal_on_full)
+
+
+func on_nightfall(_day: int, hour: int, _minute: int) -> void:
+	if hour >= 19 or hour <= 4:
+		point_light_2d.enabled = true
+	else:
+		point_light_2d.enabled = false

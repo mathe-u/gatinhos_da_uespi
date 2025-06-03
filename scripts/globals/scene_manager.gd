@@ -59,3 +59,25 @@ func set_current_scene(node: Node) -> void:
 
 func get_current_scene() -> Node:
 	return _current_scene
+
+
+func open_close_inventory_ui() -> void:
+	var inventory_ui_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
+	show_hide_inventory_menu_button()
+	inventory_ui_scene.visible = !inventory_ui_scene.visible
+
+
+func open_close_settings_panel() -> void:
+	var settings_panel_scene: PanelContainer = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/SettingsPanel")
+	show_hide_inventory_menu_button()
+	settings_panel_scene.visible = !settings_panel_scene.visible
+	
+
+
+func show_hide_inventory_menu_button() -> void:
+	var inventory_button: Button = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/DayNightPanel/VBoxContainer/MarginContainer2/InventoryButton")
+	var settings_button: Button = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/DayNightPanel/VBoxContainer/MarginContainer/SettingsButton")
+	
+	inventory_button.visible = !inventory_button.visible
+	settings_button.visible = !settings_button.visible
+	

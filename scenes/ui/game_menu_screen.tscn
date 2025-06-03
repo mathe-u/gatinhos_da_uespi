@@ -49,12 +49,14 @@ theme_type_variation = &"GameMenuButton"
 text = "START"
 
 [node name="MultiplayerButton" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
 text = "MULTIPLAYER"
 
 [node name="SaveGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"

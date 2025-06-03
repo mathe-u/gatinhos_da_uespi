@@ -36,7 +36,7 @@ func clear_grid_container() -> void:
 
 func _on_close_inventory_pressed() -> void:
 	click_button.play(0.60)
-	GameManager.open_close_inventory()
+	SceneManager.open_close_inventory_ui()
 
 
 func _on_drag_start(slot_control: Control) -> void:

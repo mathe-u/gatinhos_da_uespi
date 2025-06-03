@@ -3,6 +3,8 @@ extends Control
 @onready var day_label: Label = $DayPanel/MarginContainer/DayLabel
 @onready var time_label: Label = $TimePanel/MarginContainer/TimeLabel
 @onready var click_button: AudioStreamPlayer2D = $ClickButton
+@onready var inventory_button: Button = $VBoxContainer/MarginContainer2/InventoryButton
+@onready var settings_button: Button = $VBoxContainer/MarginContainer/SettingsButton
 
 @export var normal_speed: int = 5
 @export var fast_speed: int = 100
@@ -31,14 +33,10 @@ func _on_cheetah_speed_button_pressed() -> void:
 
 func _on_inventory_button_pressed() -> void:
 	click_button.play(0.60)
-	GameManager.open_close_inventory()
+	SceneManager.open_close_inventory_ui()
 
 
 func _on_settings_button_pressed() -> void:
 	click_button.play(0.60)
-	var settings_panel_scene: PackedScene = load("res://scenes/ui/settings_panel.tscn")
-	var settings_panel_instance: PanelContainer = settings_panel_scene.instantiate()
-	var game_screen: MarginContainer = get_tree().root.get_node("MainScene/GameScreen/MarginContainer")
-	
-	game_screen.add_child(settings_panel_instance)
+	SceneManager.open_close_settings_panel()
 	
