@@ -6,7 +6,7 @@ extends TextureProgressBar
 var _visibility_timer: Timer
 
 func _ready() -> void:
-	visible = false
+	visible = true
 
 	_visibility_timer = Timer.new()
 	_visibility_timer.one_shot = true
@@ -21,8 +21,8 @@ func on_player_health_changed(health_component: HealthComponent) -> void:
 	self.max_value = health_component.max_health
 	self.value = health_component.health
 	
-	if health_component.health < health_component.max_health and health_component.is_alive():
-		_show_briefly(health_component)
+	#if health_component.health < health_component.max_health and health_component.is_alive():
+		#_show_briefly(health_component)
 
 
 func _show_briefly(health_component: HealthComponent) -> void:

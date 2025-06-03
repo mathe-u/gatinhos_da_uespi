@@ -59,6 +59,7 @@ offset_left = 15.0
 offset_top = 22.0
 offset_right = 225.0
 offset_bottom = 71.0
+value = 100.0
 nine_patch_stretch = true
 
 [node name="PlayerEnergyBar" parent="." instance=ExtResource("8_ce4rh")]
