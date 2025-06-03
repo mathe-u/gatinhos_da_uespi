@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm2r1di40vgg0"]
+[gd_scene load_steps=7 format=3 uid="uid://dm2r1di40vgg0"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_2yiqu"]
 [ext_resource type="Script" uid="uid://cpo2vbxnse04n" path="res://scenes/ui/tools_panel.gd" id="2_0jxvs"]
@@ -7,6 +7,14 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7ivs"]
 atlas = ExtResource("2_xkgdf")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jxvs"]
+atlas = ExtResource("2_xkgdf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbtgy"]
+atlas = ExtResource("2_xkgdf")
+region = Rect2(0, 0, 32, 32)
 
 [node name="ToolsPanel" type="PanelContainer"]
 offset_right = 308.0
@@ -26,13 +34,14 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 
 [node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_a7ivs")
 icon_alignment = 1
 
-[node name="ToolTilling" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
@@ -64,12 +73,14 @@ icon_alignment = 1
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_0jxvs")
 icon_alignment = 1
 
 [node name="Shortcut2" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_gbtgy")
 icon_alignment = 1
 
 [node name="Shortcut3" type="Button" parent="MarginContainer/HBoxContainer"]
@@ -84,12 +95,19 @@ layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon_alignment = 1
 
+[node name="Shortcut5" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon_alignment = 1
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTilling" to="." method="_on_tool_tilling_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Button" to="." method="_on_tool_tilling_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ToolWateringCan" to="." method="_on_tool_watering_can_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ToolCorn" to="." method="_on_tool_corn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTomato" to="." method="_on_tool_tomato_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut1" to="." method="_on_shortcut_1_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut2" to="." method="_on_shortcut_1_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut3" to="." method="_on_shortcut_1_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut4" to="." method="_on_shortcut_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut2" to="." method="_on_shortcut_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut3" to="." method="_on_shortcut_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut4" to="." method="_on_shortcut_4_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut5" to="." method="_on_shortcut_5_pressed"]

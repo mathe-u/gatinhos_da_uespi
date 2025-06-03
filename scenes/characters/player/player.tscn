@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=61 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bvaijral04tto" path="res://scenes/characters/player/chopping_state.gd" id="7_mk55u"]
 [ext_resource type="Script" uid="uid://b64to0soqpnut" path="res://scenes/characters/player/tilling_state.gd" id="8_xuses"]
 [ext_resource type="Script" uid="uid://cmkrfysyd5u21" path="res://scenes/characters/player/watering_state.gd" id="9_42irl"]
+[ext_resource type="Script" uid="uid://dyoejeyrtkk3v" path="res://scenes/characters/player/shooting.gd" id="9_ykrpk"]
 [ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="11_djydg"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="12_bsn6e"]
 [ext_resource type="PackedScene" uid="uid://ch6uq53yxlkw2" path="res://scenes/components/energy_component.tscn" id="13_blysn"]
@@ -457,6 +458,11 @@ script = ExtResource("7_mk55u")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
+
+[node name="Shooting" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("9_ykrpk")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Tilling" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
 script = ExtResource("8_xuses")

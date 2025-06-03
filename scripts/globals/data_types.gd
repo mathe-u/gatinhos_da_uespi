@@ -3,10 +3,11 @@ class_name DataTypes
 enum Tools {
 	None,
 	AxeWood,
+	GunBlaster,
 	TillGround,
 	WaterCrops,
 	PlantCorn,
-	PlantTomato
+	PlantTomato,
 }
 
 enum GrowthStates {
