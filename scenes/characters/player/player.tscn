@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=60 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="11_djydg"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="12_bsn6e"]
 [ext_resource type="PackedScene" uid="uid://ch6uq53yxlkw2" path="res://scenes/components/energy_component.tscn" id="13_blysn"]
+[ext_resource type="Texture2D" uid="uid://12r1w7palv1l" path="res://assets/game/Tilesets/light_gray_gradient.png" id="14_hv5x3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 8.0
@@ -484,3 +485,11 @@ energy_drain_rate = 0.1
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_blysn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 9)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 2
+texture = ExtResource("14_hv5x3")
+texture_scale = 2.0
