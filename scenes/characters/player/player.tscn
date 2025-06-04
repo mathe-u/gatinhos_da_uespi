@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=64 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="12_bsn6e"]
 [ext_resource type="PackedScene" uid="uid://ch6uq53yxlkw2" path="res://scenes/components/energy_component.tscn" id="13_blysn"]
 [ext_resource type="Texture2D" uid="uid://12r1w7palv1l" path="res://assets/game/Tilesets/light_gray_gradient.png" id="14_hv5x3"]
+[ext_resource type="PackedScene" uid="uid://boq1peq4ytgxs" path="res://scenes/objects/guns/gun.tscn" id="16_i1nod"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 8.0
@@ -82,6 +83,14 @@ region = Rect2(0, 288, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro20i"]
 atlas = ExtResource("2_686vu")
 region = Rect2(96, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofe5m"]
+atlas = ExtResource("2_686vu")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiw4v"]
+atlas = ExtResource("2_686vu")
+region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxwvg"]
 atlas = ExtResource("1_t61fv")
@@ -271,6 +280,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ofe5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiw4v")
+}],
+"loop": true,
+"name": &"shooting_front",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bxwvg")
 }, {
 "duration": 1.0,
@@ -430,10 +450,8 @@ debug_color = Color(0.868238, 0.179031, 0.746719, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omk8d")
-animation = &"chopping_back"
+animation = &"shooting_front"
 autoplay = "idle_front"
-frame = 1
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
@@ -497,3 +515,8 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_item_cull_mask = 2
 texture = ExtResource("14_hv5x3")
+
+[node name="Gun" parent="." instance=ExtResource("16_i1nod")]
+shoot_cooldown = 0.08
+gun_pellets = 6
+gun_spread_degree = 15.0

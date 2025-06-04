@@ -162,6 +162,7 @@ dash={
 2d_physics/layer_8="Food"
 2d_physics/layer_9="ship"
 2d_physics/layer_10="Enemy"
+2d_physics/layer_11="projectile"
 
 [rendering]
 

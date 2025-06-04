@@ -28,7 +28,7 @@ func _on_enter() -> void:
 		animated_sprite_2d.play("watering_back")
 		print("shoot")
 	elif player.player_direction == Vector2.DOWN:
-		animated_sprite_2d.play("watering_front")
+		animated_sprite_2d.play("shooting_front")
 		print("shoot")
 	elif player.player_direction == Vector2.LEFT:
 		animated_sprite_2d.play("watering_left")
@@ -37,7 +37,7 @@ func _on_enter() -> void:
 		animated_sprite_2d.play("watering_right")
 		print("shoot")
 	else:
-		animated_sprite_2d.play("watering_front")
+		animated_sprite_2d.play("shooting_front")
 		print("shoot")
 	
 	#hit_component_collision_shape.disabled = false
