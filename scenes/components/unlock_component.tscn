@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://chgxmpsa1sqow"]
+[gd_scene load_steps=9 format=3 uid="uid://chgxmpsa1sqow"]
 
 [ext_resource type="Script" uid="uid://croic2i0w0vkw" path="res://scenes/components/unlock_component.gd" id="1_d3m4n"]
 [ext_resource type="PackedScene" uid="uid://batnl3ulwlbrb" path="res://scenes/components/interactable_component.tscn" id="1_uk1gc"]
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="2_d3m4n"]
 [ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="3_i6wko"]
+[ext_resource type="Texture2D" uid="uid://b1vfi60g2durw" path="res://assets/ui/basic_ui_sprite.png" id="5_6y70j"]
+[ext_resource type="FontFile" uid="uid://c501ldv06kqn1" path="res://assets/ui/fonts/zx_palm.ttf" id="6_6y70j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6y70j"]
 radius = 60.208
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx0oa"]
+atlas = ExtResource("5_6y70j")
+region = Rect2(1038, 208, 36, 34)
 
 [node name="UnlockComponent" type="Node2D"]
 script = ExtResource("1_d3m4n")
@@ -17,10 +23,18 @@ script = ExtResource("1_d3m4n")
 shape = SubResource("CircleShape2D_6y70j")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -31.0
-offset_top = -80.0
-offset_right = 31.0
-offset_bottom = -3.0
+offset_top = -135.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("2_d3m4n")
 theme_type_variation = &"DayNightCounterPanel"
 
@@ -36,6 +50,30 @@ texture = ExtResource("3_i6wko")
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 1
 text = "12/12
 "
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_xx0oa")
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 8.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_6y70j")
+theme_override_font_sizes/font_size = 16
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1

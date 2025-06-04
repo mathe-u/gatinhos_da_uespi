@@ -14,10 +14,10 @@ shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vpey"]
 atlas = ExtResource("1_ivetc")
-region = Rect2(32, 0, 64, 64)
+region = Rect2(32, 0, 64, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjqkr"]
-size = Vector2(12, 21)
+size = Vector2(12, 29)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ia52"]
 radius = 6.08276
@@ -31,14 +31,14 @@ script = ExtResource("2_f4wgc")
 tool = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(0, 3.5)
+position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_wjqkr")
 debug_color = Color(0.776117, 0.25358, 0.886697, 0.42)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 10)
+position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_0ia52")
 
 [node name="DamageComponent" parent="." instance=ExtResource("3_f4wgc")]

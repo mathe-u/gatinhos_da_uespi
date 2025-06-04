@@ -19,4 +19,9 @@ shape = SubResource("RectangleShape2D_h18v3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_h71oj")
 
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

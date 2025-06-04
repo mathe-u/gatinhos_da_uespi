@@ -23,13 +23,12 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		update_sprite()
 	
-	visible = false
-	process_mode = Node.PROCESS_MODE_DISABLED
-	
 	if gun_spread_degree == 0.0:
 		_spread_radians = 0.0
-	#gun_sprite.flip_h = true
-	pass 
+	
+	visible = false
+	process_mode = Node.PROCESS_MODE_DISABLED
+
 
 func _process(delta: float) -> void:
 	if shoot_cooldown_time > 0.0:

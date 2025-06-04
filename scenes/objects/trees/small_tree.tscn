@@ -21,7 +21,7 @@ region = Rect2(0, 0, 32, 64)
 radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au4vd"]
-size = Vector2(12, 29)
+size = Vector2(14, 34)
 
 [node name="SmallTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_skbjc")
@@ -36,14 +36,14 @@ max_damage = 3
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 17)
+position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_au4vd")
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_xyb6m")]
 tool = 1
 
 [node name="HurtComponentCollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(0, 5.5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_au4vd")
 debug_color = Color(0.695445, 0.28169, 1, 0.42)
 
