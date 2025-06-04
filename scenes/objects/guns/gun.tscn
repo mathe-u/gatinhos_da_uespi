@@ -2,22 +2,20 @@
 
 [ext_resource type="Script" uid="uid://chrp7aiu674l" path="res://scenes/objects/guns/gun.gd" id="1_akvj4"]
 [ext_resource type="PackedScene" uid="uid://cedrono6epdjm" path="res://scenes/objects/Projectiles/projectile_blaster.tscn" id="2_4wd61"]
-[ext_resource type="Texture2D" uid="uid://bycb775agv2f8" path="res://assets/game/Objects/shotgun2.png" id="3_4wd61"]
+[ext_resource type="Texture2D" uid="uid://bu06icsd4gpy7" path="res://assets/game/Objects/blaster.png" id="3_4wd61"]
 [ext_resource type="AudioStream" uid="uid://dcos5l4lcme2n" path="res://assets/audio/sfx/shotgun_blast_sounds_4.wav" id="3_wo8xu"]
 
 [node name="Gun" type="Node2D"]
-z_index = 1
 script = ExtResource("1_akvj4")
-projectile = ExtResource("2_4wd61")
+gun_texture = ExtResource("3_4wd61")
+projectile_scene = ExtResource("2_4wd61")
 
 [node name="GunSprite" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(64, 0)
+position = Vector2(28, 0)
 texture = ExtResource("3_4wd61")
-flip_h = true
 
 [node name="BulletSpawn" type="Marker2D" parent="GunSprite"]
-position = Vector2(40, -7)
+position = Vector2(13, -4.00001)
 
 [node name="Shotgun_blast" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_wo8xu")

@@ -4,9 +4,7 @@
 [ext_resource type="Script" uid="uid://cpo2vbxnse04n" path="res://scenes/ui/tools_panel.gd" id="2_0jxvs"]
 [ext_resource type="Texture2D" uid="uid://cnj3ly3d3y6fn" path="res://assets/game/Objects/basic_tools_and_meterials_2x.png" id="2_xkgdf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a7ivs"]
-atlas = ExtResource("2_xkgdf")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a7ivs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0jxvs"]
 atlas = ExtResource("2_xkgdf")
@@ -32,14 +30,6 @@ theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_type_variation = &"ToolButton"
-icon = SubResource("AtlasTexture_a7ivs")
-icon_alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
 visible = false
@@ -69,45 +59,91 @@ layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon_alignment = 1
 
-[node name="Shortcut1" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Shortcut1" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a7ivs")
+
+[node name="ShortcutButton" type="Button" parent="MarginContainer/HBoxContainer/Shortcut1"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_0jxvs")
 icon_alignment = 1
 
-[node name="Shortcut2" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ShotcutLabel" type="Label" parent="MarginContainer/HBoxContainer/Shortcut1/ShortcutButton"]
+layout_mode = 1
+offset_right = 9.0
+offset_bottom = 14.0
+text = "1"
+
+[node name="Shortcut2" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a7ivs")
+
+[node name="ShortcutButton" type="Button" parent="MarginContainer/HBoxContainer/Shortcut2"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_gbtgy")
 icon_alignment = 1
 
-[node name="Shortcut3" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ShotcutLabel" type="Label" parent="MarginContainer/HBoxContainer/Shortcut2/ShortcutButton"]
+layout_mode = 1
+offset_right = 9.0
+offset_bottom = 14.0
+text = "2"
+
+[node name="Shortcut3" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a7ivs")
+
+[node name="ShortcutButton" type="Button" parent="MarginContainer/HBoxContainer/Shortcut3"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon_alignment = 1
 
-[node name="Shortcut4" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ShotcutLabel" type="Label" parent="MarginContainer/HBoxContainer/Shortcut3/ShortcutButton"]
+layout_mode = 1
+offset_right = 9.0
+offset_bottom = 14.0
+text = "3"
+horizontal_alignment = 3
+
+[node name="Shortcut4" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a7ivs")
+
+[node name="ShortcutButton" type="Button" parent="MarginContainer/HBoxContainer/Shortcut4"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon_alignment = 1
 
-[node name="Shortcut5" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ShotcutLabel" type="Label" parent="MarginContainer/HBoxContainer/Shortcut4/ShortcutButton"]
+layout_mode = 1
+offset_right = 9.0
+offset_bottom = 14.0
+text = "4"
+
+[node name="Shortcut5" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a7ivs")
+
+[node name="ShortcutButton" type="Button" parent="MarginContainer/HBoxContainer/Shortcut5"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Button" to="." method="_on_tool_tilling_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolWateringCan" to="." method="_on_tool_watering_can_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolCorn" to="." method="_on_tool_corn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTomato" to="." method="_on_tool_tomato_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut1" to="." method="_on_shortcut_1_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut2" to="." method="_on_shortcut_2_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut3" to="." method="_on_shortcut_3_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut4" to="." method="_on_shortcut_4_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut5" to="." method="_on_shortcut_5_pressed"]
+[node name="ShotcutLabel" type="Label" parent="MarginContainer/HBoxContainer/Shortcut5/ShortcutButton"]
+layout_mode = 1
+offset_right = 9.0
+offset_bottom = 14.0
+text = "5"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut1/ShortcutButton" to="." method="_on_shortcut_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut2/ShortcutButton" to="." method="_on_shortcut_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut3/ShortcutButton" to="." method="_on_shortcut_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut4/ShortcutButton" to="." method="_on_shortcut_4_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Shortcut5/ShortcutButton" to="." method="_on_shortcut_5_pressed"]

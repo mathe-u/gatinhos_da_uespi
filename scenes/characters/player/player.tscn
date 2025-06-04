@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=70 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -84,6 +84,14 @@ region = Rect2(0, 288, 96, 96)
 atlas = ExtResource("2_686vu")
 region = Rect2(96, 288, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_35rnk"]
+atlas = ExtResource("2_686vu")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8clsk"]
+atlas = ExtResource("2_686vu")
+region = Rect2(96, 96, 96, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofe5m"]
 atlas = ExtResource("2_686vu")
 region = Rect2(0, 0, 96, 96)
@@ -91,6 +99,22 @@ region = Rect2(0, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qiw4v"]
 atlas = ExtResource("2_686vu")
 region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba42v"]
+atlas = ExtResource("2_686vu")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em43t"]
+atlas = ExtResource("2_686vu")
+region = Rect2(96, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvt27"]
+atlas = ExtResource("2_686vu")
+region = Rect2(0, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4s5w"]
+atlas = ExtResource("2_686vu")
+region = Rect2(96, 288, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxwvg"]
 atlas = ExtResource("1_t61fv")
@@ -280,13 +304,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_35rnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8clsk")
+}],
+"loop": false,
+"name": &"shooting_back",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ofe5m")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qiw4v")
 }],
-"loop": true,
+"loop": false,
 "name": &"shooting_front",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em43t")
+}],
+"loop": false,
+"name": &"shooting_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvt27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4s5w")
+}],
+"loop": false,
+"name": &"shooting_right",
 "speed": 3.0
 }, {
 "frames": [{
@@ -450,7 +507,7 @@ debug_color = Color(0.868238, 0.179031, 0.746719, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omk8d")
-animation = &"shooting_front"
+animation = &"shooting_right"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -477,10 +534,11 @@ player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
 
-[node name="Shooting" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Shooting" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d", "gun_componente")]
 script = ExtResource("9_ykrpk")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+gun_componente = NodePath("../../Gun")
 
 [node name="Tilling" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
 script = ExtResource("8_xuses")
@@ -517,6 +575,9 @@ shadow_item_cull_mask = 2
 texture = ExtResource("14_hv5x3")
 
 [node name="Gun" parent="." instance=ExtResource("16_i1nod")]
-shoot_cooldown = 0.08
-gun_pellets = 6
-gun_spread_degree = 15.0
+process_mode = 4
+visible = false
+shoot_cooldown = 1.2
+gun_pellets = 1
+gun_spread_degree = 2.0
+projectile_speed = 800.0

@@ -1,11 +1,13 @@
 extends PanelContainer
 
 #@onready var tool_axe: Button = $MarginContainer/HBoxContainer/ToolAxe
-@onready var shortcut_1: Button = $MarginContainer/HBoxContainer/Shortcut1
-@onready var shortcut_2: Button = $MarginContainer/HBoxContainer/Shortcut2
-@onready var shortcut_3: Button = $MarginContainer/HBoxContainer/Shortcut3
-@onready var shortcut_4: Button = $MarginContainer/HBoxContainer/Shortcut4
-@onready var shortcut_5: Button = $MarginContainer/HBoxContainer/Shortcut5
+@onready var shortcut_1: Button = $MarginContainer/HBoxContainer/Shortcut1/ShortcutButton
+
+
+@onready var shortcut_2: Button = $MarginContainer/HBoxContainer/Shortcut2/ShortcutButton
+@onready var shortcut_3: Button = $MarginContainer/HBoxContainer/Shortcut3/ShortcutButton
+@onready var shortcut_4: Button = $MarginContainer/HBoxContainer/Shortcut4/ShortcutButton
+@onready var shortcut_5: Button = $MarginContainer/HBoxContainer/Shortcut5/ShortcutButton
 
 #@onready var tool_tilling: Button = $MarginContainer/HBoxContainer/ToolTilling
 #@onready var tool_watering_can: Button = $MarginContainer/HBoxContainer/ToolWateringCan

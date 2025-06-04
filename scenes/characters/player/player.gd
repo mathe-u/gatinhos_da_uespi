@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var energy_component: EnergyComponent = $EnergyComponent
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var gun: Node2D = $Gun
 
 @export var current_tool: DataTypes.Tools = DataTypes.Tools.None
 @export var max_health: int
@@ -29,6 +30,13 @@ func _ready() -> void:
 
 
 func on_tool_selected(tool: DataTypes.Tools) -> void:
+	if tool == DataTypes.Tools.GunBlaster:
+		gun.visible = true
+		gun.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		gun.visible = false
+		gun.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	current_tool = tool
 	hit_component.current_tool = tool
 
@@ -72,6 +80,7 @@ func died() -> void:
 	var main_menu_screen_instance: CanvasLayer = main_menu_screen_scene.instantiate()
 	
 	get_tree().root.add_child(main_menu_screen_instance)
+	
 	
 	main_scene.queue_free()
 
