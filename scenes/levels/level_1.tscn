@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=31 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="Script" uid="uid://hu6fy2t442vc" path="res://scenes/levels/level_1.gd" id="1_gmpev"]
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
@@ -47,6 +47,12 @@ shader_parameter/squash_amount = 0.0
 shader_parameter/squash_height_factor = 0.15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mqh5v"]
+resource_local_to_scene = true
+shader = ExtResource("11_v6ha0")
+shader_parameter/squash_amount = 0.0
+shader_parameter/squash_height_factor = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o3do"]
 resource_local_to_scene = true
 shader = ExtResource("11_v6ha0")
 shader_parameter/squash_amount = 0.0
@@ -171,7 +177,7 @@ material = SubResource("ShaderMaterial_mqh5v")
 position = Vector2(659, 701)
 
 [node name="IronRock6" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_gmpev")
+material = SubResource("ShaderMaterial_7o3do")
 position = Vector2(722, 620)
 
 [node name="CraftingStation" parent="." instance=ExtResource("11_excbq")]

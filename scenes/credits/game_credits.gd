@@ -48,5 +48,11 @@ func fade_out_thanks() -> void:
 
 
 func start_menu_scene() -> void:
+	#var loading_scene: PackedScene = load("res://scenes/ui/loading_screen.tscn")
+	#var loading_screen_instance: CanvasLayer = loading_scene.instantiate()
+	
 	SceneManager.set_next_scene("res://scenes/ui/game_menu_screen.tscn")
-	get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")
+	SceneManager.set_current_scene(self)
+	get_tree().change_scene_to_file("res://scenes/ui/loading_screen.tscn")
+	#get_tree().root.add_child(loading_screen_instance)
+	

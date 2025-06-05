@@ -145,7 +145,6 @@ func _on_create_button_pressed() -> void:
 	for ingredient: Ingredient in current_selected_item.crafting_ingredients:
 		var quantity_to_remove = ingredient.quantity * units_product
 		InventoryManager.remove_item(ingredient.id, quantity_to_remove)
-		print(quantity_to_remove)
 		
 	_crafting_station.init_craft(current_selected_item, units_product)
 	_update_ingredient_quantities_display()
