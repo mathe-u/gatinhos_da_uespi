@@ -20,7 +20,7 @@ var coords_down_broken_bridge_cells: Array[Vector2i] = [
 	Vector2i(93, 36),
 ]
 
-var tilemap_layer_index: int = 0
+#var tilemap_layer_index: int = 0
 
 func repair_bridge() -> void:
 	if not grass:

@@ -44,7 +44,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				label.text = "%s/%s" % [collected_items ,required_items]
 				
 				if collected_items == required_items:
-					print(event_unlock)
-					#get_parent().repair_bridge()
+					GameManager.game_event(event_unlock)
 					queue_free()
 			

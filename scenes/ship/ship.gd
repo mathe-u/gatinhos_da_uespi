@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 
 var in_range: bool
-var is_inside: bool = true
+var is_inside: bool = false
 #var player_node: Player = SceneManager.get_player_node()
 var player_node: Player
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=30 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="Script" uid="uid://hu6fy2t442vc" path="res://scenes/levels/level_1.gd" id="1_gmpev"]
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://chgxmpsa1sqow" path="res://scenes/components/unlock_component.tscn" id="16_iwr0g"]
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="17_np2pn"]
 [ext_resource type="Texture2D" uid="uid://5gkh2gg7vonq" path="res://assets/game/Objects/icon_wood.png" id="18_v6ha0"]
+[ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="20_mkypq"]
+[ext_resource type="Texture2D" uid="uid://cacpvtt3eijff" path="res://assets/game/Objects/icon_iron_bar2.png" id="21_ndtll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmpev"]
 resource_local_to_scene = true
@@ -184,6 +186,7 @@ material = SubResource("ShaderMaterial_bahl2")
 position = Vector2(578, 450)
 
 [node name="UnlockComponent" parent="." instance=ExtResource("16_iwr0g")]
+z_index = 1
 position = Vector2(1680, 887)
 event_unlock = 3
 item_id = &"100"
@@ -191,8 +194,23 @@ required_items = 2
 icon = SubResource("AtlasTexture_gmpev")
 
 [node name="UnlockComponent2" parent="." instance=ExtResource("16_iwr0g")]
+z_index = 1
 position = Vector2(2849, 1149)
 event_unlock = 1
 item_id = &"101"
-required_items = 40
+required_items = 10
 icon = ExtResource("18_v6ha0")
+
+[node name="UnlockComponent3" parent="." instance=ExtResource("16_iwr0g")]
+z_index = 1
+position = Vector2(2193, 890)
+event_unlock = 3
+item_id = &"105"
+icon = ExtResource("20_mkypq")
+
+[node name="UnlockComponent4" parent="." instance=ExtResource("16_iwr0g")]
+z_index = 1
+position = Vector2(1967, 809)
+event_unlock = 4
+item_id = &"104"
+icon = ExtResource("21_ndtll")
