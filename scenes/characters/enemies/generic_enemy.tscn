@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqset71wepld7"]
+[gd_scene load_steps=13 format=3 uid="uid://bqset71wepld7"]
 
 [ext_resource type="Script" uid="uid://dt6d00ejr7wdt" path="res://scenes/characters/enemies/generic_enemy.gd" id="1_ad4gc"]
 [ext_resource type="Texture2D" uid="uid://3wmc6ar21bdh" path="res://assets/game/Characters/enemy.png" id="2_ad4gc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="5_l1d30"]
 [ext_resource type="PackedScene" uid="uid://5mxxiib54rgp" path="res://scenes/components/attack_component.tscn" id="6_po8c6"]
 [ext_resource type="PackedScene" uid="uid://xbyhnwf6230p" path="res://scenes/components/navigation_component.tscn" id="7_k2axd"]
+[ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="8_f6can"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po8c6"]
 size = Vector2(20, 43)
@@ -16,6 +17,9 @@ size = Vector2(20, 43)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_po8c6"]
 radius = 41.3038
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1d30"]
+size = Vector2(20, 46)
 
 [node name="GenericEnemy" type="CharacterBody2D"]
 collision_layer = 512
@@ -35,7 +39,8 @@ shape = SubResource("RectangleShape2D_po8c6")
 debug_color = Color(0.726211, 0.11871, 0.291988, 0.42)
 
 [node name="HurtComponent" parent="." instance=ExtResource("3_k2axd")]
-tool = 1
+visible = false
+collision_mask = 1032
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
 position = Vector2(0, -1.5)
@@ -62,3 +67,10 @@ shape = SubResource("CircleShape2D_po8c6")
 entity = NodePath("..")
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="HurtComponent2" parent="." instance=ExtResource("8_f6can")]
+collision_layer = 512
+collision_mask = 1032
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
+shape = SubResource("RectangleShape2D_l1d30")

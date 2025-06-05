@@ -3,10 +3,10 @@ extends CharacterBody2D
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurt_component: HurtComponent = $HurtComponent
+@onready var hurt_component_2: HurtComponent2 = $HurtComponent2
 @onready var entity_health_bar: TextureProgressBar = $EntityHealthBar
 @onready var navigation_component: Node2D = $NavigationComponent
 @onready var attack_component: AttackComponent = $AttackComponent
-
 @onready var attack_timer: Timer = $AttackTimer
 
 @export var hurted_by: DataTypes.Tools = DataTypes.Tools.None
@@ -20,8 +20,8 @@ extends CharacterBody2D
 var player: Player
 
 func _ready() -> void:
-	hurt_component.tool = hurted_by
-	hurt_component.hurt.connect(_on_hurt)
+	#hurt_component.hurt.connect(_on_hurt)
+	hurt_component_2.hurt.connect(_on_hurt)
 	
 	entity_health_bar.health_component = health_component
 	

@@ -35,3 +35,11 @@ enum Effect {
 	SpeedDown,
 	RestoreEnergy,
 }
+
+enum EventUnlock {
+	None,
+	BrokenBridge,
+	ShipFloor,
+	ShipEngine,
+	ShipHull,
+}

@@ -34,7 +34,7 @@ func fade_out_presents() -> void:
 
 func game_title() -> void:
 	main_label.add_theme_font_size_override("font_size", 54)
-	main_label.text = "nome do jogo"
+	main_label.text = "GamotoLands"
 	animation_player.play("fade_in")
 	
 	get_tree().create_timer(3).timeout.connect(game_title_fade_out)

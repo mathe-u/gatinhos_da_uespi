@@ -30,7 +30,6 @@ max_squash_amount = 0.2
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_ljrwq")]
 position = Vector2(0, 5)
-tool = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
 shape = SubResource("CircleShape2D_pc34y")

@@ -1,9 +1,11 @@
 
 extends Node2D
 
+@export var event_unlock: DataTypes.EventUnlock = DataTypes.EventUnlock.None
 @export var item_id: StringName
 @export var required_items: int = 1
 @export var icon: Texture2D
+
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var panel_container: PanelContainer = $PanelContainer
@@ -42,6 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				label.text = "%s/%s" % [collected_items ,required_items]
 				
 				if collected_items == required_items:
-					get_parent().repair_bridge()
+					print(event_unlock)
+					#get_parent().repair_bridge()
 					queue_free()
 			

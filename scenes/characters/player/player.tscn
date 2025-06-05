@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://draaj714nuvfl"]
+[gd_scene load_steps=71 format=3 uid="uid://draaj714nuvfl"]
 
 [ext_resource type="Script" uid="uid://1du7wps2oxjs" path="res://scenes/characters/player/player.gd" id="1_6avc5"]
 [ext_resource type="Texture2D" uid="uid://dq28bo6e53qay" path="res://assets/game/Characters/basic_charakter_actions.png" id="1_t61fv"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ch6uq53yxlkw2" path="res://scenes/components/energy_component.tscn" id="13_blysn"]
 [ext_resource type="Texture2D" uid="uid://12r1w7palv1l" path="res://assets/game/Tilesets/light_gray_gradient.png" id="14_hv5x3"]
 [ext_resource type="PackedScene" uid="uid://boq1peq4ytgxs" path="res://scenes/objects/guns/gun.tscn" id="16_i1nod"]
+[ext_resource type="PackedScene" uid="uid://bpwns3jelxm4c" path="res://scenes/objects/Projectiles/projectile_test.tscn" id="17_4kqyw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 8.0
@@ -575,9 +576,9 @@ shadow_item_cull_mask = 2
 texture = ExtResource("14_hv5x3")
 
 [node name="Gun" parent="." instance=ExtResource("16_i1nod")]
-process_mode = 4
-visible = false
-shoot_cooldown = 1.2
+shoot_cooldown = 0.09
 gun_pellets = 1
 gun_spread_degree = 2.0
+projectile_scene = ExtResource("17_4kqyw")
 projectile_speed = 800.0
+projectile_damage = 3

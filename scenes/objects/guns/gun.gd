@@ -57,14 +57,14 @@ func shoot() -> void:
 	gun_blast.play(0.13)
 	
 	for i in range(gun_pellets):
-		var bullet: Area2D = projectile_scene.instantiate()
+		var bullet: Projectile = projectile_scene.instantiate()
 		var spread_offset: float = randf_range(-_spread_radians / 2.0, _spread_radians / 2.0)
 		var final_rotation: float = base_rotation + spread_offset
 		
 		bullet.global_position = spawn_position
 		bullet.rotation = final_rotation
 		bullet.speed = projectile_speed
-		bullet.damage = projectile_damage
+		bullet.hit_damage = projectile_damage
 		get_parent().get_parent().add_child(bullet)
 
 

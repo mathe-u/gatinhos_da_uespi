@@ -185,12 +185,14 @@ position = Vector2(578, 450)
 
 [node name="UnlockComponent" parent="." instance=ExtResource("16_iwr0g")]
 position = Vector2(1680, 887)
+event_unlock = 3
 item_id = &"100"
 required_items = 2
 icon = SubResource("AtlasTexture_gmpev")
 
 [node name="UnlockComponent2" parent="." instance=ExtResource("16_iwr0g")]
 position = Vector2(2849, 1149)
+event_unlock = 1
 item_id = &"101"
-required_items = 50
+required_items = 40
 icon = ExtResource("18_v6ha0")

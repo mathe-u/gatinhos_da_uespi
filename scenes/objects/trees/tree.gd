@@ -10,7 +10,7 @@ extends Sprite2D
 
 func _ready() -> void:
 	hurt_component_2.hurt.connect(on_hurt)
-	
+
 	health_component.died.connect(on_died)
 	
 

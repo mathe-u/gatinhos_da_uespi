@@ -2,7 +2,7 @@ class_name AttackComponent
 extends Area2D
 
 @export var curret_tool: DataTypes.Tools 
-@export var damage: int = 1
+@export var hit_damage: int = 1
 
 signal in_range(body: Node2D)
 signal out_range(body: Node2D)

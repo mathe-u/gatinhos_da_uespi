@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cogup7s4abebl"]
+[gd_scene load_steps=11 format=3 uid="uid://cogup7s4abebl"]
 
 [ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="1_f4wgc"]
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_ivetc"]
-[ext_resource type="Script" uid="uid://d28prs3pqney8" path="res://scenes/objects/trees/large_tree.gd" id="2_f4wgc"]
-[ext_resource type="PackedScene" uid="uid://cbeq6vu2e8eg6" path="res://scenes/components/hurt_component.tscn" id="2_wjqkr"]
-[ext_resource type="PackedScene" uid="uid://164klvafr7px" path="res://scenes/components/damage_component.tscn" id="3_f4wgc"]
+[ext_resource type="Script" uid="uid://tx17e5ki4810" path="res://scenes/objects/trees/tree.gd" id="3_0ia52"]
+[ext_resource type="PackedScene" uid="uid://cp7n1jr5pv1jj" path="res://scenes/components/item_spawner_component.tscn" id="6_6vpey"]
+[ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="7_0ia52"]
+[ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="7_you1t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vpey"]
 resource_local_to_scene = true
@@ -16,30 +17,38 @@ shader_parameter/shake_speed = 20.0
 atlas = ExtResource("1_ivetc")
 region = Rect2(32, 0, 64, 63)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjqkr"]
-size = Vector2(12, 29)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ia52"]
 radius = 6.08276
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cbki"]
+size = Vector2(20, 32)
 
 [node name="LargeTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_6vpey")
 texture = SubResource("AtlasTexture_6vpey")
-script = ExtResource("2_f4wgc")
-
-[node name="HurtComponent" parent="." instance=ExtResource("2_wjqkr")]
-tool = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_wjqkr")
-debug_color = Color(0.776117, 0.25358, 0.886697, 0.42)
+script = ExtResource("3_0ia52")
+drop_id = &"100"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 1025
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_0ia52")
 
-[node name="DamageComponent" parent="." instance=ExtResource("3_f4wgc")]
-max_damage = 6
+[node name="ItemSpawnerComponent" parent="." instance=ExtResource("6_6vpey")]
+position = Vector2(0, 22)
+spawn_radius_max = 20.0
+spawn_radius_min = 1.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("7_0ia52")]
+max_health = 5
+invincibility_time = 0.0
+
+[node name="HurtComponent2" parent="." instance=ExtResource("7_you1t")]
+collision_layer = 16
+collision_mask = 1032
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_3cbki")

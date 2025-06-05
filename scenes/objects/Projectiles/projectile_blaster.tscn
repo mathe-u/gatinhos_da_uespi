@@ -11,17 +11,16 @@ y_sort_enabled = true
 collision_layer = 1024
 collision_mask = 512
 script = ExtResource("1_h18v3")
-speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h18v3")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_h71oj")
 
 [node name="LifeTime" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h71oj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

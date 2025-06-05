@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://dcos5l4lcme2n" path="res://assets/audio/sfx/shotgun_blast_sounds_4.wav" id="3_wo8xu"]
 
 [node name="Gun" type="Node2D"]
+process_mode = 4
+visible = false
 script = ExtResource("1_akvj4")
 gun_texture = ExtResource("3_4wd61")
 projectile_scene = ExtResource("2_4wd61")
