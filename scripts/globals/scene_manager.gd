@@ -43,6 +43,17 @@ func load_level(level: String) -> void:
 		level_root.add_child(level_scene)
 
 
+func load_main_menu() -> void:
+	var main_menu_screen_scene: PackedScene = load("res://scenes/ui/game_menu_screen.tscn")
+	var main_menu_screen_instance: Node2D = main_menu_screen_scene.instantiate()
+	var main_scene: Node = get_tree().root.get_node("MainScene")
+	
+	get_tree().root.add_child(main_menu_screen_instance)
+	
+	if main_scene:
+		main_scene.queue_free()
+
+
 func get_player_node() -> Player:
 	var player_node: Node2D = get_tree().root.get_tree().get_first_node_in_group("player")
 	return player_node

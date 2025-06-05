@@ -31,8 +31,8 @@ ServerManager="*res://scripts/globals/server_manager.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1842
+window/size/viewport_height=964
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

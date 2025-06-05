@@ -170,6 +170,10 @@ position = Vector2(729, 718)
 material = SubResource("ShaderMaterial_mqh5v")
 position = Vector2(659, 701)
 
+[node name="IronRock6" parent="." instance=ExtResource("10_excbq")]
+material = SubResource("ShaderMaterial_gmpev")
+position = Vector2(722, 620)
+
 [node name="CraftingStation" parent="." instance=ExtResource("11_excbq")]
 position = Vector2(508, 579)
 

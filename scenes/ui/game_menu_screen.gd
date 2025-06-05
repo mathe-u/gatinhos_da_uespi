@@ -1,6 +1,7 @@
-extends CanvasLayer
+extends Node2D
 
-@onready var save_game_button: Button = $MarginContainer/VBoxContainer/SaveGameButton
+@onready var save_game_button: Button = $GameMenuScreenForeground/MarginContainer/VBoxContainer/SaveGameButton
+
 
 func _ready() -> void:
 	save_game_button.disabled = false

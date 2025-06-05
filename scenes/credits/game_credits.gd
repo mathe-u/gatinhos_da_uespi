@@ -39,14 +39,14 @@ func fade_out_init() -> void:
 func thanks() -> void:
 	main_label.text = "Fim"
 	minor_label.text = "obrigado por jogar"
-	get_tree().create_timer(1.5).timeout.connect(fade_out_thanks)
+	get_tree().create_timer(1.7).timeout.connect(fade_out_thanks)
 
 
 func fade_out_thanks() -> void:
 	animation_player.play("fade_out")
-	get_tree().create_timer(1.5).timeout.connect(start_menu_scene)
+	get_tree().create_timer(1.7).timeout.connect(start_menu_scene)
 
 
 func start_menu_scene() -> void:
 	SceneManager.set_next_scene("res://scenes/ui/game_menu_screen.tscn")
-	get_tree().change_scene_to_file("res://scenes/ui/loading_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/game_menu_screen.tscn")

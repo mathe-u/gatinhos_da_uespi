@@ -16,11 +16,4 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 
 
 func _on_main_menu_button_pressed() -> void:
-	var main_menu_screen_scene: PackedScene = load("res://scenes/ui/game_menu_screen.tscn")
-	var main_menu_screen_instance: CanvasLayer = main_menu_screen_scene.instantiate()
-	var main_scene: Node = get_tree().root.get_node("MainScene")
-	
-	get_tree().root.add_child(main_menu_screen_instance)
-	
-	if main_scene:
-		main_scene.queue_free()
+	SceneManager.load_main_menu()
