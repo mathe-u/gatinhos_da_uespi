@@ -29,7 +29,7 @@ var _items_parent: Node # Cache do nó pai dos itens
 
 
 func _ready():
-	if spawn_radius_min < 0:
+	if spawn_radius_min < 0.0:
 		spawn_radius_min = 0.0
 	if spawn_radius_max <= spawn_radius_min:
 		spawn_radius_max = spawn_radius_min + 10.0

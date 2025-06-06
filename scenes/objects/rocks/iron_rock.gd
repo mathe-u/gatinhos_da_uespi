@@ -2,7 +2,8 @@ class_name GenericEntity
 extends Sprite2D
 
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var hurt_component: HurtComponent = $HurtComponent
+#@onready var hurt_component: HurtComponent = $HurtComponent
+@onready var hurt_component_2: HurtComponent2 = $HurtComponent2
 @onready var entity_health_bar: TextureProgressBar = $EntityHealthBar
 
 @export var hurted_by: DataTypes.Tools = DataTypes.Tools.None
@@ -14,11 +15,13 @@ extends Sprite2D
 
 var item_drop_scene: PackedScene = preload("res://scenes/objects/itens/item_scene.tscn")
 
+signal destroyed
+
 func _ready() -> void:
 	material.set_shader_parameter("squash_amount", 0.0)
 	
-	hurt_component.tool = hurted_by
-	hurt_component.hurt.connect(_on_hurt)
+	#hurt_component.tool = hurted_by
+	hurt_component_2.hurt.connect(_on_hurt)
 	
 	entity_health_bar.health_component = health_component
 	
@@ -43,6 +46,7 @@ func _on_hurt(damage: int) -> void:
 
 func _on_unhealthy() -> void:
 	call_deferred("add_drop_scene")
+	destroyed.emit()
 	queue_free()
 
 

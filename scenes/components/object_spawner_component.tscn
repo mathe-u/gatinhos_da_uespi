@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://v4jubahh625g"]
+
+[ext_resource type="Script" uid="uid://cl7x4ateevmsw" path="res://scenes/components/object_spawner_component.gd" id="1_6xsfy"]
+
+[node name="ObjectSpawnerComponent" type="Node2D"]
+script = ExtResource("1_6xsfy")
+
+[node name="RespawnTimer" type="Timer" parent="."]

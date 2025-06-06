@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=24 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="Script" uid="uid://hu6fy2t442vc" path="res://scenes/levels/level_1.gd" id="1_gmpev"]
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dbuvtkl5ve58p" path="res://scenes/objects/rocks/iron_rock.tscn" id="10_excbq"]
 [ext_resource type="PackedScene" uid="uid://ctsesdsqrksjk" path="res://scenes/ship/ship.tscn" id="10_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://cabuyfilw0mxk" path="res://scenes/ship/crafting_station.tscn" id="11_excbq"]
-[ext_resource type="Shader" uid="uid://b32xq1m6yub7c" path="res://scenes/objects/squash.gdshader" id="11_v6ha0"]
 [ext_resource type="PackedScene" uid="uid://bqset71wepld7" path="res://scenes/characters/enemies/generic_enemy.tscn" id="12_iav0o"]
 [ext_resource type="PackedScene" uid="uid://bd52kwy8hqqd5" path="res://scenes/objects/trees/small_tree.tscn" id="13_mm8aj"]
 [ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="14_wtwp4"]
@@ -21,54 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://5gkh2gg7vonq" path="res://assets/game/Objects/icon_wood.png" id="18_v6ha0"]
 [ext_resource type="Texture2D" uid="uid://cdq3wb6w70335" path="res://assets/game/Objects/cog_item.png" id="20_mkypq"]
 [ext_resource type="Texture2D" uid="uid://cacpvtt3eijff" path="res://assets/game/Objects/icon_iron_bar2.png" id="21_ndtll"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmpev"]
-resource_local_to_scene = true
-shader = ExtResource("11_v6ha0")
-shader_parameter/squash_amount = 0.0
-shader_parameter/squash_height_factor = 0.15
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkypq"]
-resource_local_to_scene = true
-shader = ExtResource("11_v6ha0")
-shader_parameter/squash_amount = 0.0
-shader_parameter/squash_height_factor = 0.15
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndtll"]
-resource_local_to_scene = true
-shader = ExtResource("11_v6ha0")
-shader_parameter/squash_amount = 0.0
-shader_parameter/squash_height_factor = 0.15
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7h2jl"]
-resource_local_to_scene = true
-shader = ExtResource("11_v6ha0")
-shader_parameter/squash_amount = 0.0
-shader_parameter/squash_height_factor = 0.15
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqh5v"]
-resource_local_to_scene = true
-shader = ExtResource("11_v6ha0")
-shader_parameter/squash_amount = 0.0
-shader_parameter/squash_height_factor = 0.15
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o3do"]
-resource_local_to_scene = true
-shader = ExtResource("11_v6ha0")
-shader_parameter/squash_amount = 0.0
-shader_parameter/squash_height_factor = 0.15
+[ext_resource type="PackedScene" uid="uid://v4jubahh625g" path="res://scenes/components/object_spawner_component.tscn" id="22_ndtll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iwr0g"]
 resource_local_to_scene = true
 shader = ExtResource("14_wtwp4")
 shader_parameter/shake_intensity = 0.0
 shader_parameter/shake_speed = 10.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bahl2"]
-resource_local_to_scene = true
-shader = ExtResource("14_wtwp4")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmpev"]
 atlas = ExtResource("17_np2pn")
@@ -156,30 +114,6 @@ item_id = &"100"
 [node name="Ship" parent="." instance=ExtResource("10_qxy0u")]
 position = Vector2(1967, 810)
 
-[node name="IronRock" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_gmpev")
-position = Vector2(644, 513)
-
-[node name="IronRock2" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_mkypq")
-position = Vector2(685, 586)
-
-[node name="IronRock3" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_ndtll")
-position = Vector2(701, 663)
-
-[node name="IronRock4" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_7h2jl")
-position = Vector2(729, 718)
-
-[node name="IronRock5" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_mqh5v")
-position = Vector2(659, 701)
-
-[node name="IronRock6" parent="." instance=ExtResource("10_excbq")]
-material = SubResource("ShaderMaterial_7o3do")
-position = Vector2(722, 620)
-
 [node name="CraftingStation" parent="." instance=ExtResource("11_excbq")]
 position = Vector2(508, 579)
 
@@ -189,11 +123,6 @@ position = Vector2(625, 593)
 [node name="SmallTree" parent="." instance=ExtResource("13_mm8aj")]
 material = SubResource("ShaderMaterial_iwr0g")
 position = Vector2(774, 560)
-
-[node name="LargeTree" parent="." instance=ExtResource("15_wtwp4")]
-y_sort_enabled = true
-material = SubResource("ShaderMaterial_bahl2")
-position = Vector2(578, 450)
 
 [node name="UnlockComponent" parent="." instance=ExtResource("16_iwr0g")]
 z_index = 1
@@ -224,3 +153,21 @@ position = Vector2(1967, 809)
 event_unlock = 4
 item_id = &"104"
 icon = ExtResource("21_ndtll")
+
+[node name="ObjectSpawnerComponent" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
+objects_to_spawn = Array[PackedScene]([ExtResource("15_wtwp4"), ExtResource("13_mm8aj")])
+tilemap_layer = NodePath("../GameTileMap/Grass")
+respawn_delay = 300.0
+spawnable_custom_data_layer = "can_spawn_tree"
+
+[node name="ObjectSpawnerComponent2" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
+objects_to_spawn = Array[PackedScene]([ExtResource("10_excbq")])
+tilemap_layer = NodePath("../GameTileMap/Grass")
+respawn_delay = 300.0
+spawnable_custom_data_layer = "can_spawn_rock"
+
+[node name="ObjectSpawnerComponent3" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
+objects_to_spawn = Array[PackedScene]([ExtResource("12_iav0o")])
+tilemap_layer = NodePath("../GameTileMap/Grass")
+population_target = 5
+respawn_delay = 300.0

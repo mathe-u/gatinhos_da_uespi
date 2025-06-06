@@ -1,3 +1,4 @@
+#tree
 extends Sprite2D
 
 @export var shake_intensity: float = 0.5
@@ -7,6 +8,7 @@ extends Sprite2D
 @onready var item_spawner_component: ItemSpawnerComponent = $ItemSpawnerComponent
 @onready var health_component: HealthComponent = $HealthComponent
 
+signal destroyed
 
 func _ready() -> void:
 	hurt_component_2.hurt.connect(on_hurt)
@@ -23,13 +25,15 @@ func on_hurt(hit_damage: int) -> void:
 	material.set_shader_parameter("shake_intensity", 0.0)
 
 
-func on_max_damaged_reached() -> void:
-	call_deferred("drop_item")
-	queue_free()
+#func on_max_damaged_reached() -> void:
+	#call_deferred("drop_item")
+	#destroyed.emit()
+	#queue_free()
 
 
 func on_died() -> void:
 	call_deferred("drop_item")
+	destroyed.emit()
 	queue_free()
 
 

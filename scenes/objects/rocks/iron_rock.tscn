@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbuvtkl5ve58p"]
+[gd_scene load_steps=12 format=3 uid="uid://dbuvtkl5ve58p"]
 
 [ext_resource type="Texture2D" uid="uid://cglvj2f1ikd66" path="res://assets/game/Objects/iron_rock.png" id="1_iird5"]
 [ext_resource type="Shader" uid="uid://b32xq1m6yub7c" path="res://scenes/objects/squash.gdshader" id="1_pc34y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ttqbsbn77scw" path="res://scenes/objects/rocks/iron_rock.gd" id="2_pdp31"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="3_pdp31"]
 [ext_resource type="PackedScene" uid="uid://hsckm1udb2ko" path="res://scenes/ui/entity_health_bar.tscn" id="5_pdp31"]
+[ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="7_rw2ft"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rw2ft"]
 resource_local_to_scene = true
@@ -19,6 +20,9 @@ radius = 14.0357
 [sub_resource type="CircleShape2D" id="CircleShape2D_iird5"]
 radius = 11.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_omv5x"]
+radius = 11.0
+
 [node name="IronRock" type="Sprite2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_rw2ft")
@@ -29,6 +33,7 @@ drop_id = &"103"
 max_squash_amount = 0.2
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_ljrwq")]
+visible = false
 position = Vector2(0, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
@@ -53,3 +58,11 @@ value = 64.0
 nine_patch_stretch = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_pdp31")]
+
+[node name="HurtComponent2" parent="." instance=ExtResource("7_rw2ft")]
+position = Vector2(0, 5)
+collision_layer = 16
+collision_mask = 1032
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
+shape = SubResource("CircleShape2D_omv5x")

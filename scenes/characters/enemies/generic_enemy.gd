@@ -19,6 +19,8 @@ extends CharacterBody2D
 
 var player: Player
 
+signal destroyed
+
 func _ready() -> void:
 	#hurt_component.hurt.connect(_on_hurt)
 	hurt_component_2.hurt.connect(_on_hurt)
@@ -59,6 +61,7 @@ func _on_hurt(hurt_damage: int) -> void:
 
 func _on_unhealthy() -> void:
 	call_deferred("add_drop_scene")
+	destroyed.emit()
 	queue_free()
 
 
