@@ -570,6 +570,7 @@ occluder = SubResource("OccluderPolygon2D_blysn")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 9)
+enabled = false
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_item_cull_mask = 2

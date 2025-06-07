@@ -147,21 +147,29 @@ icon = ExtResource("21_ndtll")
 [node name="ObjectSpawnerComponent" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
 objects_to_spawn = Array[PackedScene]([ExtResource("15_wtwp4"), ExtResource("13_mm8aj"), ExtResource("18_mkypq")])
 tilemap_layer = NodePath("../GameTileMap/Grass")
-respawn_delay = 300.0
+respawn_delay = 120.0
 spawnable_custom_data_layer = "can_spawn_tree"
 
 [node name="ObjectSpawnerComponent2" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
 objects_to_spawn = Array[PackedScene]([ExtResource("10_excbq")])
 tilemap_layer = NodePath("../GameTileMap/Grass")
-respawn_delay = 300.0
+respawn_delay = 120.0
 spawnable_custom_data_layer = "can_spawn_rock"
 
 [node name="ObjectSpawnerComponent3" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
 objects_to_spawn = Array[PackedScene]([ExtResource("12_iav0o")])
 tilemap_layer = NodePath("../GameTileMap/Grass")
 population_target = 5
-respawn_delay = 300.0
+respawn_delay = 120.0
 
 [node name="TutorialComponent" parent="." instance=ExtResource("20_gmpev")]
-position = Vector2(744, 637)
-text = "se mova usando w, a, s, d"
+position = Vector2(847, 733)
+text = "Use o machado para cortar arvores ou quebra pedras"
+
+[node name="TutorialComponent2" parent="." instance=ExtResource("20_gmpev")]
+position = Vector2(1918, 971)
+text = "Colete recursos para consertar a nave"
+
+[node name="TutorialComponent3" parent="." instance=ExtResource("20_gmpev")]
+position = Vector2(2701, 1150)
+text = "Conserte a ponte para atravessar!"
