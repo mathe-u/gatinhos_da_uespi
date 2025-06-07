@@ -576,7 +576,7 @@ shadow_item_cull_mask = 2
 texture = ExtResource("14_hv5x3")
 
 [node name="Gun" parent="." instance=ExtResource("16_i1nod")]
-shoot_cooldown = 0.09
+shoot_cooldown = 1.0
 gun_pellets = 1
 gun_spread_degree = 2.0
 projectile_scene = ExtResource("17_4kqyw")

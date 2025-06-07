@@ -73,7 +73,7 @@ func _on_shortcut_2_pressed() -> void:
 
 
 func _on_shortcut_3_pressed() -> void:
-	pass
+	ToolManager.select_tool(DataTypes.Tools.Torch)
 
 
 func _on_shortcut_4_pressed() -> void:

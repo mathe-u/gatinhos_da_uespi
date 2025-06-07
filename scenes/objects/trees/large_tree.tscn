@@ -28,6 +28,7 @@ material = SubResource("ShaderMaterial_6vpey")
 texture = SubResource("AtlasTexture_6vpey")
 script = ExtResource("3_0ia52")
 drop_id = &"100"
+drops = Array[StringName]([&"strawberry", &"100"])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 1025
@@ -47,7 +48,7 @@ invincibility_time = 0.0
 
 [node name="HurtComponent2" parent="." instance=ExtResource("7_you1t")]
 collision_layer = 16
-collision_mask = 1032
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
 position = Vector2(0, 6)

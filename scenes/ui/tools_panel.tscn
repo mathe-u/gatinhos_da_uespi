@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm2r1di40vgg0"]
+[gd_scene load_steps=8 format=3 uid="uid://dm2r1di40vgg0"]
 
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="1_2yiqu"]
 [ext_resource type="Script" uid="uid://cpo2vbxnse04n" path="res://scenes/ui/tools_panel.gd" id="2_0jxvs"]
@@ -13,6 +13,10 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbtgy"]
 atlas = ExtResource("2_xkgdf")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ivs"]
+atlas = ExtResource("2_xkgdf")
+region = Rect2(32, 32, 32, 32)
 
 [node name="ToolsPanel" type="PanelContainer"]
 offset_right = 308.0
@@ -101,6 +105,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_a7ivs")
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_a7ivs")
 icon_alignment = 1
 
 [node name="ShotcutLabel" type="Label" parent="MarginContainer/HBoxContainer/Shortcut3/ShortcutButton"]

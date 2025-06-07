@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://bwlhaui2wstc4"]
+
+[ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_unp1p"]
+[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="1_vqn4b"]
+[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="2_yhddi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hlmj"]
+atlas = ExtResource("1_unp1p")
+region = Rect2(64, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_vqn4b")
+id = &"strawberry"
+display_name = "strawberry"
+icon = SubResource("AtlasTexture_8hlmj")
+type = 0
+effect = 2
+effect_amount = 5
+stackable = true
+max_stack_size = 999
+units = 1
+item_scene = ExtResource("2_yhddi")
+is_craftable = false
+crafting_ingredients = []
+items_produced = 0
+time_to_craft = 0.0
+metadata/_custom_type_script = "uid://2jwace1btwws"

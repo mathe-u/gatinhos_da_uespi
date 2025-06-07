@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://p6otwy8icdby"]
+
+[ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_xq1yj"]
+[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="2_dx7bp"]
+[ext_resource type="Script" uid="uid://2jwace1btwws" path="res://scripts/item_data.gd" id="3_5qxfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4dtk"]
+atlas = ExtResource("1_xq1yj")
+region = Rect2(128, 96, 32, 32)
+
+[resource]
+script = ExtResource("3_5qxfj")
+id = &"purple_berry"
+display_name = "purple berry"
+icon = SubResource("AtlasTexture_q4dtk")
+type = 0
+effect = 8
+effect_amount = 10
+stackable = true
+max_stack_size = 999
+units = 1
+item_scene = ExtResource("2_dx7bp")
+is_craftable = false
+crafting_ingredients = []
+items_produced = 0
+time_to_craft = 0.0
+metadata/_custom_type_script = "uid://2jwace1btwws"

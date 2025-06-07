@@ -17,7 +17,7 @@ var health_bar_player_node: TextureProgressBar
 
 func _ready() -> void:
 	ToolManager.tool_selected.connect(on_tool_selected)
-	DayNightCycleManager.time_tick.connect(on_nightfall)
+	#DayNightCycleManager.time_tick.connect(on_nightfall)
 	#hurt_component.hurt.connect(_on_hurt)
 	
 	health_component.max_health = max_health
@@ -30,6 +30,11 @@ func _ready() -> void:
 
 
 func on_tool_selected(tool: DataTypes.Tools) -> void:
+	if tool == DataTypes.Tools.Torch:
+		point_light_2d.enabled = true
+	else:
+		point_light_2d.enabled = false
+	
 	if tool == DataTypes.Tools.GunBlaster:
 		gun.visible = true
 		gun.process_mode = Node.PROCESS_MODE_INHERIT
@@ -49,9 +54,10 @@ func set_player_name(player_name: String) -> void:
 func apply_item_effect(item: ItemData) -> void:
 	if item.effect == DataTypes.Effect.RestoreEnergy:
 		energy_component.add_energy(item.effect_amount)
+		print("efeito de restaurar energia aplicado, restaurou %s" % item.effect_amount)
 	if item.effect == DataTypes.Effect.Healing:
 		health_component.apply_heal(item.effect_amount)
-	print("efeito de " + str(item.effect) + " aplicado")
+		print("efeito de restaurar vida aplicado, restaurou %s" % item.effect_amount)
 
 
 func _on_hurt() -> void:
@@ -77,7 +83,7 @@ func died() -> void:
 	
 	var main_scene: Node = get_tree().root.get_node("MainScene")
 	var main_menu_screen_scene: PackedScene = load("res://scenes/ui/game_menu_screen.tscn")
-	var main_menu_screen_instance: CanvasLayer = main_menu_screen_scene.instantiate()
+	var main_menu_screen_instance: Node2D = main_menu_screen_scene.instantiate()
 	
 	get_tree().root.add_child(main_menu_screen_instance)
 	
@@ -95,7 +101,8 @@ func _on_energy_empty() -> void:
 
 
 func _on_energy_full() -> void:
-	health_component.heal(energy_component.heal_on_full)
+	
+	health_component.apply_heal(energy_component.heal_on_full)
 
 
 func on_nightfall(_day: int, hour: int, _minute: int) -> void:

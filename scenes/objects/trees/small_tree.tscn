@@ -28,6 +28,7 @@ material = SubResource("ShaderMaterial_skbjc")
 texture = SubResource("AtlasTexture_xyb6m")
 script = ExtResource("3_skbjc")
 drop_id = &"100"
+drops = Array[StringName]([&"100"])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -42,7 +43,7 @@ spawn_radius_min = 1.0
 
 [node name="HurtComponent2" parent="." instance=ExtResource("7_elu1k")]
 collision_layer = 16
-collision_mask = 1032
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
 position = Vector2(0, 5)

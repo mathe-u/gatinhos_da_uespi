@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcphaalfqn2cj"]
+
+[ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_p8ja0"]
+[ext_resource type="Shader" uid="uid://0secowsdnilg" path="res://scenes/objects/rocks/squash.gdshader" id="1_u3i6c"]
+[ext_resource type="Script" uid="uid://b2bievhq2g6v" path="res://scenes/objects/plants/fruit_bush.gd" id="2_ftp4a"]
+[ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="3_pner1"]
+[ext_resource type="PackedScene" uid="uid://hsckm1udb2ko" path="res://scenes/ui/entity_health_bar.tscn" id="4_pner1"]
+[ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="5_u3i6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2noq"]
+shader = ExtResource("1_u3i6c")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3i6c"]
+atlas = ExtResource("1_p8ja0")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2noq"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8ja0"]
+radius = 12.0416
+
+[node name="FruitBush" type="Sprite2D"]
+material = SubResource("ShaderMaterial_v2noq")
+texture = SubResource("AtlasTexture_u3i6c")
+script = ExtResource("2_ftp4a")
+hurted_by = 1
+drop_id = &"purple_berry"
+
+[node name="HurtComponent2" parent="." instance=ExtResource("3_pner1")]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
+shape = SubResource("CircleShape2D_v2noq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 578
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_p8ja0")
+
+[node name="EntityHealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_pner1")]
+offset_left = -16.0
+offset_top = -38.0
+offset_right = 17.0
+offset_bottom = -28.0
+nine_patch_stretch = true
+health_component = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_u3i6c")]

@@ -8,6 +8,7 @@ enum Tools {
 	WaterCrops,
 	PlantCorn,
 	PlantTomato,
+	Torch,
 }
 
 enum GrowthStates {
