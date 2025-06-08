@@ -27,6 +27,7 @@ size = Vector2(14, 34)
 material = SubResource("ShaderMaterial_skbjc")
 texture = SubResource("AtlasTexture_xyb6m")
 script = ExtResource("3_skbjc")
+shake_intensity = 2.5
 drop_id = &"100"
 drops = Array[StringName]([&"100"])
 
