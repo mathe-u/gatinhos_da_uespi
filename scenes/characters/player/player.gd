@@ -11,9 +11,11 @@ extends CharacterBody2D
 @export var current_tool: DataTypes.Tools = DataTypes.Tools.None
 @export var max_health: int
 @export var starting_health: int
+@export var use_tool: bool
 
 var player_direction: Vector2
 var health_bar_player_node: TextureProgressBar
+
 
 func _ready() -> void:
 	ToolManager.tool_selected.connect(on_tool_selected)
@@ -100,5 +102,8 @@ func _on_energy_empty() -> void:
 
 
 func _on_energy_full() -> void:
-	
 	health_component.apply_heal(energy_component.heal_on_full)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	use_tool = event.is_action_pressed("hit")

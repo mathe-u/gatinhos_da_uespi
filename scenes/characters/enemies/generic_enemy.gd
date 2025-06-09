@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var navigation_component: Node2D = $NavigationComponent
 @onready var attack_component: AttackComponent = $AttackComponent
 @onready var attack_timer: Timer = $AttackTimer
+@onready var field_of_view: Area2D = $FieldOfView
 
 @export var hurted_by: DataTypes.Tools = DataTypes.Tools.None
 @export var entity_max_health: int = 10
@@ -18,6 +19,7 @@ extends CharacterBody2D
 @export var attack_cooldown: float = 1.8
 
 var player: Player
+var chase: bool = false
 
 signal destroyed
 
@@ -39,16 +41,19 @@ func _ready() -> void:
 	attack_timer.one_shot = false
 	attack_timer.timeout.connect(_apply_damage)
 	
+	field_of_view.body_entered.connect(_chase_target)
+	
 	player = SceneManager.get_player_node()
 	
 	_update_health_bar()
 
 
 func _physics_process(_delta: float) -> void:
-	var direction = navigation_component.get_direction(player)
+	if chase:
+		var direction = navigation_component.get_direction(player)
 	
-	velocity = direction * speed
-	move_and_slide()
+		velocity = direction * speed
+		move_and_slide()
 	
 
 func _update_health_bar() -> void:
@@ -88,3 +93,15 @@ func _on_attack_out_range(body: Node2D) -> void:
 
 func _apply_damage() -> void:
 	player.health_component.take_damage(damage)
+
+
+func _chase_target(body: Node2D) -> void:
+	if body is Player:
+		chase = true
+	
+	#chase = true
+
+
+func _chase_stop(body: Node2D) -> void:
+	if body is Player:
+		chase = false

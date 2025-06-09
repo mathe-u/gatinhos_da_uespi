@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqset71wepld7"]
+[gd_scene load_steps=14 format=3 uid="uid://bqset71wepld7"]
 
 [ext_resource type="Script" uid="uid://dt6d00ejr7wdt" path="res://scenes/characters/enemies/generic_enemy.gd" id="1_ad4gc"]
 [ext_resource type="Texture2D" uid="uid://3wmc6ar21bdh" path="res://assets/game/Characters/enemy.png" id="2_ad4gc"]
@@ -16,18 +16,23 @@ size = Vector2(20, 43)
 size = Vector2(20, 43)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_po8c6"]
-radius = 41.3038
+radius = 32.0156
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1d30"]
 size = Vector2(20, 46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6can"]
+radius = 354.565
 
 [node name="GenericEnemy" type="CharacterBody2D"]
 collision_layer = 512
 collision_mask = 1027
 script = ExtResource("1_ad4gc")
 hurted_by = 1
-entity_max_health = 4
-entity_starting_health = 9
+entity_max_health = 50
+entity_starting_health = 50
+damage = 4
+speed = 70.0
 drop_id = &"100"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -74,3 +79,11 @@ collision_mask = 1032
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
 shape = SubResource("RectangleShape2D_l1d30")
+
+[node name="FieldOfView" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FieldOfView"]
+shape = SubResource("CircleShape2D_f6can")
+debug_color = Color(0.800428, 0.337474, 0.647384, 0.42)

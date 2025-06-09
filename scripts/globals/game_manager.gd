@@ -6,9 +6,9 @@ var player_name: String = ""
 
 var ship_events: int = 0
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("game_menu"):
-		show_game_menu_screen()
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("game_menu"):
+		#show_game_menu_screen()
 
 
 func start_game() -> void:

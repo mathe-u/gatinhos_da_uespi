@@ -44,7 +44,8 @@ spawn_radius_max = 20.0
 spawn_radius_min = 1.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_0ia52")]
-max_health = 5
+max_health = 20
+health = 20
 invincibility_time = 0.0
 
 [node name="HurtComponent2" parent="." instance=ExtResource("7_you1t")]
