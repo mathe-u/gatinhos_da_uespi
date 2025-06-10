@@ -80,22 +80,6 @@ position = Vector2(603, 732)
 item_id = &"100"
 quantity = 10
 
-[node name="ItemScene2" parent="." instance=ExtResource("9_dga24")]
-visible = false
-position = Vector2(603, 645)
-item_id = &"101"
-
-[node name="ItemScene6" parent="." instance=ExtResource("9_dga24")]
-visible = false
-position = Vector2(603, 700)
-item_id = &"101"
-quantity = 7
-
-[node name="ItemScene7" parent="." instance=ExtResource("9_dga24")]
-visible = false
-position = Vector2(603, 671)
-item_id = &"101"
-
 [node name="ItemScene3" parent="." instance=ExtResource("9_dga24")]
 visible = false
 position = Vector2(603, 617)

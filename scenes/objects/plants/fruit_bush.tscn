@@ -21,6 +21,7 @@ radius = 13.0
 radius = 12.0416
 
 [node name="FruitBush" type="Sprite2D"]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_v2noq")
 texture = SubResource("AtlasTexture_u3i6c")
 script = ExtResource("2_ftp4a")

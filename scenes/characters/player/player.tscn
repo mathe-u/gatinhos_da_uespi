@@ -650,7 +650,7 @@ collision_layer = 2
 collision_mask = 595
 script = ExtResource("1_6avc5")
 max_health = 20
-starting_health = 18
+starting_health = 20
 
 [node name="HitComponent" parent="." instance=ExtResource("2_3xnwo")]
 
@@ -739,3 +739,4 @@ gun_spread_degree = 2.0
 projectile_scene = ExtResource("17_4kqyw")
 projectile_speed = 800.0
 projectile_damage = 1
+joystick_aim_sensitivity = 500.0

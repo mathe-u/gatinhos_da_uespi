@@ -12,6 +12,9 @@ var level_scenes: Dictionary = {
 
 var _next_scene_path: String
 var _current_scene: Node
+var _is_inventory_locked: bool = false
+var _is_settings_locked: bool = false
+
 
 func load_main_scene_container() -> void:
 	if get_tree().root.has_node(main_scene_root_path):
@@ -73,16 +76,26 @@ func get_current_scene() -> Node:
 
 
 func open_close_inventory_ui() -> void:
-	var inventory_ui_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
-	show_hide_inventory_menu_button()
-	inventory_ui_scene.visible = !inventory_ui_scene.visible
+	if !_is_inventory_locked:
+		var inventory_ui_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
+		inventory_ui_scene.get_node("PanelContainer/GridContainer/InventorySlot/MarginContainer/PanelContainer/ItemButton").grab_focus()
+		
+		show_hide_inventory_menu_button()
+	
+		inventory_ui_scene.visible = !inventory_ui_scene.visible
+		_is_settings_locked = !_is_settings_locked
+	
 
 
 func open_close_settings_panel() -> void:
-	var settings_panel_scene: PanelContainer = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/SettingsPanel")
-	show_hide_inventory_menu_button()
-	settings_panel_scene.visible = !settings_panel_scene.visible
-	
+	if !_is_settings_locked:
+		var settings_panel_scene: PanelContainer = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/SettingsPanel")
+		settings_panel_scene.get_node("VBoxContainer/CheckButton").grab_focus()
+			
+		show_hide_inventory_menu_button()
+		
+		settings_panel_scene.visible = !settings_panel_scene.visible
+		_is_inventory_locked = !_is_inventory_locked
 
 
 func show_hide_inventory_menu_button() -> void:

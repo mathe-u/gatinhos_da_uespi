@@ -11,6 +11,7 @@ visible = false
 script = ExtResource("1_akvj4")
 gun_texture = ExtResource("3_4wd61")
 projectile_scene = ExtResource("2_4wd61")
+joystick_aim_sensitivity = null
 
 [node name="GunSprite" type="Sprite2D" parent="."]
 position = Vector2(28, 0)

@@ -84,5 +84,5 @@ func start_menu_scene() -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("dash"):
+	if event.is_action_pressed("interact"):
 		start_menu_scene()

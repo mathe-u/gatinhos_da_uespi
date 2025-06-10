@@ -77,3 +77,11 @@ func drop_slot(slot1: Control, slot2: Control) -> void:
 	else:
 		if InventoryManager.swap_inventory_itens(slot1_index, slot2_index):
 			_on_inventory_updated()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		var tool_panel_scene: PanelContainer = get_parent().get_node("ToolsPanel")
+		
+		tool_panel_scene.release_focus()
+		_on_close_inventory_pressed()

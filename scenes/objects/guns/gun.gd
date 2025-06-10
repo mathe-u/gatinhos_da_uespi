@@ -12,12 +12,16 @@ extends Node2D
 @export var projectile_speed: float = 900
 @export var projectile_damage: int = 5
 
+@export var joystick_aim_sensitivity: float = 100.0
+
 @onready var bullet_spawn: Marker2D = $GunSprite/BulletSpawn
 @onready var gun_sprite: Sprite2D = $GunSprite
 @onready var gun_blast: AudioStreamPlayer2D = $Shotgun_blast
 
 var shoot_cooldown_time: float = 0.2
 var _spread_radians: float = deg_to_rad(gun_spread_degree)
+var aim_direction: Vector2 = Vector2.RIGHT
+var aim_target_position: Vector2
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -34,9 +38,16 @@ func _process(delta: float) -> void:
 	if shoot_cooldown_time > 0.0:
 		shoot_cooldown_time -= delta
 	
-	look_at(get_global_mouse_position())
+	var right_stick_input: Vector2 = Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
+	if right_stick_input.length() > 0.1:
+		aim_direction = right_stick_input.normalized()
+		aim_target_position = global_position + right_stick_input.normalized() * joystick_aim_sensitivity
+	else:
+		aim_target_position = get_global_mouse_position()
 	
-	if get_global_mouse_position().x < global_position.x:
+	look_at(aim_target_position)
+	
+	if aim_target_position.x < global_position.x:
 		gun_sprite.flip_v = true
 		bullet_spawn.position = Vector2(28, 4)
 	else:
@@ -52,7 +63,6 @@ func shoot() -> void:
 	var spawn_transform: Transform2D = bullet_spawn.global_transform
 	var base_rotation: float = spawn_transform.get_rotation()
 	var spawn_position: Vector2 = spawn_transform.origin
-	#var spawn_position: Vector2 = bullet_spawn.global_position
 	
 	gun_blast.play(0.13)
 	

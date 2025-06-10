@@ -193,6 +193,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
+focus_mode = 1
 theme_type_variation = &"ToolButton"
 icon = ExtResource("4_07w8f")
 
@@ -205,6 +206,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="InventoryButton" type="Button" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
+focus_mode = 1
 theme_type_variation = &"ToolButton"
 icon = ExtResource("5_07w8f")
 

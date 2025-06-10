@@ -30,29 +30,38 @@ custom_minimum_size = Vector2(276, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i3lpr")
 theme_override_font_sizes/font_size = 45
-text = "Settings"
+text = "Config"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(51, 40)
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme_type_variation = &"ToolButton"
 theme_override_fonts/font = ExtResource("2_i3lpr")
 theme_override_font_sizes/font_size = 36
 text = "X"
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(160, 64)
 layout_mode = 2
 theme_type_variation = &"CheckButtonItem"
 button_pressed = true
 text = "Music"
+alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 theme_type_variation = &"ToolButton"
 theme_override_fonts/font = ExtResource("2_i3lpr")
 theme_override_font_sizes/font_size = 27
-text = "Main Menu"
+text = "Menu Principal"
 
 [node name="ClickButton" parent="." instance=ExtResource("4_5qqek")]
 

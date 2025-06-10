@@ -51,7 +51,7 @@ func _on_drop_button_pressed() -> void:
 
 
 func _on_use_button_pressed() -> void:
-	actions_panel.visible = false
+	actions_panel.visible = !actions_panel.visible
 	
 	if item and item["effect"]:
 		var player_node: Player = SceneManager.get_player_node()
@@ -71,3 +71,8 @@ func _on_item_button_gui_input(event: InputEvent) -> void:
 			else:
 				#panel_container.modulate = Color(1, 1, 1)
 				drag_end.emit()
+
+
+func _on_item_button_focus_entered() -> void:
+	if item:
+		actions_panel.visible = false

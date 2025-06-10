@@ -1,10 +1,12 @@
 extends Node2D
 
 @onready var save_game_button: Button = $GameMenuScreenForeground/MarginContainer/VBoxContainer/SaveGameButton
+@onready var start_game_button: Button = $GameMenuScreenForeground/MarginContainer/VBoxContainer/StartGameButton
 
 
 func _ready() -> void:
 	save_game_button.disabled = false
+	start_game_button.grab_focus()
 	#save_game_button.focus_mode = Control.FOCUS_ALL if SaveGameManager.allow_save_game else Control.FOCUS_NONE
 
 

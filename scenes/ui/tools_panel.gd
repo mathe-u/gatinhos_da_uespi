@@ -1,84 +1,82 @@
 extends PanelContainer
 
-#@onready var tool_axe: Button = $MarginContainer/HBoxContainer/ToolAxe
-@onready var shortcut_1: Button = $MarginContainer/HBoxContainer/Shortcut1/ShortcutButton
+var shortcut_buttons: Array[Button] = []
+var shortcut_tools: Array[DataTypes.Tools] = [
+	DataTypes.Tools.AxeWood,
+	DataTypes.Tools.GunBlaster,
+	DataTypes.Tools.Torch,
+	DataTypes.Tools.None,
+	DataTypes.Tools.None,
+]
+
+var current_focus_index: int = -1
+
+func _ready() -> void:
+	var hbox: HBoxContainer = $MarginContainer/HBoxContainer
+	
+	for i: int in range(hbox.get_child_count()):
+		var shortcut_node: PanelContainer = hbox.get_child(i)
+		
+		if shortcut_node.has_node("ShortcutButton"):
+			var button: Button = shortcut_node.get_node("ShortcutButton")
+			
+			shortcut_buttons.append(button)
+			button.focus_mode = Control.FOCUS_ALL
+			
+			button.focus_neighbor_left = button.get_path()
+			button.focus_neighbor_right = button.get_path()
+			button.focus_neighbor_top = button.get_path()
+			button.focus_neighbor_bottom = button.get_path()
+			
+			button.focus_entered.connect(_on_shortcut_focus_entered.bind(i))
+			button.pressed.connect(_on_shortcut_pressed.bind(i))
 
 
-@onready var shortcut_2: Button = $MarginContainer/HBoxContainer/Shortcut2/ShortcutButton
-@onready var shortcut_3: Button = $MarginContainer/HBoxContainer/Shortcut3/ShortcutButton
-@onready var shortcut_4: Button = $MarginContainer/HBoxContainer/Shortcut4/ShortcutButton
-@onready var shortcut_5: Button = $MarginContainer/HBoxContainer/Shortcut5/ShortcutButton
-
-#@onready var tool_tilling: Button = $MarginContainer/HBoxContainer/ToolTilling
-#@onready var tool_watering_can: Button = $MarginContainer/HBoxContainer/ToolWateringCan
-#@onready var tool_corn: Button = $MarginContainer/HBoxContainer/ToolCorn
-#@onready var tool_tomato: Button = $MarginContainer/HBoxContainer/ToolTomato
+func _on_shortcut_focus_entered(index: int) -> void:
+	current_focus_index = index
+	ToolManager.select_tool(shortcut_tools[index])
 
 
+func _on_shortcut_pressed(index: int) -> void:
+	ToolManager.select_tool(shortcut_tools[index])
 
-#func _on_tool_axe_pressed() -> void:
-	#ToolManager.select_tool(DataTypes.Tools.AxeWood)
-#
-#
-#func _on_tool_tilling_pressed() -> void:
-	#ToolManager.select_tool(DataTypes.Tools.TillGround)
-#
-#
-#func _on_tool_watering_can_pressed() -> void:
-	#ToolManager.select_tool(DataTypes.Tools.WaterCrops)
-#
-#
-#func _on_tool_corn_pressed() -> void:
-	#ToolManager.select_tool(DataTypes.Tools.PlantCorn)
-#
-#
-#func _on_tool_tomato_pressed() -> void:
-	#ToolManager.select_tool(DataTypes.Tools.PlantTomato)
 
+#func _gui_input(event: InputEvent) -> void:
+	#if event.is_action("ui_up") or \
+	   #event.is_action("ui_down") or \
+	   #event.is_action("ui_left") or \
+	   #event.is_action("ui_right"):
+		#accept_event()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("release_tool"):
-		ToolManager.select_tool(DataTypes.Tools.None)
-		shortcut_1.release_focus()
-		shortcut_2.release_focus()
+	for i: int in range(1, shortcut_buttons.size() + 1):
+		var action_name: String = "%d_hotbar_slot" % i
+		if event.is_action_pressed(action_name):
+			var button_index = i - 1
+			shortcut_buttons[button_index].grab_focus()
+			return
+	
+	if event.is_action_pressed("hotbar_next"):
+		if current_focus_index == -1:
+			current_focus_index = 0
+		else:
+			current_focus_index = (current_focus_index + 1) % shortcut_buttons.size()
 		
-		#tool_tilling.release_focus()
-		#tool_watering_can.release_focus()
-		#tool_corn.release_focus()
-		#tool_tomato.release_focus()
-	elif event.is_action_pressed("1_hotbar_slot"):
-		shortcut_1.grab_focus()
-		_on_shortcut_1_pressed()
-	elif event.is_action_pressed("2_hotbar_slot"):
-		shortcut_2.grab_focus()
-		_on_shortcut_2_pressed()
-	elif event.is_action_pressed("3_hotbar_slot"):
-		shortcut_3.grab_focus()
-		_on_shortcut_3_pressed()
-	elif event.is_action_pressed("4_hotbar_slot"):
-		shortcut_4.grab_focus()
-		_on_shortcut_4_pressed()
-	elif event.is_action_pressed("5_hotbar_slot"):
-		shortcut_5.grab_focus()
-		_on_shortcut_5_pressed()
+		shortcut_buttons[current_focus_index].grab_focus()
+	
+	elif event.is_action_pressed("hotbar_previous"):
+		if current_focus_index == -1:
+			current_focus_index = shortcut_buttons.size() - 1
+		else:
+			current_focus_index = (current_focus_index - 1 + shortcut_buttons.size()) % shortcut_buttons.size()
+		
+		shortcut_buttons[current_focus_index].grab_focus()
 
 
-func _on_shortcut_1_pressed() -> void:
-	ToolManager.select_tool(DataTypes.Tools.AxeWood)
-
-
-func _on_shortcut_2_pressed() -> void:
-	ToolManager.select_tool(DataTypes.Tools.GunBlaster)
-
-
-func _on_shortcut_3_pressed() -> void:
-	ToolManager.select_tool(DataTypes.Tools.Torch)
-
-
-func _on_shortcut_4_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_shortcut_5_pressed() -> void:
-	pass # Replace with function body.
+func release_all_focus() -> void:
+	if current_focus_index != -1 and is_instance_valid(shortcut_buttons[current_focus_index]):
+		shortcut_buttons[current_focus_index].release_focus()
+	
+	current_focus_index = -1
+	ToolManager.select_tool(DataTypes.Tools.None)
