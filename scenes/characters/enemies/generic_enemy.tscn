@@ -33,7 +33,6 @@ entity_max_health = 20
 entity_starting_health = 20
 damage = 4
 speed = 70.0
-drop_id = &"100"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ad4gc")

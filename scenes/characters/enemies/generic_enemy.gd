@@ -71,13 +71,14 @@ func _on_unhealthy() -> void:
 
 
 func add_drop_scene() -> void:
-	var item = ItemsDataBase.new().get_item_data(drop_id)
-	var item_scene: ItemComponent = item.item_scene.instantiate()
+	if drop_id:
+		var item = ItemsDataBase.new().get_item_data(drop_id)
+		var item_scene: ItemComponent = item.item_scene.instantiate()
 	
-	item_scene.global_position = global_position
-	item_scene.item_id = item.id
-	item_scene.quantity = randi_range(1, 4)
-	get_parent().add_child(item_scene)
+		item_scene.global_position = global_position
+		item_scene.item_id = item.id
+		item_scene.quantity = randi_range(1, 4)
+		get_parent().add_child(item_scene)
 
 
 func _on_attack_in_range(body: Node2D) -> void:
