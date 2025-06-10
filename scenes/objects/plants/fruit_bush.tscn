@@ -25,6 +25,8 @@ material = SubResource("ShaderMaterial_v2noq")
 texture = SubResource("AtlasTexture_u3i6c")
 script = ExtResource("2_ftp4a")
 hurted_by = 1
+entity_max_health = 6
+entity_starting_health = 6
 drop_id = &"purple_berry"
 
 [node name="HurtComponent2" parent="." instance=ExtResource("3_pner1")]

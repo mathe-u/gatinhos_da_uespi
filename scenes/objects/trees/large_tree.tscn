@@ -15,7 +15,7 @@ shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vpey"]
 atlas = ExtResource("1_ivetc")
-region = Rect2(32, 0, 64, 63)
+region = Rect2(96, 0, 64, 63)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ia52"]
 radius = 6.08276

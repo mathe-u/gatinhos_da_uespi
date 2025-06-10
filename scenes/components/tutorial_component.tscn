@@ -22,9 +22,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -59.0
-offset_top = -80.0
-offset_right = 59.0
+offset_left = -137.0
+offset_top = -43.0
+offset_right = 137.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("5_0upb0")
@@ -38,7 +38,6 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
 [node name="Label" type="Label" parent="BoxLabel/MarginContainer"]
-custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -46,7 +45,6 @@ theme_override_fonts/font = ExtResource("4_a0jh5")
 theme_override_font_sizes/font_size = 8
 text = "adsdassdasdasdasdasdasdasdasdasd"
 horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="LifeTime" type="Timer" parent="."]
 wait_time = 10.0

@@ -35,13 +35,13 @@ func exit_game() -> void:
 	get_tree().quit()
 
 
-func show_game_menu_screen() -> void:
-	var existing_menu = get_tree().root.find_child("GameMenuScreen", true)
-	if existing_menu:
-		return
-	
-	var game_menu_screen_instance = game_menu_screen.instantiate()
-	get_tree().root.add_child(game_menu_screen_instance)
+#func show_game_menu_screen() -> void:
+	#var existing_menu = get_tree().root.find_child("GameMenuScreen", true)
+	#if existing_menu:
+		#return
+	#
+	#var game_menu_screen_instance = game_menu_screen.instantiate()
+	#get_tree().root.add_child(game_menu_screen_instance)
 
 
 func clear_player_data():

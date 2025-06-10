@@ -26,11 +26,11 @@ radius = 354.565
 
 [node name="GenericEnemy" type="CharacterBody2D"]
 collision_layer = 512
-collision_mask = 1027
+collision_mask = 1283
 script = ExtResource("1_ad4gc")
 hurted_by = 1
-entity_max_health = 50
-entity_starting_health = 50
+entity_max_health = 20
+entity_starting_health = 20
 damage = 4
 speed = 70.0
 drop_id = &"100"

@@ -28,6 +28,7 @@ SaveGameManager="*res://scripts/globals/save_game_manager.gd"
 GameManager="*res://scripts/globals/game_manager.gd"
 SceneManager="*res://scripts/globals/scene_manager.gd"
 ServerManager="*res://scripts/globals/server_manager.gd"
+SfxManager="*res://scripts/globals/sfx_manager.gd"
 
 [display]
 
@@ -88,11 +89,7 @@ hit={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(299, 8),"global_position":Vector2(308, 56),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
-release_tool={
-"deadzone": 0.2,
-"events": []
-}
-remove_dirt={
+fire={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
 ]
@@ -141,6 +138,14 @@ dash={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
+}
+release_tool={
+"deadzone": 0.2,
+"events": []
+}
+remove_dirt={
+"deadzone": 0.2,
+"events": []
 }
 
 [layer_names]

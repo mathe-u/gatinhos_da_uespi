@@ -571,15 +571,17 @@ occluder = SubResource("OccluderPolygon2D_blysn")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 9)
 enabled = false
+energy = 2.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_item_cull_mask = 2
 texture = ExtResource("14_hv5x3")
+texture_scale = 3.0
 
 [node name="Gun" parent="." instance=ExtResource("16_i1nod")]
-shoot_cooldown = 1.0
+shoot_cooldown = 0.5
 gun_pellets = 1
 gun_spread_degree = 2.0
 projectile_scene = ExtResource("17_4kqyw")
 projectile_speed = 800.0
-projectile_damage = 3
+projectile_damage = 1
