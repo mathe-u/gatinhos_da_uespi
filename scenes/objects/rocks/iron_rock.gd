@@ -5,6 +5,7 @@ extends Sprite2D
 #@onready var hurt_component: HurtComponent = $HurtComponent
 @onready var hurt_component_2: HurtComponent2 = $HurtComponent2
 @onready var entity_health_bar: TextureProgressBar = $EntityHealthBar
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var hurted_by: DataTypes.Tools = DataTypes.Tools.None
 @export var entity_max_health: int = 10
@@ -38,6 +39,8 @@ func _update_health_bar() -> void:
 
 
 func _on_hurt(damage: int) -> void:
+	audio_stream_player_2d.play()
+	
 	var tween: Tween = create_tween()
 	tween.tween_property(material, "shader_parameter/squash_amount", max_squash_amount, squash_duration / 2.0).set_ease(Tween.EASE_OUT) # Achatamento rápido
 	tween.tween_property(material, "shader_parameter/squash_amount", 0.0, squash_duration / 2.0).set_ease(Tween.EASE_IN) # Retorno mais suave

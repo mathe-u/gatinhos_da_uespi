@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cogup7s4abebl"]
+[gd_scene load_steps=13 format=3 uid="uid://cogup7s4abebl"]
 
 [ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="1_f4wgc"]
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_ivetc"]
@@ -23,6 +23,9 @@ radius = 6.08276
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cbki"]
 size = Vector2(20, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0ia52"]
+polygon = PackedVector2Array(-8, 22, -5, 18, 0, 16, 6, 18, 9, 22, 6, 26, 0, 28, -5, 26)
 
 [node name="LargeTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_6vpey")
@@ -61,3 +64,6 @@ shape = SubResource("RectangleShape2D_3cbki")
 stream = ExtResource("7_3cbki")
 volume_db = 3.0
 bus = &"SFX"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_0ia52")
