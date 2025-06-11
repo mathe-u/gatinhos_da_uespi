@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd52kwy8hqqd5"]
+[gd_scene load_steps=12 format=3 uid="uid://bd52kwy8hqqd5"]
 
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_a8qts"]
 [ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="1_w057i"]
 [ext_resource type="Script" uid="uid://tx17e5ki4810" path="res://scenes/objects/trees/tree.gd" id="3_skbjc"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="6_elu1k"]
 [ext_resource type="PackedScene" uid="uid://cp7n1jr5pv1jj" path="res://scenes/components/item_spawner_component.tscn" id="6_skbjc"]
+[ext_resource type="AudioStream" uid="uid://dstsba5clgcs2" path="res://assets/audio/sfx/chopping.wav" id="7_5dobv"]
 [ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="7_elu1k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skbjc"]
@@ -53,3 +54,8 @@ shape = SubResource("RectangleShape2D_5dobv")
 [node name="HealthComponent" parent="." instance=ExtResource("6_elu1k")]
 max_health = 6
 health = 6
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_5dobv")
+volume_db = 3.0
+bus = &"SFX"

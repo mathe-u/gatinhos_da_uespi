@@ -4,3 +4,5 @@
 
 [node name="ClickButton" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_nraec")
+volume_db = 6.681
+bus = &"SFX"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqkerf5lwjo2t" path="res://scenes/intro/game_intro_presentation.gd" id="1_1vu4q"]
 [ext_resource type="Theme" uid="uid://dhsgc6k51h0rn" path="res://scenes/ui/game_ui_theme.tres" id="2_yye3c"]
 [ext_resource type="FontFile" uid="uid://di7gplllef8xy" path="res://assets/ui/fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_ka2bs"]
-[ext_resource type="Texture2D" uid="uid://mq2iipvi12nj" path="res://icon.svg" id="4_fhbf0"]
+[ext_resource type="Texture2D" uid="uid://bjuavyk8lawv5" path="res://icon_godot.svg" id="4_fhbf0"]
 
 [sub_resource type="Animation" id="Animation_7djrt"]
 length = 0.001

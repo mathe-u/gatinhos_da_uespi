@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfi730ps3olro"]
+[gd_scene load_steps=8 format=3 uid="uid://dfi730ps3olro"]
 
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_71ix8"]
+[ext_resource type="Shader" uid="uid://dmiovlscc402i" path="res://scenes/objects/itens/item_pulse.gdshader" id="1_wagmk"]
 [ext_resource type="Script" uid="uid://4jum154curnh" path="res://scripts/item_component.gd" id="2_ufw2d"]
 [ext_resource type="PackedScene" uid="uid://btanmv2gnaim7" path="res://scenes/components/collectable_component.tscn" id="3_qam3a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wnts3"]
+shader = ExtResource("1_wagmk")
+shader_parameter/pulse_color = Color(0, 0, 0, 1)
+shader_parameter/pulse_speed = 3.0
+shader_parameter/color_strength = 0.5
+shader_parameter/scale_strength = 0.15
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t3su"]
 atlas = ExtResource("1_71ix8")
@@ -13,6 +21,7 @@ radius = 7.07107
 
 [node name="ItemScene" type="Sprite2D"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_wnts3")
 texture = SubResource("AtlasTexture_3t3su")
 script = ExtResource("2_ufw2d")
 

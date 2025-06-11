@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcphaalfqn2cj"]
+[gd_scene load_steps=12 format=3 uid="uid://bcphaalfqn2cj"]
 
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_p8ja0"]
 [ext_resource type="Shader" uid="uid://0secowsdnilg" path="res://scenes/objects/rocks/squash.gdshader" id="1_u3i6c"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="3_pner1"]
 [ext_resource type="PackedScene" uid="uid://hsckm1udb2ko" path="res://scenes/ui/entity_health_bar.tscn" id="4_pner1"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="5_u3i6c"]
+[ext_resource type="AudioStream" uid="uid://tq7wv4mvdo78" path="res://assets/audio/sfx/grass_walk.wav" id="7_v2noq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2noq"]
 shader = ExtResource("1_u3i6c")
@@ -53,3 +54,6 @@ nine_patch_stretch = true
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_u3i6c")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_v2noq")

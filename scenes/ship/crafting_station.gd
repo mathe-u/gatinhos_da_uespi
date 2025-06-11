@@ -94,7 +94,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if !_is_crafting:
 				#interactable_label_component.hide()
 				SceneManager.open_close_crafting_station_ui(self)
-				SfxManager.play_click_sfx()
+				$ClickButton.play(0.6)
 				#var crafting_station_ui: PanelContainer = crafting_station_menu_scene.instantiate()
 				
 				#crafting_station_ui.setup_crafting_station(self)

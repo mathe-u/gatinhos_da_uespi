@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cogup7s4abebl"]
+[gd_scene load_steps=12 format=3 uid="uid://cogup7s4abebl"]
 
 [ext_resource type="Shader" uid="uid://ok1rks65miaf" path="res://scenes/objects/shake.gdshader" id="1_f4wgc"]
 [ext_resource type="Texture2D" uid="uid://724nnwuwcxd1" path="res://assets/game/Objects/basic_grass_biom_things.png" id="1_ivetc"]
 [ext_resource type="Script" uid="uid://tx17e5ki4810" path="res://scenes/objects/trees/tree.gd" id="3_0ia52"]
 [ext_resource type="PackedScene" uid="uid://cp7n1jr5pv1jj" path="res://scenes/components/item_spawner_component.tscn" id="6_6vpey"]
 [ext_resource type="PackedScene" uid="uid://ncvpnwwp3euh" path="res://scenes/components/health_component.tscn" id="7_0ia52"]
+[ext_resource type="AudioStream" uid="uid://dstsba5clgcs2" path="res://assets/audio/sfx/chopping.wav" id="7_3cbki"]
 [ext_resource type="PackedScene" uid="uid://b8l7pft54h460" path="res://scenes/components/hurt_component_2.tscn" id="7_you1t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vpey"]
@@ -55,3 +56,8 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_3cbki")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3cbki")
+volume_db = 3.0
+bus = &"SFX"

@@ -8,6 +8,7 @@ extends Sprite2D
 @onready var hurt_component_2: HurtComponent2 = $HurtComponent2
 @onready var item_spawner_component: ItemSpawnerComponent = $ItemSpawnerComponent
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 signal destroyed
 
@@ -20,6 +21,8 @@ func _ready() -> void:
 
 func on_hurt(hit_damage: int) -> void:
 	health_component.take_damage(hit_damage)
+	
+	audio_stream_player_2d.play()
 	
 	material.set_shader_parameter("shake_intensity", shake_intensity)
 	await get_tree().create_timer(1.0).timeout
