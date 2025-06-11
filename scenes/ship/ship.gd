@@ -24,7 +24,7 @@ func _ready() -> void:
 	exit_interactable_label_component.hide()
 	
 	point_light_2d.enabled = false
-	DayNightCycleManager.time_tick.connect(on_nightfall)
+	#DayNightCycleManager.time_tick.connect(on_nightfall)
 	
 	player_node = SceneManager.get_player_node()
 
@@ -63,8 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		in_range = true
 
 
-func on_nightfall(_day: int, hour: int, _minute: int) -> void:
-	if hour >= 19 or hour <= 4:
-		point_light_2d.enabled = true
-	else:
-		point_light_2d.enabled = false
+#func on_nightfall(_day: int, hour: int, _minute: int) -> void:
+	#if hour >= 19 or hour <= 4:
+		#point_light_2d.enabled = true
+	#else:
+		#point_light_2d.enabled = false

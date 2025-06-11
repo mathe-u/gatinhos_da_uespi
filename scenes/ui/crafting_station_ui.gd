@@ -166,14 +166,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and !create_button.has_focus() and !more_item_button.has_focus() and !less_item_button.has_focus() and !close_work_station.has_focus():
 		create_button.grab_focus()
 		get_viewport().set_input_as_handled()
+		print("1s")
 	elif event.is_action_pressed("interact") and more_item_button.has_focus():
 		more_item_button.grab_focus()
 		get_viewport().set_input_as_handled()
+		print("2s")
 	elif event.is_action_pressed("ui_accept") and less_item_button.has_focus():
 		get_viewport().set_input_as_handled()
+		print("3s")
 	elif event.is_action_pressed("ui_accept") and create_button.has_focus():
 		get_viewport().set_input_as_handled()
+		SceneManager.set_ui_is_locked()
+		print("4s")
 	elif (event.is_action_pressed("ui_accept") and close_work_station.has_focus()) or event.is_action_pressed("ui_close"):
 		SceneManager.set_ui_is_locked()
 		get_viewport().set_input_as_handled()
+		print("5s")
 		queue_free()

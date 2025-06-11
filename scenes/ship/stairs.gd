@@ -4,6 +4,8 @@ extends Area2D
 @export var layer_storage_deck: TileMapLayer
 @export var reverse_switch: bool = false
 
+@onready var crafting_station: CraftingStation = $"../StorageDeck/Decoration/CraftingStation"
+
 var enter_point: Vector2
 
 const MINIMUM_DISTANCE: float = 4.0
@@ -24,5 +26,15 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _switch_layer() -> void:
-	layer_main_deck.set_active(not layer_main_deck.enabled)
-	layer_storage_deck.set_active(not layer_storage_deck.enabled)
+	layer_main_deck.set_active(!layer_main_deck.enabled)
+	layer_storage_deck.set_active(!layer_storage_deck.enabled)
+	
+	if layer_storage_deck.enabled:
+		crafting_station.set_collision_layer_value(1, true)
+		crafting_station.set_interactable_mask(2, true)
+		crafting_station.set_ocluder_mask(1)
+	else:
+		crafting_station.set_collision_layer_value(1, false)
+		crafting_station.set_interactable_mask(2, false)
+		crafting_station.set_ocluder_mask()
+		pass

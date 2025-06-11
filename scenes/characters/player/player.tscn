@@ -643,11 +643,10 @@ radius = 9.05539
 polygon = PackedVector2Array(0, 4, 5, 7, 7, 12, 5, 16, 0, 18, -4, 17, -7, 12, -5, 7)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -14)
 collision_layer = 2
-collision_mask = 595
+collision_mask = 6738
 script = ExtResource("1_6avc5")
 max_health = 20
 starting_health = 20

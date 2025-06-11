@@ -29,6 +29,7 @@ polygon = PackedVector2Array(-8, 22, -5, 18, 0, 16, 6, 18, 9, 22, 6, 26, 0, 28, 
 
 [node name="LargeTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_6vpey")
+position = Vector2(0, -29)
 texture = SubResource("AtlasTexture_6vpey")
 script = ExtResource("3_0ia52")
 shake_intensity = 2.5

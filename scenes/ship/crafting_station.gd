@@ -5,6 +5,7 @@ extends StaticBody2D
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var item_spawner_component: ItemSpawnerComponent = $ItemSpawnerComponent
 @onready var craft_timer: Timer = $CraftTimer
+@onready var light_occluder_2d: LightOccluder2D = $LightOccluder2D
 
 var crafting_station_menu_scene: PackedScene = preload("res://scenes/ui/crafting_station_ui.tscn")
 var in_range: bool = false
@@ -86,6 +87,14 @@ func _on_craft_timer_timeout() -> void:
 	_craft_units_remaining -= 1
 	
 	_start_next_craft_in_queue()
+
+
+func set_interactable_mask(layer: int, value: bool) -> void:
+	interactable_component.set_collision_mask_value(layer, value)
+	
+func set_ocluder_mask(layer: int = 2) -> void:
+	#light_occluder_2d.occluder_light_mask = layer
+	light_occluder_2d.set_occluder_light_mask(layer)
 
 
 func _unhandled_input(event: InputEvent) -> void:

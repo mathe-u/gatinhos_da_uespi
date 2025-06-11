@@ -207,9 +207,11 @@ ui_close={
 2d_physics/layer_6="Collectable"
 2d_physics/layer_7="NPC"
 2d_physics/layer_8="Food"
-2d_physics/layer_9="ship"
+2d_physics/layer_9="Ship"
 2d_physics/layer_10="Enemy"
-2d_physics/layer_11="projectile"
+2d_physics/layer_11="Projectile"
+2d_physics/layer_12="LowerFloor"
+2d_physics/layer_13="UpperFloor"
 
 [rendering]
 

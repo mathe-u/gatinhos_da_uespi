@@ -29,6 +29,7 @@ polygon = PackedVector2Array(-8, 23, -5, 18, 0, 17, 4, 19, 6, 23, 4, 27, -1, 29,
 
 [node name="SmallTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_skbjc")
+position = Vector2(0, -29)
 texture = SubResource("AtlasTexture_xyb6m")
 script = ExtResource("3_skbjc")
 shake_intensity = 2.5

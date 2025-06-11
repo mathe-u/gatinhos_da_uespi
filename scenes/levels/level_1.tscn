@@ -98,6 +98,7 @@ z_index = 1
 position = Vector2(2218, 881)
 event_unlock = 3
 item_id = &"105"
+required_items = 3
 icon = ExtResource("20_mkypq")
 
 [node name="UnlockComponent4" parent="." instance=ExtResource("16_iwr0g")]
