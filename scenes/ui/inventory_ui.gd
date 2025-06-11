@@ -80,14 +80,14 @@ func drop_slot(slot1: Control, slot2: Control) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	var inventory_ui_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
 	if event.is_action_pressed("inventory"):
 		var tool_panel_scene: PanelContainer = get_parent().get_node("ToolsPanel")
 		
 		tool_panel_scene.release_focus()
 		_on_close_inventory_pressed()
 	
-	if event.is_action_pressed("ui_close"):
-		var inventory_ui_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
-		
-		if inventory_ui_scene.visible:
-			inventory_ui_scene.visible = false
+	if event.is_action_pressed("ui_close") and inventory_ui_scene.visible:
+		#inventory_ui_scene.visible = false
+		_on_close_inventory_pressed()
+		#SceneManager.show_hide_inventory_menu_button()
