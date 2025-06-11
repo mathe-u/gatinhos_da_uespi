@@ -9,6 +9,7 @@ extends PanelContainer
 @onready var more_item_button: Button = $MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer/MoreItemButton
 @onready var less_item_button: Button = $MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/HBoxContainer/LessItemButton
 @onready var create_button: Button = $MarginContainer/VBoxContainer/HBoxBodyContainer/ResultRecipesPanel/VBoxContainer/CreateButton
+@onready var close_work_station: Button = $MarginContainer/VBoxContainer/HBoxContainer/CloseWorkStation
 
 
 var units_product: int = 1
@@ -25,12 +26,17 @@ func _ready() -> void:
 	
 	for item: ItemData in items:
 		var item_to_create: Button = recipe_item_result_scene.instantiate()
+
 		item_to_create.text = item.display_name
 		item_to_create.icon = item.icon
 		item_to_create.pressed.connect(_on_item_list_button_pressed.bind(item))
+		item_to_create.focus_entered.connect(_on_item_list_button_pressed.bind(item))
 		list_collection.add_child(item_to_create)
-	
+
+	list_collection.get_node("WorkStationItemList").grab_focus()
 	_on_item_list_button_pressed(items[0])
+	
+	SceneManager.set_ui_is_locked()
 
 
 func _clear_ingredients_list_nodes() -> void:
@@ -154,3 +160,20 @@ func _on_create_button_pressed() -> void:
 
 func _on_close_work_station_pressed() -> void:
 	queue_free()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and !create_button.has_focus() and !more_item_button.has_focus() and !less_item_button.has_focus() and !close_work_station.has_focus():
+		create_button.grab_focus()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("interact") and more_item_button.has_focus():
+		more_item_button.grab_focus()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_accept") and less_item_button.has_focus():
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_accept") and create_button.has_focus():
+		get_viewport().set_input_as_handled()
+	elif (event.is_action_pressed("ui_accept") and close_work_station.has_focus()) or event.is_action_pressed("ui_close"):
+		SceneManager.set_ui_is_locked()
+		get_viewport().set_input_as_handled()
+		queue_free()

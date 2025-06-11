@@ -99,6 +99,7 @@ position = Vector2(-15, 171)
 position = Vector2(-14, 275)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(-26, 73)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)

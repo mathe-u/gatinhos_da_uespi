@@ -92,7 +92,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if in_range:
 		if event.is_action_pressed("interact"):
 			if !_is_crafting:
-				interactable_label_component.hide()
-				var crafting_station_ui: PanelContainer = crafting_station_menu_scene.instantiate()
-				crafting_station_ui.setup_crafting_station(self)
-				get_tree().root.get_node("MainScene/GameScreen/MarginContainer").add_child(crafting_station_ui)
+				#interactable_label_component.hide()
+				SceneManager.open_close_crafting_station_ui(self)
+				SfxManager.play_click_sfx()
+				#var crafting_station_ui: PanelContainer = crafting_station_menu_scene.instantiate()
+				
+				#crafting_station_ui.setup_crafting_station(self)
+				#get_tree().root.get_node("MainScene/GameScreen/MarginContainer").add_child(crafting_station_ui)

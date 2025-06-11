@@ -733,7 +733,7 @@ texture = ExtResource("14_hv5x3")
 texture_scale = 3.0
 
 [node name="Gun" parent="." instance=ExtResource("16_i1nod")]
-shoot_cooldown = 0.5
+shoot_cooldown = 0.1
 gun_pellets = 1
 gun_spread_degree = 2.0
 projectile_scene = ExtResource("17_4kqyw")

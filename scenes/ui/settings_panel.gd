@@ -26,5 +26,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("settings"):
 		var tool_panel_scene: PanelContainer = get_parent().get_node("ToolsPanel")
 		
-		SceneManager.open_close_settings_panel()
+		_on_close_button_pressed()
 		tool_panel_scene.release_all_focus()
+	if event.is_action_pressed("ui_close"):
+		var settings_panel_scene: PanelContainer = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/SettingsPanel")
+		
+		if settings_panel_scene.visible:
+			settings_panel_scene.visible = false

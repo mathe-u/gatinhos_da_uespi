@@ -104,4 +104,25 @@ func show_hide_inventory_menu_button() -> void:
 	
 	inventory_button.visible = !inventory_button.visible
 	settings_button.visible = !settings_button.visible
+
+
+func open_close_crafting_station_ui(crafting_station: CraftingStation) -> void:
+	var crafting_station_ui_scene: PanelContainer = get_tree().root.get_node_or_null("MainScene/GameScreen/MarginContainer/CraftingStationUI")
 	
+	if crafting_station_ui_scene:
+		crafting_station_ui_scene.queue_free()
+	else:
+		var crafting_station_menu_scene: PackedScene = preload("res://scenes/ui/crafting_station_ui.tscn")
+		var crafting_station_ui_instance: PanelContainer = crafting_station_menu_scene.instantiate()
+		
+		crafting_station_ui_instance.setup_crafting_station(crafting_station)
+		
+		get_tree().root.get_node("MainScene/GameScreen/MarginContainer").add_child(crafting_station_ui_instance)
+		
+func set_ui_is_locked() -> void:
+	show_hide_inventory_menu_button()
+	_is_inventory_locked = !_is_inventory_locked
+	_is_settings_locked = !_is_settings_locked
+	
+	if !_is_inventory_locked and !_is_settings_locked:
+		pass

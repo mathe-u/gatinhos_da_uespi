@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpwns3jelxm4c"]
+[gd_scene load_steps=6 format=3 uid="uid://bpwns3jelxm4c"]
 
 [ext_resource type="Texture2D" uid="uid://dlwyey1lmhgmg" path="res://assets/game/Objects/bullet.png" id="1_yn3ly"]
 [ext_resource type="PackedScene" uid="uid://5ib387nw2x6g" path="res://scenes/components/hit_component.tscn" id="2_jibfg"]
 [ext_resource type="Script" uid="uid://bkqv2ycnkowa3" path="res://scenes/objects/Projectiles/projectile_test.gd" id="2_wljlh"]
+[ext_resource type="Texture2D" uid="uid://s6cjacr2wvaa" path="res://assets/game/Tilesets/light_gradient.png" id="4_wljlh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wljlh"]
 size = Vector2(32, 2)
@@ -19,3 +20,9 @@ collision_mask = 1022
 shape = SubResource("RectangleShape2D_wljlh")
 
 [node name="LifeTime" type="Timer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16, 0)
+energy = 0.1
+texture = ExtResource("4_wljlh")
+texture_scale = 0.1

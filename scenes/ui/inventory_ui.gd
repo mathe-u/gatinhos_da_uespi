@@ -85,3 +85,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		tool_panel_scene.release_focus()
 		_on_close_inventory_pressed()
+	
+	if event.is_action_pressed("ui_close"):
+		var inventory_ui_scene: Control = get_tree().root.get_node("MainScene/GameScreen/MarginContainer/InventoryUI")
+		
+		if inventory_ui_scene.visible:
+			inventory_ui_scene.visible = false

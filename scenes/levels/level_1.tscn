@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cup3lkygb1ml6"]
+[gd_scene load_steps=22 format=4 uid="uid://cup3lkygb1ml6"]
 
 [ext_resource type="Script" uid="uid://hu6fy2t442vc" path="res://scenes/levels/level_1.gd" id="1_gmpev"]
 [ext_resource type="TileSet" uid="uid://4io8xlhho2p4" path="res://Tilesets/game_tile_set.tres" id="1_ksju7"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bn5p1bqvj6sts" path="res://scenes/components/crops_cursor_component.tscn" id="4_s8va5"]
 [ext_resource type="Script" uid="uid://oysnpauyhgs6" path="res://scenes/components/crops_cursor_component.gd" id="5_dga24"]
 [ext_resource type="PackedScene" uid="uid://56tj4fv0l653" path="res://audio/music/on_the_farm_music.tscn" id="7_oc4kc"]
-[ext_resource type="PackedScene" uid="uid://dfi730ps3olro" path="res://scenes/objects/itens/item_scene.tscn" id="9_dga24"]
 [ext_resource type="PackedScene" uid="uid://dbuvtkl5ve58p" path="res://scenes/objects/rocks/iron_rock.tscn" id="10_excbq"]
 [ext_resource type="PackedScene" uid="uid://ctsesdsqrksjk" path="res://scenes/ship/ship.tscn" id="10_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://bqset71wepld7" path="res://scenes/characters/enemies/generic_enemy.tscn" id="12_iav0o"]
@@ -75,26 +74,6 @@ tilled_soil_tilemap_layer = NodePath("../GameTileMap/TilledSoil")
 script = ExtResource("5_dga24")
 tilled_soil_tilemap_layer = NodePath("../GameTileMap/TilledSoil")
 
-[node name="ItemScene" parent="." instance=ExtResource("9_dga24")]
-position = Vector2(603, 732)
-item_id = &"100"
-quantity = 10
-
-[node name="ItemScene3" parent="." instance=ExtResource("9_dga24")]
-visible = false
-position = Vector2(603, 617)
-item_id = &"102"
-
-[node name="ItemScene4" parent="." instance=ExtResource("9_dga24")]
-visible = false
-position = Vector2(603, 793)
-item_id = &"100"
-
-[node name="ItemScene5" parent="." instance=ExtResource("9_dga24")]
-visible = false
-position = Vector2(603, 762)
-item_id = &"100"
-
 [node name="Ship" parent="." instance=ExtResource("10_qxy0u")]
 position = Vector2(1952, 800)
 
@@ -132,21 +111,22 @@ icon = ExtResource("21_ndtll")
 [node name="ObjectSpawnerComponent" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
 objects_to_spawn = Array[PackedScene]([ExtResource("15_wtwp4"), ExtResource("13_mm8aj"), ExtResource("18_mkypq")])
 tilemap_layer = NodePath("../GameTileMap/Grass")
-respawn_delay = 120.0
+population_target = 81
+respawn_delay = 60.0
 spawnable_custom_data_layer = "can_spawn_tree"
 
 [node name="ObjectSpawnerComponent2" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
 objects_to_spawn = Array[PackedScene]([ExtResource("10_excbq")])
 tilemap_layer = NodePath("../GameTileMap/Grass")
-population_target = 10
-respawn_delay = 120.0
+population_target = 12
+respawn_delay = 50.0
 spawnable_custom_data_layer = "can_spawn_rock"
 
 [node name="ObjectSpawnerComponent3" parent="." node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("22_ndtll")]
 objects_to_spawn = Array[PackedScene]([ExtResource("12_iav0o")])
 tilemap_layer = NodePath("../GameTileMap/Grass")
-population_target = 5
-respawn_delay = 120.0
+population_target = 8
+respawn_delay = 60.0
 
 [node name="TutorialComponent" parent="." instance=ExtResource("20_gmpev")]
 position = Vector2(847, 733)
